@@ -1,0 +1,151 @@
+.section--home-header
+  .container
+    padding-top: 2 * $base-spacing
+    padding-bottom: 2 * $base-spacing
+    border-bottom: .2em dashed $light-gray
+
+.page-title--home
+  text-align: center
+  margin-bottom: 0
+
+
+.section--home-introduction
+  .container
+    @include clearfix
+    border-bottom: .2em dashed $light-gray
+    padding-top: 2 * $base-spacing
+    padding-bottom: 2 * $base-spacing
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.home-introduction
+  &--text
+    @include grid-column(6)
+
+  &--image
+    @include grid-column(6)
+    text-align: left
+    img
+      display: block
+      width: 55%
+      margin: -2 * $base-spacing auto 0
+
+
+.section--home-quote
+  .container
+    @include clearfix
+    position: relative
+
+.home-quote
+  &--text
+    padding: 3 * $base-spacing 0
+    @include grid-column(8)
+    color: $green
+    position: relative
+    z-index: 9
+    &:last-child
+      text-align: right
+    .quote-body
+      font-size: modular-scale(2)
+    .quote-attribute
+
+  &--clock
+    min-height: $base-spacing
+    @include grid-column(4)
+    img
+      position: absolute
+      bottom: 0
+      height: 110%
+      display: block
+  &--megaphone
+    min-height: $base-spacing
+    @include grid-column(4)
+    img
+      position: absolute
+      height: 97.5%
+      top: -2.5%
+
+
+
+.section--home-stages
+  background-color: $dark-gray
+  text-align: center
+  color: white
+  .container
+    padding-top: 3 * $base-spacing
+    padding-bottom: 3 * $base-spacing
+  .stages-container
+    @include clearfix
+    .stage-column
+      text-align: left
+      @include clearfix
+      margin-top: 2 * $base-spacing
+      @media screen and (min-width: $medium-screen)
+        margin-top: 0
+        @include grid-column(4)
+        text-align: center
+
+      img
+        float: left
+        margin-right: $base-spacing
+        @media screen and (min-width: $medium-screen)
+          margin: 2 * $base-spacing 0 $small-spacing
+          float: none
+  .stages-conclusion
+    margin: 2 * $base-spacing auto 0
+    padding: $base-spacing 2 * $base-spacing 0
+    border-top: .2em dashed $medium-gray
+
+
+.section--home-questions
+  background-color: white
+  .container
+    @include clearfix
+    padding-top: 2 * $base-spacing
+    padding-bottom: 2 * $base-spacing
+
+
+  .tabs
+  .tabs .tab label
+    font-weight: 700
+    color: $medium-gray
+    font-size: modular-scale(1)
+  .tabs .tab [type=radio]
+    display: none
+
+  @media screen and (min-width: $medium-screen)
+    .tabs
+      padding-bottom: 0
+      position: relative
+      min-height: 350px
+      clear: both
+      margin: $base-spacing 0
+    .tabs .content
+      position: absolute
+      top: 0
+      left: 50%
+      right: 0
+      bottom: 0
+      padding: 0 $small-spacing
+      opacity: 0
+    .tabs .tab
+      width: 45%
+    .tabs .tab label
+      position: relative
+      cursor: pointer
+      margin-bottom: $small-spacing
+      left: -$small-spacing
+      padding: $small-spacing
+      border-radius: $small-spacing
+      transition: color $base-duration, text-decoration $base-duration
+    .tabs .tab label:hover
+      color: #F5D0B7
+      text-decoration: underline
+    .tabs [type=radio]:checked~label
+      z-index: 2
+      color: #F5D0B7
+      text-decoration: underline
+    .tabs [type=radio]:checked~label~.content
+      z-index: 1
+      opacity: 1
