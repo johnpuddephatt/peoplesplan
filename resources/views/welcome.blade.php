@@ -20,7 +20,7 @@
 
     <section class="section--home-header">
       <div class="container">
-        <img src="/public/images/homepage-header.svg" alt="">
+        <img src="images/homepage-header.svg" alt="">
         <h1 class="page-title page-title--home">Let’s plan the most advanced digital society in the world &ndash; together</h1>
       </div>
     </section>
@@ -33,7 +33,7 @@
           <p>Created by Liam Byrne MP, Shadow Digital Minister, our ambition is to help all members of government listen to and consult with citizens, business and trade unions as we share and debate ideas for Britain’s digital future.</p>
         </div>
         <div class="home-introduction--image">
-          <img src="/public/images/unitedkingdommap.svg" alt="Map of United Kingdom">
+          <img src="images/unitedkingdommap.svg" alt="Map of United Kingdom">
         </div>
       </div>
     </section>
@@ -41,7 +41,7 @@
     <section class="section--home-quote">
       <div class="container">
         <div class="home-quote--megaphone">
-          <img src="/public/images/megaphone.svg" alt="Megaphone illustration">
+          <img src="images/megaphone.svg" alt="Megaphone illustration">
         </div>
         <div class="home-quote--text">
           <h3 class="quote-body">“we want to use digital tools to help Parliament draw on the best ideas to get Britain’s digital policy right”</h3>
@@ -57,17 +57,17 @@
         <p class="section-subtitle">Creating the plan involves three simple steps:</p>
         <div class="stages-container">
           <div class="stage-column">
-            <img src="/public/images/icon-suggest.svg" alt="">
+            <img src="images/icon-suggest.svg" alt="">
             <h3>Suggest</h3>
             <p>Debate the proposed ideas as well as putting forward your own</p>
           </div>
           <div class="stage-column">
-            <img src="/public/images/icon-debate.svg" alt="">
+            <img src="images/icon-debate.svg" alt="">
             <h3>Improve</h3>
             <p>Based on your suggestions, we’ll publish draft plans for you to review</p>
           </div>
           <div class="stage-column">
-            <img src="/public/images/icon-improve.svg" alt="">
+            <img src="images/icon-improve.svg" alt="">
             <h3>Launch</h3>
             <p>The plan will be presented in Parliament to inform national policy</p>
           </div>
@@ -82,7 +82,7 @@
           <p class="quote-attribute">Speaker’s Digital Democracy Commission, 2015</p>
         </div>
         <div class="home-quote--clock">
-          <img src="/public/images/westminster.svg" alt="Clock tower at Palace of Westminster">
+          <img src="images/westminster.svg" alt="Clock tower at Palace of Westminster">
         </div>
       </div>
     </section>
