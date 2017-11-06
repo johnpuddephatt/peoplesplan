@@ -566,9 +566,15 @@ hr {
   color: white;
 }
 
+.section--home-stages .section-subtitle {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .section--home-stages .container {
-  padding-top: 4.5em;
-  padding-bottom: 4.5em;
+  padding-top: 6em;
+  padding-bottom: 6em;
 }
 
 .section--home-stages .stages-container::after {
@@ -692,5 +698,83 @@ hr {
     z-index: 1;
     opacity: 1;
   }
+}
+
+.section--home-themes {
+  background-color: #fff;
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+
+.section--home-themes .home-themes-scroller {
+  position: relative;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.section--home-themes .home-themes-scroller::before,
+.section--home-themes .home-themes-scroller::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4.5em;
+  height: 100%;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(255, 255, 255, 0)), to(white));
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.section--home-themes .home-themes-scroller::after {
+  right: 0;
+  left: auto;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.section--home-themes .home-themes-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-left: 3em;
+  padding-right: 3em;
+  counter-reset: theme;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.section--home-themes .home-themes-inner.grabbing {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.section--home-themes .home-theme-item {
+  counter-increment: theme;
+  float: left;
+  width: 20%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20%;
+          flex: 0 0 20%;
+  padding: 0.75em 1.5em;
+  border-left: 0.2rem dashed #EDEDED;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.section--home-themes .home-theme-item:first-child {
+  border-left: none;
+}
+
+.section--home-themes .home-theme-item::before {
+  content: counter(theme);
+  display: block;
+  font-size: 3.81469727em;
+  color: #EDEDED;
 }
 

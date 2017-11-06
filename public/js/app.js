@@ -763,6 +763,8 @@ module.exports = __webpack_require__(33);
 
 __webpack_require__(9);
 
+__webpack_require__(38);
+
 /***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -19052,6 +19054,51 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */
+/***/ (function(module, exports) {
+
+var updates = document.querySelector('.home-themes-inner');
+
+if (updates) {
+  var body = document.querySelector('body');
+  var curYPos,
+      curXPos,
+      curDown,
+      dragging = false;
+
+  updates.addEventListener('mousemove', function (e) {
+
+    if (curDown) {
+      dragging = true;
+      //curXPos is where the click begins
+      updates.scrollLeft = curLeft - 1.35 * (e.pageX - curXPos);
+    }
+  });
+
+  updates.addEventListener('mousedown', function (e) {
+    curXPos = e.pageX;
+    curDown = true;
+    curLeft = updates.scrollLeft;
+    dragging = false;
+    updates.classList.add('grabbing');
+  });
+
+  updates.addEventListener('mouseup', function (e) {
+    curDown = false;
+    updates.classList.remove('grabbing');
+  });
+
+  updates.addEventListener('mouseleave', function (e) {
+    curDown = false;
+    updates.classList.remove('grabbing');
+  });
+}
 
 /***/ })
 /******/ ]);

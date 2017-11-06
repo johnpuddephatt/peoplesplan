@@ -72,9 +72,13 @@
   background-color: $dark-gray
   text-align: center
   color: white
+  .section-subtitle
+    width: 80%
+    margin-left: auto
+    margin-right: auto
   .container
-    padding-top: 3 * $base-spacing
-    padding-bottom: 3 * $base-spacing
+    padding-top: 4 * $base-spacing
+    padding-bottom: 4 * $base-spacing
   .stages-container
     @include clearfix
     .stage-column
@@ -149,3 +153,56 @@
     .tabs [type=radio]:checked~label~.content
       z-index: 1
       opacity: 1
+
+
+.section--home-themes
+  background-color: #fff
+  padding-top: 4 * $base-spacing
+  padding-bottom: 4 * $base-spacing
+  .home-themes-scroller
+    position: relative
+    margin-left: 2 * $base-spacing
+    margin-right: 2 * $base-spacing
+    &::before, &::after
+      content: ''
+      display: block
+      position: absolute
+      top: 0
+      left: 0
+      width: 3 * $base-spacing
+      height: 100%
+      background: linear-gradient(to left,rgba(255,255,255,0), rgba(255,255,255,1))
+    &::after
+      right: 0
+      left: auto
+      background: linear-gradient(to right,rgba(255,255,255,0), rgba(255,255,255,1))
+  .home-themes-inner
+    display: flex
+    overflow-x: scroll
+    overflow-y: hidden
+    padding-left: 2 * $base-spacing
+    padding-right: 2 * $base-spacing
+
+    counter-reset: theme
+    cursor: grab
+    &.grabbing
+      cursor: grabbing
+      user-select: none
+  .home-theme-item
+    counter-increment: theme
+    float: left
+    width: 20%
+    flex: 0 0 20%
+    padding: $small-spacing $base-spacing
+    border-left: .2rem dashed $light-gray
+    margin-top: 2 * $base-spacing
+    margin-bottom: 2 * $base-spacing
+    &:first-child
+      border-left: none
+    &::before
+      content: counter(theme)
+      display: block
+      font-size: modular-scale(6)
+      color: $light-gray
+
+

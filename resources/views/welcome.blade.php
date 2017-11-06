@@ -53,8 +53,8 @@
 
     <section class="section--home-stages">
       <div class="container">
-        <h3 class="section-title">The plan we create together will help all parliamentarians shape Britain’s plans and policies for digital technology.</h3>
-        <p class="section-subtitle">Creating the plan involves three simple steps:</p>
+        <h3 class="section-title">Our plan will help shape Britain’s digital technology policy</h3>
+        <p class="section-subtitle">By working together we can help all parliamentarians, creating a plan that’s not only technologically advanced but good for wealth creation and social justice too.</p>
         <div class="stages-container">
           <div class="stage-column">
             <img src="images/icon-suggest.svg" alt="">
@@ -72,9 +72,31 @@
             <p>The plan will be presented in Parliament to inform national policy</p>
           </div>
         </div>
-        <p class="stages-conclusion">By working together we can form a plan that’s not only technologically advanced and good for wealth creation and social justice too.</p>
       </div>
     </section>
+
+    <section class="section--home-themes">
+      <div class="container">
+        <h3 class="section-title">Themes</h3>
+
+      </div>
+      <div class="home-themes-scroller">
+        <div class="scroller-navigation"><button class="scroller-previous">&lt;</button><button class="scroller-next">&gt;</button></div>
+        <ul class="home-themes-inner">
+          <li class="home-theme-item"><h4>Infrastructure</h4><p>How do we provide world-leading connectivity so that data moves quickly, cheaply and securely?</p></li>
+          <li class="home-theme-item"><h4>Services</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p></li>
+          <li class="home-theme-item"><h4>Skills</h4><p>How do we ensure universal basic digital skills as well as sufficient levels of specialist expertise?</p></li>
+          <li class="home-theme-item"><h4>Data</h4><p>How do we ensure online trust, including through strong data protection and content regulation?</p></li>
+          <li class="home-theme-item"><h4>Business</h4><p>How do we provide a great online environment for business and encourage the world’s leading innovators to invest and locate here?</p></li>
+          <li class="home-theme-item"><h4>Startups</h4><p>How can we make sure startups are properly financed and supported through public procurement?</p></li>
+          <li class="home-theme-item"><h4>Payments</h4><p>How can the UK lead in the provision and uptake of safe electronic payment options?</p></li>
+          <li class="home-theme-item"><h4>Innovation</h4><p>How can we deliver world-leading support for innovative research and development?</p></li>
+          <li class="home-theme-item"><h4>Government</h4><p>How can the government deliver great services online, especially in education and health?</p></li>
+          <li class="home-theme-item"><h4>Democracy</h4><p>How can we use digital tools to get more people involved in debates and decision-making?</p></li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section--home-quote">
       <div class="container">
         <div class="home-quote--text">
@@ -86,6 +108,8 @@
         </div>
       </div>
     </section>
+
+
     <section class="section--home-questions">
       <div class="container">
         <h3 class="section-title">Questions and answers</h3>
@@ -123,5 +147,7 @@
       </div>
     </footer>
   </body>
+
+  <script type="text/javascript" src="js/app.js"></script>
 </html>
 
