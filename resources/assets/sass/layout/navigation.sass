@@ -1,7 +1,27 @@
 .masthead
   background-color: #fff
   line-height: 2 * $base-spacing
+  .container
+    display: flex
+    flex-direction: row
+
   .site-title
     font-weight: 700
     text-transform: lowercase
     font-size: modular-scale(1)
+    margin-right: 2 * $base-spacing
+  .site-navigation
+    overflow: hidden
+    text-transform: lowercase
+
+    a
+      display: inline-block
+      -webkit-font-smoothing: antialiased
+      font-weight: 700
+      + a
+        margin-right: $base-spacing
+
+    &.right
+      margin-left: auto
+
+

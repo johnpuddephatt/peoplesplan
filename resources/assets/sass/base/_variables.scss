@@ -1,6 +1,7 @@
 // Breakpoints
 $medium-screen: 600px;
 $large-screen: 960px;
+$xl-screen: 1400px;
 
 
 // Typography
@@ -8,15 +9,15 @@ $base-font-family: $font-stack-helvetica;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
-$base-font-size: 1em;
+$base-font-size: .9375em;
 
 // Line height
-$base-line-height: 1.5;
-$heading-line-height: 1.2;
+$base-line-height: 1.6;
+$heading-line-height: 1.25;
 
 // Other Sizes
 $base-border-radius: 3px;
-$base-spacing: $base-line-height * 1em;
+$base-spacing: $base-line-height * 1rem;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
@@ -24,11 +25,14 @@ $base-z-index: 0;
 
 $dark-gray: #333333;
 $medium-gray: #50565E;
-$light-gray: #EDEDED;
+
+$light-gray: #E2E2E1;
 $off-white: #F2F4F4;
 $green: #79CDC8;
+$peach: #F5D0B7;
+$orange: #EDB569;
 
-// Font Colors
+// Font Colors;
 $base-font-color: $medium-gray;
 $action-color: $green;
 

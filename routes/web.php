@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@public');
+
+Route::get('/blog/', 'ArticleController@index');
+Route::get('/blog/{slug}', 'ArticleController@show');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function() {
+  CRUD::resource('article', 'ArticleCrudController');
+  CRUD::resource('comment', 'CommentCrudController');
+});
+
+Route::group(['prefix'=>'laravellikecomment', 'middleware' => 'web'], function (){
+	Route::group(['middleware' => 'auth'], function (){
+		Route::get('/like/vote', 'LikeController@vote');
+		Route::get('/comment/add', 'CommentController@add');
+	});
 });

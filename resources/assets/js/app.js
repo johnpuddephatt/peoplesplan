@@ -7,4 +7,10 @@
 
 require('./bootstrap');
 
-require('./updates');
+window.smoothScroll = require('./smoothscroll.min');
+
+
+window.$ = require('./jquery-3.2.1.min.js');
+
+require('./scroller');
+require('./comments');

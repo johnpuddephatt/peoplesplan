@@ -1,12 +1,28 @@
 .section--home-header
+  background-image: linear-gradient(-30deg, $peach 38%, $off-white 38%)
   .container
-    padding-top: 2 * $base-spacing
-    padding-bottom: 2 * $base-spacing
-    border-bottom: .2em dashed $light-gray
+    padding-top: 6 * $base-spacing
+    padding-bottom: 6 * $base-spacing
+    display: flex
+    flex-direction: row
+  .header-introduction
+    margin: auto
+    flex: 0 0 55%
+    p:last-child
+      margin-bottom: 0
+  .header-image
+    flex: 0 0 45%
+    padding-left: 4 * $base-spacing
+    img
+      display: block
+      margin: auto
+      margin-top: -2 * $base-spacing
+  .button
+    margin-top: $small-spacing
+  .button + .button
+    margin-left: $small-spacing
 
-.page-title--home
-  text-align: center
-  margin-bottom: 0
+
 
 
 .section--home-introduction
@@ -22,7 +38,6 @@
 .home-introduction
   &--text
     @include grid-column(6)
-
   &--image
     @include grid-column(6)
     text-align: left
@@ -30,7 +45,6 @@
       display: block
       width: 55%
       margin: -2 * $base-spacing auto 0
-
 
 .section--home-quote
   .container
@@ -63,10 +77,9 @@
     @include grid-column(4)
     img
       position: absolute
-      height: 97.5%
-      top: -2.5%
-
-
+      height: 80%
+      top: 10%
+      right: 5%
 
 .section--home-stages
   background-color: $dark-gray
@@ -101,13 +114,11 @@
     padding: $base-spacing 2 * $base-spacing 0
     border-top: .2em dashed $medium-gray
 
-
 .section--home-questions
   background-color: white
   .container
     @include clearfix
     padding-top: 2 * $base-spacing
-    padding-bottom: 2 * $base-spacing
 
 
   .tabs
@@ -133,7 +144,7 @@
       bottom: 0
       padding: 0 $small-spacing
       opacity: 0
-    .tabs .tab
+    .tabs .tab, .tab-image
       width: 45%
     .tabs .tab label
       position: relative
@@ -159,50 +170,120 @@
   background-color: #fff
   padding-top: 4 * $base-spacing
   padding-bottom: 4 * $base-spacing
-  .home-themes-scroller
-    position: relative
-    margin-left: 2 * $base-spacing
-    margin-right: 2 * $base-spacing
-    &::before, &::after
-      content: ''
-      display: block
-      position: absolute
-      top: 0
-      left: 0
-      width: 3 * $base-spacing
-      height: 100%
-      background: linear-gradient(to left,rgba(255,255,255,0), rgba(255,255,255,1))
-    &::after
-      right: 0
-      left: auto
-      background: linear-gradient(to right,rgba(255,255,255,0), rgba(255,255,255,1))
-  .home-themes-inner
-    display: flex
-    overflow-x: scroll
-    overflow-y: hidden
-    padding-left: 2 * $base-spacing
-    padding-right: 2 * $base-spacing
-
-    counter-reset: theme
-    cursor: grab
-    &.grabbing
-      cursor: grabbing
-      user-select: none
+  .container
+  .home-theme-title
+    margin-bottom: 0
+  .home-theme-date
+    color: $light-gray
+    margin-bottom: $small-spacing
+    font-size: modular-scale(1)
   .home-theme-item
     counter-increment: theme
     float: left
     width: 20%
-    flex: 0 0 20%
+    flex: 0 0 33.3%
+    @media screen and (min-width: $large-screen)
+      flex: 0 0 33.3%
+    @media screen and (min-width: $xl-screen)
+      flex: 0 0 20%
     padding: $small-spacing $base-spacing
-    border-left: .2rem dashed $light-gray
+    border-left: .15rem dashed $light-gray
     margin-top: 2 * $base-spacing
     margin-bottom: 2 * $base-spacing
     &:first-child
       border-left: none
+      // margin-left: $base-spacing
     &::before
       content: counter(theme)
       display: block
       font-size: modular-scale(6)
       color: $light-gray
+      line-height: 2 * $base-spacing
+      padding-top: 2 * $base-spacing
+      margin-bottom: $base-spacing
+      background-position: right bottom
+      background-size: #{2.5 * $base-spacing} auto
+      background-repeat: no-repeat
+    &--safety::before
+        background-image: url(/images/theme-safety.svg)
+    &--infrastructure::before
+        background-image: url(/images/theme-infrastructure.svg)
+    &--skills::before
+        background-image: url(/images/theme-skills.svg)
+    &--security::before
+        background-image: url(/images/theme-security.svg)
+    &--jobs::before
+        background-image: url(/images/theme-jobs.svg)
+    &--government::before
+        background-image: url(/images/theme-government.svg)
 
+.section--home-interviews
+  .container
+    @include clearfix
+    padding-top: 4 * $base-spacing
+  .home-interviews-scroller
+    padding-top: $base-spacing
 
+  .home-interviews-scroller::before
+    background: linear-gradient(to left,rgba(255,255,255,0), $off-white)
+  .home-interviews-scroller::after
+    background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
+  .home-interviews-item
+    flex: 0 0 33.3%
+    flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+    border: 1px solid $light-gray
+    border-radius: $small-spacing/2
+    margin-left: $base-spacing
+    background-color: white
+    display: flex
+    flex-direction: column
+    &:hover
+      .home-interviews-image img
+        transform: scale(1.05)
+      .home-interviews-quote, .home-interviews-title
+        color: $peach
+  .home-interviews-image
+    position: relative
+    display: block
+    overflow: hidden
+    img
+      display: block
+      transition: 3 * $base-duration $base-timing
+    svg
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%,-50%)
+      width: 3 * $base-spacing
+      filter: drop-shadow(6px 6px 6px rgba(0,0,0,0.7))
+  .home-interviews-title
+    font-size: modular-scale(0)
+    text-align: right
+    font-weight: 400
+    margin-top: auto
+    padding: 0 1.5 * $base-spacing
+    line-height: 1.5 * $base-spacing
+    border-top: .15rem dashed $light-gray
+    margin-bottom: 0
+    transition: color 2 * $base-duration $base-timing
+  .home-interviews-quote
+    margin: 1.5 * $small-spacing 1.5 * $base-spacing
+    font-size: modular-scale(1)
+    font-weight: 700
+    color: $green
+    line-height: $heading-line-height
+    position: relative
+    transition: color 2 * $base-duration $base-timing
+    &::before, &::after
+      opacity: .2
+      position: absolute
+      font-size: modular-scale(4)
+      line-height: .85
+      display: inline-block
+    &::before
+      content: '“'
+      right: 100%
+      margin-right: $small-spacing/2
+    &::after
+      content: '”'
+      margin-left: $small-spacing/2
