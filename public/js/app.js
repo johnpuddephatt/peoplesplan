@@ -774,7 +774,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);
-module.exports = __webpack_require__(38);
+module.exports = __webpack_require__(39);
 
 
 /***/ }),
@@ -796,6 +796,7 @@ window.$ = __webpack_require__(34);
 
 __webpack_require__(36);
 __webpack_require__(37);
+__webpack_require__(38);
 
 /***/ }),
 /* 10 */
@@ -21537,14 +21538,14 @@ var _loop = function _loop() {
 
     scrollerInner.addEventListener('scroll', function (e) {
       if (this.scrollWidth - this.clientWidth - this.scrollLeft === 0) {
-        nextButton.classList.add('hidden');
-        prevButton.classList.remove('hidden');
+        nextButton.setAttribute('tabindex', '-1');
+        prevButton.removeAttribute('tabindex');
       } else if (this.scrollLeft == 0) {
-        prevButton.classList.add('hidden');
-        nextButton.classList.remove('hidden');
+        prevButton.setAttribute('tabindex', '-1');
+        nextButton.removeAttribute('tabindex');
       } else {
-        nextButton.classList.remove('hidden');
-        prevButton.classList.remove('hidden');
+        nextButton.removeAttribute('tabindex');
+        prevButton.removeAttribute('tabindex');
       }
     });
 
@@ -21682,6 +21683,85 @@ $(document).on('click', '#write-comment', function () {
 
 /***/ }),
 /* 38 */
+/***/ (function(module, exports) {
+
+(function () {
+  // Get relevant elements and collections
+  var tabbed = document.querySelector('.tabbed');
+  var tablist = tabbed.querySelector('ul');
+  var tabs = tablist.querySelectorAll('a');
+  var panels = tabbed.querySelectorAll('[id^="section"]');
+
+  // The tab switching function
+  var switchTab = function switchTab(oldTab, newTab) {
+    newTab.focus();
+    // Make the active tab focusable by the user (Tab key)
+    newTab.removeAttribute('tabindex');
+    // Set the selected state
+    newTab.setAttribute('aria-selected', 'true');
+    oldTab.removeAttribute('aria-selected');
+    oldTab.setAttribute('tabindex', '-1');
+    // Get the indices of the new and old tabs to find the correct
+    // tab panels to show and hide
+    var index = Array.prototype.indexOf.call(tabs, newTab);
+    var oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
+    panels[oldIndex].hidden = true;
+    panels[index].hidden = false;
+  };
+
+  // Add the tablist role to the first <ul> in the .tabbed container
+  tablist.setAttribute('role', 'tablist');
+
+  // Add semantics are remove user focusability for each tab
+  for (var i = 0; i < tabs.length; i++) {
+
+    tabs[i].setAttribute('role', 'tab');
+    tabs[i].setAttribute('id', 'tab' + (i + 1));
+    tabs[i].setAttribute('tabindex', '-1');
+    tabs[i].parentNode.setAttribute('role', 'presentation');
+
+    // Handle clicking of tabs for mouse users
+    tabs[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var currentTab = tablist.querySelector('[aria-selected]');
+      if (e.currentTarget !== currentTab) {
+        switchTab(currentTab, e.currentTarget);
+      }
+    });
+
+    // Handle keydown events for keyboard users
+    tabs[i].addEventListener('keydown', function (e) {
+      // Get the index of the current tab in the tabs node list
+      var index = Array.prototype.indexOf.call(tabs, e.currentTarget);
+      // Work out which key the user is pressing and
+      // Calculate the new tab's index where appropriate
+      var dir = e.which === 38 ? index - 1 : e.which === 40 ? index + 1 : e.which === 39 ? 'down' : null;
+      if (dir !== null) {
+        e.preventDefault();
+        // If the down key is pressed, move focus to the open panel,
+        // otherwise switch to the adjacent tab
+        dir === 'down' ? panels[i].focus() : tabs[dir] ? switchTab(e.currentTarget, tabs[dir]) : void 0;
+      }
+    });
+  }
+
+  // Add tab panel semantics and hide them all
+  Array.prototype.forEach.call(panels, function (panel, i) {
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('tabindex', '-1');
+    var id = panel.getAttribute('id');
+    panel.setAttribute('aria-labelledby', tabs[i].id);
+    panel.hidden = true;
+  });
+
+  // Initially activate the first tab and reveal the first tab panel
+  tabs[0].removeAttribute('tabindex');
+  tabs[0].setAttribute('aria-selected', 'true');
+  panels[0].hidden = false;
+})();
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

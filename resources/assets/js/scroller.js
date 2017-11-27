@@ -23,17 +23,16 @@ for (var i = 0; i < scrollers.length; i++) {
 
     scrollerInner.addEventListener('scroll', function(e) {
       if ((this.scrollWidth - this.clientWidth - this.scrollLeft) === 0) {
-        nextButton.classList.add('hidden');
-        prevButton.classList.remove('hidden');
-
+        nextButton.setAttribute('tabindex', '-1');
+        prevButton.removeAttribute('tabindex');
       }
       else if (this.scrollLeft == 0) {
-        prevButton.classList.add('hidden');
-        nextButton.classList.remove('hidden');
+        prevButton.setAttribute('tabindex', '-1');
+        nextButton.removeAttribute('tabindex');
       }
       else {
-        nextButton.classList.remove('hidden');
-        prevButton.classList.remove('hidden');
+        nextButton.removeAttribute('tabindex');
+        prevButton.removeAttribute('tabindex');
       }
     });
 

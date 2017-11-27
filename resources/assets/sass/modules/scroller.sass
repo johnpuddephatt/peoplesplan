@@ -15,11 +15,14 @@
     text-align: center
     outline: none !important
     transition: opacity 4 * $base-duration $base-timing
-    &.hidden
+    transform: scale(.75)
+    @media screen and(min-width: $medium-screen)
+      transform: scale(1)
+    &[tabindex="-1"]
       opacity: 0.25
       pointer-events: none
     &:focus
-      box-shadow: 0 0 2px $medium-gray
+      box-shadow: 0 0 0 4px $peach
     &::after
       content: ''
       text-indent: 0
@@ -46,8 +49,11 @@
 
 .scroller-outer
   position: relative
-  margin-left: -2 * $base-spacing
-  margin-right: -2 * $base-spacing
+  margin-left: $small-spacing
+  margin-right: $small-spacing
+  @media screen and(min-width: $large-screen)
+    margin-left: -2 * $base-spacing
+    margin-right: -2 * $base-spacing
   &::before, &::after
     content: ''
     display: block
@@ -57,7 +63,11 @@
     z-index: 99
     top: 0
     left: 0
-    width: 3 * $base-spacing
+    width: $base-spacing
+    @media screen and(min-width: $medium-screen)
+      width: 2 * $base-spacing
+    @media screen and(min-width: $large-screen)
+      width: 3 * $base-spacing
     height: 100%
     background: linear-gradient(to left,rgba(255,255,255,0), rgba(255,255,255,1))
   &::after
@@ -69,6 +79,8 @@
   overflow-y: hidden
   padding-left: $base-spacing
   padding-right: $base-spacing
+  padding-top: $small-spacing
+  padding-bottom: $small-spacing
   counter-reset: theme
   cursor: grab
   display: flex

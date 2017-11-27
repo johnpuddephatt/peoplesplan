@@ -1,24 +1,38 @@
 .section--home-header
-  background-image: linear-gradient(-30deg, $peach 38%, $off-white 38%)
+  background-image: linear-gradient(-32deg, $peach 39%, $off-white 39%)
   .container
-    padding-top: 6 * $base-spacing
-    padding-bottom: 6 * $base-spacing
+    height: calc(100vh - #{2 * $base-spacing})
     display: flex
-    flex-direction: row
+    flex-direction: column
+    @media screen and (min-width: $medium-screen)
+      flex-direction: row
+
+
   .header-introduction
-    margin: auto
-    flex: 0 0 55%
+    flex: 0 0 auto
+    margin-top: auto
+    @media screen and (min-width: $medium-screen)
+      margin: auto
+      flex: 0 0 50%
     p:last-child
       margin-bottom: 0
   .header-image
-    flex: 0 0 45%
-    // padding-left: 4 * $base-spacing
-    img
+    width: 100%
+    flex: 0 0 30%
+    margin-top: auto
+    @media screen and (min-width: $medium-screen)
+      margin: auto
+      flex: 0 0 50%
+      padding-left: $base-spacing
+    svg
       display: block
       margin: auto
-      width: 130%
-      max-width: none
-      margin-top: -1 * $base-spacing
+      height: 100%
+      width: 90%
+      @media screen and (min-width: $medium-screen)
+        height: auto
+        width: 125%
+        max-width: 47vw
   .button
     margin-top: $small-spacing
   .button + .button
@@ -56,32 +70,73 @@
 .home-quote
   &--text
     padding: 3 * $base-spacing 0
-    @include grid-column(8)
+    @include grid-column(10)
+    @media screen and (min-width: $medium-screen)
+      @include grid-column(8)
     color: $green
     position: relative
     z-index: 9
     &:last-child
       text-align: right
     .quote-body
-      font-size: modular-scale(2)
+      font-size: modular-scale(1)
+      @media screen and (min-width: $medium-screen)
+        font-size: modular-scale(2)
+      margin-bottom: $small-spacing
+      font-weight: 700
+      line-height: $heading-line-height
+      &::before, &::after
+        opacity: .2
+        position: absolute
+        font-size: modular-scale(4)
+        line-height: .85
+        display: inline-block
+      &::before
+        content: '“'
+        right: 100%
+        margin-right: $small-spacing/2
+      &::after
+        content: '”'
+        margin-left: $small-spacing/2
     .quote-attribute
 
   &--clock
     min-height: $base-spacing
-    @include grid-column(4)
+
+    @include grid-column(2)
+    @media screen and (min-width: $medium-screen)
+      @include grid-column(4)
     img
       position: absolute
       bottom: 0
-      height: 110%
+      width: auto
+      height: 102%
+      right: -15%
+      @media screen and (min-width: $medium-screen)
+        height: 107%
+        right: auto
+
       display: block
   &--megaphone
     min-height: $base-spacing
-    @include grid-column(4)
+    @include grid-column(2)
+    @media screen and (min-width: $medium-screen)
+      @include grid-column(4)
     img
       position: absolute
-      height: 80%
-      top: 10%
-      right: 5%
+      right: -7.5%
+      width: 50%
+      height: auto
+      top: 40%
+      @media screen and (min-width: $medium-screen)
+        height: 65%
+        top: 25%
+        right: -5%
+
+      @media screen and (min-width: $large-screen)
+        height: 100%
+        top: 10%
+        right: -10%
 
 .section--home-stages
   background-color: $dark-gray
@@ -91,6 +146,8 @@
     width: 80%
     margin-left: auto
     margin-right: auto
+  .stage-heading
+    font-size: modular-scale(2)
   .container
     padding-top: 4 * $base-spacing
     padding-bottom: 4 * $base-spacing
@@ -99,7 +156,7 @@
     .stage-column
       text-align: left
       @include clearfix
-      margin-top: 2 * $base-spacing
+      margin-top: $base-spacing
       @media screen and (min-width: $medium-screen)
         margin-top: 0
         @include grid-column(4)
@@ -123,50 +180,6 @@
     padding-top: 2 * $base-spacing
 
 
-  .tabs
-  .tabs .tab label
-    font-weight: 700
-    color: $medium-gray
-    font-size: modular-scale(1)
-  .tabs .tab [type=radio]
-    display: none
-
-  @media screen and (min-width: $medium-screen)
-    .tabs
-      padding-bottom: 0
-      position: relative
-      min-height: 350px
-      clear: both
-      margin: $base-spacing 0
-    .tabs .content
-      position: absolute
-      top: 0
-      left: 50%
-      right: 0
-      bottom: 0
-      padding: 0 $small-spacing
-      opacity: 0
-    .tabs .tab, .tab-image
-      width: 45%
-    .tabs .tab label
-      position: relative
-      cursor: pointer
-      margin-bottom: $small-spacing
-      left: -$small-spacing
-      padding: $small-spacing
-      border-radius: $small-spacing
-      transition: color $base-duration, text-decoration $base-duration
-    .tabs .tab label:hover
-      color: #F5D0B7
-      text-decoration: underline
-    .tabs [type=radio]:checked~label
-      z-index: 2
-      color: #F5D0B7
-      text-decoration: underline
-    .tabs [type=radio]:checked~label~.content
-      z-index: 1
-      opacity: 1
-
 
 .section--home-themes
   background-color: #fff
@@ -183,15 +196,20 @@
     counter-increment: theme
     float: left
     width: 20%
-    flex: 0 0 33.3%
-    @media screen and (min-width: $large-screen)
-      flex: 0 0 33.3%
-    @media screen and (min-width: $xl-screen)
-      flex: 0 0 20%
-    padding: $small-spacing $base-spacing
+    flex: 0 0 100%
+    padding: $small-spacing $small-spacing
     border-left: .15rem dashed $light-gray
     margin-top: 2 * $base-spacing
     margin-bottom: 2 * $base-spacing
+
+    @media screen and (min-width: $medium-screen)
+      flex: 0 0 50%
+    @media screen and (min-width: $large-screen)
+      flex: 0 0 33.3%
+      padding: $small-spacing $base-spacing
+    @media screen and (min-width: $xl-screen)
+      flex: 0 0 25%
+
     &:first-child
       border-left: none
       // margin-left: $base-spacing
@@ -225,20 +243,31 @@
     padding-top: 4 * $base-spacing
   .home-interviews-scroller
     padding-top: $base-spacing
-
   .home-interviews-scroller::before
     background: linear-gradient(to left,rgba(255,255,255,0), $off-white)
   .home-interviews-scroller::after
     background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
   .home-interviews-item
-    flex: 0 0 33.3%
-    flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+    flex: 0 0 100%
+    margin-left: $small-spacing
     border: 1px solid $light-gray
     border-radius: $small-spacing/2
-    margin-left: $base-spacing
     background-color: white
     display: flex
     flex-direction: column
+    @media screen and (min-width: $medium-screen)
+      flex: 0 0 33.3%
+      flex: 0 0 calc(50%)
+
+    @media screen and (min-width: $large-screen)
+      flex: 0 0 33.3%
+      flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+      margin-left: $base-spacing
+
+    @media screen and (max-width: $medium-screen)
+      &:first-child
+        margin-left: 0
+
     &:hover
       .home-interviews-image img
         transform: scale(1.05)

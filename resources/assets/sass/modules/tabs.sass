@@ -1,0 +1,110 @@
+.tab-image
+  @media screen and (max-width: $medium-screen)
+    display: none
+  margin-left: -$base-spacing
+  width: 100%
+  margin-top: auto
+
+.tabbed
+  padding-bottom: $base-spacing
+  @media screen and (min-width: $medium-screen)
+    display: flex
+    flex-direction: row
+    margin-bottom: 0
+  margin-top: 2 * $base-spacing
+
+
+.tabs
+  @media screen and (min-width: $medium-screen)
+    margin-right: 2 * $base-spacing
+    display: flex
+    flex-direction: column
+    flex: 0 0 40%
+
+[role="tablist"]
+  padding: 0
+  @media screen and (min-width: $medium-screen)
+    margin-top: $base-spacing
+    margin-bottom: $base-spacing
+
+[role="tablist"] li, [role="tablist"] a
+  display: inline-block
+
+[role="tablist"] [aria-selected]
+  position: relative
+  @media screen and (min-width: $medium-screen)
+    &::after
+      width: $base-spacing
+      height: $base-spacing
+      position: absolute
+      left: 100%
+      border-radius: 50%
+      border: 3px solid $light-gray
+      content: ''
+      background: $peach
+      padding: 4px
+      background-clip: content-box
+      display: inline-block
+      top: 50%
+      transform: translate(-100%,-50%)
+    &::before
+      content: ''
+      position: absolute
+      display: block
+      left: 100%
+      width: 100%
+      height: 2px
+      top: 50%
+      border-top: 2px dashed $light-gray
+
+
+
+[role="tablist"] a
+  text-decoration: none
+  padding: $small-spacing $base-spacing
+  @media screen and (min-width: $medium-screen)
+    padding: 1rem 3rem 1rem 0
+  @media screen and (min-width: $large-screen)
+    font-size: modular-scale(1)
+
+[role="tablist"] [aria-selected]
+  color: $peach
+  font-weight: 700
+  border-right: 0
+  position: relative
+
+[role="tabpanel"]
+  border: 2px dashed $light-gray
+  padding: $base-spacing
+  @media screen and (min-width: $medium-screen)
+    padding: 2 * $base-spacing $base-spacing
+  z-index: 99
+  position: relative
+  background-color: white
+
+[role="tabpanel"] * + *
+  margin-top: 0.75rem
+
+*:focus
+  outline: none
+  // box-shadow: inset 0 0 0 4px lightBlue
+
+@media (max-width: $medium-screen)
+  [role="tablist"] li, [role="tablist"] a
+    display: block
+    position: static
+
+  [role="tablist"] a
+    border: 3px dashed $light-gray !important
+
+  [role="tablist"] li + li a
+    border-top: 0 !important
+
+  [role="tablist"] [aria-selected]
+    position: static
+
+  [role="tablist"] [aria-selected]::after
+    content: '\0020⬅'
+
+  [role="tabpanel"]
+    border-top: 0
