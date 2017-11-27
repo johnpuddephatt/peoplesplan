@@ -12,7 +12,7 @@
 
       </div>
       <div class="header-image">
-        <img src="images/homepage-header.svg" alt="">
+        @include('inc.homepage-header')
       </div>
     </div>
   </section>

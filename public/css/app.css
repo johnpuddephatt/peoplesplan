@@ -545,13 +545,14 @@ hr {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 45%;
           flex: 0 0 45%;
-  padding-left: 6.4rem;
 }
 
 .section--home-header .header-image img {
   display: block;
   margin: auto;
-  margin-top: -3.2rem;
+  width: 130%;
+  max-width: none;
+  margin-top: -1.6rem;
 }
 
 .section--home-header .button {

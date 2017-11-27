@@ -17,5 +17,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.copy('resources/assets/images', 'public/images');
 
 mix.browserSync({
-    proxy: 'http://public.backpack.dev'
+    proxy: 'http://public.peoplesplan.dev'
  });
