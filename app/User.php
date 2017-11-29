@@ -6,17 +6,19 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 
+use Backpack\CRUD\CrudTrait;
+
 class User extends Authenticatable
 {
     use Notifiable;
-
+    use CrudTrait;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_admin', 'provider', 'provider_id',
     ];
 
     /**
@@ -27,6 +29,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    protected $casts = [
+            'is_admin' => 'boolean',
+        ];
 
     /**
      * Send the password reset notification.
@@ -53,7 +60,8 @@ class User extends Authenticatable
            'email'  => $user->email,
            'url'    => '',  // Optional
            'avatar' => 'gravatar',  // Default avatar
-           'admin'  => $user->role === 'admin', // bool
+           'admin'  => $user->is_admin, // bool
        ];
    }
+
 }

@@ -20,8 +20,9 @@
           <!-- ==== Recommended place for admin menu items ==== -->
           <!-- ================================================ -->
           <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
-          <li><a href="{{ backpack_url('article') }}"><i class="fa fa-file-text"></i> <span>Articles</span></a></li>
-          <li><a href="{{ backpack_url('comment') }}"><i class="fa fa-comment"></i> <span>Comments</span></a></li>          
+          <li><a href="{{ backpack_url('articles') }}"><i class="fa fa-file-text"></i> <span>Articles</span></a></li>
+          <li><a href="{{ backpack_url('comments') }}"><i class="fa fa-comment"></i> <span>Comments</span></a></li>
+          <li><a href="{{ backpack_url('users') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
 
           <!-- ======================================= -->
           {{-- <li class="header">Other menus</li> --}}

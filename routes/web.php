@@ -11,15 +11,33 @@
 |
 */
 
-Route::get('/', 'HomeController@public');
 
-Route::get('/blog/', 'ArticleController@index');
+
 Route::get('/blog/{slug}', 'ArticleController@show');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function() {
-  CRUD::resource('article', 'ArticleCrudController');
-  CRUD::resource('comment', 'CommentCrudController');
+Route::group(
+  [
+    'prefix' => config('backpack.base.route_prefix'),
+    'middleware' => 'isAdmin'
+  ], function() {
+  Route::get('dashboard', '\Backpack\Base\app\Http\Controllers\AdminController@dashboard')->name('backpack.dashboard');
+  Route::get('/', '\Backpack\Base\app\Http\Controllers\AdminController@redirect')->name('backpack');
 });
+
+Route::group(
+  [
+    'namespace' => 'Admin',
+    'prefix' => config('backpack.base.route_prefix'),
+    'middleware' => 'isAdmin'
+  ], function() {
+  CRUD::resource('articles', 'ArticleCrudController');
+  CRUD::resource('comments', 'CommentCrudController');
+  CRUD::resource('users', 'UserCrudController');
+});
+
+Route::get('/blog/', 'ArticleController@index');
+
+Route::get('/', 'HomeController@index');
 
 Route::group(['prefix'=>'laravellikecomment', 'middleware' => 'web'], function (){
 	Route::group(['middleware' => 'auth'], function (){
@@ -27,3 +45,5 @@ Route::group(['prefix'=>'laravellikecomment', 'middleware' => 'web'], function (
 		Route::get('/comment/add', 'CommentController@add');
 	});
 });
+
+Auth::routes();

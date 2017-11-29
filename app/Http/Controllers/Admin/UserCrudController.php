@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\CommentRequest as StoreRequest;
-use App\Http\Requests\CommentRequest as UpdateRequest;
+use App\Http\Requests\ArticleRequest as StoreRequest;
+use App\Http\Requests\ArticleRequest as UpdateRequest;
 
-class CommentCrudController extends CrudController
+class UserCrudController extends CrudController
 {
     public function setup()
     {
@@ -18,9 +18,9 @@ class CommentCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('risul\LaravelLikeComment\Models\Comment');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/comments');
-        $this->crud->setEntityNameStrings('comment', 'comments');
+        $this->crud->setModel('App\User');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users');
+        $this->crud->setEntityNameStrings('user', 'users');
 
         /*
         |--------------------------------------------------------------------------
@@ -28,25 +28,36 @@ class CommentCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $userArray = [
-          'name' => 'user_id',
-          'label' => 'User',
-          'type' => 'text'
-        ];
-        $commentColumn = [
-          'name' => 'comment',
-          'label' => 'Comment',
-          'type' => 'text'
-        ];
-        $commentField = [
-          'name' => 'comment',
-          'label' => 'Comment',
-          'type' => 'textarea'
+        // $this->crud->setFromDb();
+        $nameArray = [   // Browse
+            'name' => 'name',
+            'label' => 'Name',
+            'type' => 'text',
         ];
 
-        $this->crud->addFields([$userArray, $commentField], 'both');
+        $emailArray = [   // Browse
+            'name' => 'email',
+            'label' => 'Email',
+            'type' => 'text'
+        ];
 
-        $this->crud->addColumns([$userArray,$commentColumn]);
+        $adminField = [   // Browse
+            'name' => 'is_admin',
+            'label' => 'Admin?',
+            'type' => 'checkbox'
+        ];
+
+        $adminColumn = [
+         'name' => 'is_admin', // The db column name
+         'label' => 'Admin?', // Table column heading
+         'type' => 'check'
+        ];
+
+
+
+        $this->crud->addFields([$nameArray,$emailArray,$adminField], 'both');
+
+        $this->crud->addColumns([$nameArray,$adminColumn]);
 
         // $this->crud->removeColumn('body'); // remove a column from the stack
         // ------ CRUD FIELDS
@@ -121,8 +132,8 @@ class CommentCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
-
         $redirect_location = parent::storeCrud($request);
+
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;

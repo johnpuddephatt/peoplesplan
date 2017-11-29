@@ -19,9 +19,24 @@
           <a href="#">see the ideas</a>
         </nav>
         <nav class="site-navigation right">
-          <a class="button" href="#">Add your idea</a>
-        </nav>
 
+            @if (Auth::guest())
+              <a class="button" href="{{ url('/login') }}">Login</a>
+            @else
+              @if(Auth::user()->is_admin)
+                <a href="/admin/">Admin</a>
+              @endif
+              <a class="button" href="#">Add your idea</a>
+              <a href="{{ url('/logout') }}"
+                  onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                Logout
+              </a>
+              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+            @endif
+        </nav>
       </div>
     </header>
 
