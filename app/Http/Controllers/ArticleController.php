@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
     public function show($slug)
     {
-      $article = Article::where('slug',$slug)->first();
+      $article = Article::where('slug',$slug)->firstOrFail();
       $comment_item_id = 'article-' . $article->id;
       $comments = CommentController::getCommentsWithUsersandLikes($comment_item_id);
       // $likedata = \App\Http\Controllers\LikeController::getLikeViewData($like_item_id);

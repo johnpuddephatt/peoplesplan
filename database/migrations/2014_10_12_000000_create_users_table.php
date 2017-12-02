@@ -21,8 +21,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('is_admin')->nullable();
+            $table->integer('is_blocked')->default(0);
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
+            $table->string('avatar')->nullable();
+            $table->softDeletes();
+            $table->integer('login_count')->default(0);
         });
 
         DB::table('users')->insert(

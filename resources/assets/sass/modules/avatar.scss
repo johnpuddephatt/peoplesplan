@@ -1,0 +1,8 @@
+.avatar {
+	width: 3 * $base-spacing;
+	img {
+		display: block;
+		width: 100%;
+		border-radius: $small-spacing/2
+	}
+}

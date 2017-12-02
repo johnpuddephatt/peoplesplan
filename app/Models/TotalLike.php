@@ -11,7 +11,7 @@ class TotalLike extends Model
      *
      * @var string
      */
-    protected $table = 'pp_total_likes';
+    protected $table = 'total_likes';
 
     /**
 	 * Fillable array

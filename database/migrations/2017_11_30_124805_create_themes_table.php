@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLaravellikecommentLikesTable extends Migration
+class CreateThemesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +13,14 @@ class CreateLaravellikecommentLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pp_likes', function (Blueprint $table) {
+        Schema::create('themes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('item_id'); // ModelName_modelId
-            $table->smallInteger('vote');
             $table->timestamps();
+            $table->string('title');
+            $table->longText('icon')->nullable();
+            $table->string('slug');
+            $table->date('date');
+            $table->text('description');
         });
     }
 
@@ -28,6 +31,6 @@ class CreateLaravellikecommentLikesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pp_likes');
+        Schema::dropIfExists('themes');
     }
 }

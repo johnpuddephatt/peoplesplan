@@ -23,6 +23,9 @@
           <li><a href="{{ backpack_url('articles') }}"><i class="fa fa-file-text"></i> <span>Articles</span></a></li>
           <li><a href="{{ backpack_url('comments') }}"><i class="fa fa-comment"></i> <span>Comments</span></a></li>
           <li><a href="{{ backpack_url('users') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+          <li><a href="{{ backpack_url('themes') }}"><i class="fa fa-calendar"></i> <span>Themes</span></a></li>
+          <li><a href="{{ backpack_url('ideas') }}"><i class="fa fa-lightbulb-o"></i> <span>Ideas</span></a></li>
+          <li><a href="{{ backpack_url('interviews') }}"><i class="fa fa-film"></i> <span>Interviews</span></a></li>
 
           <!-- ======================================= -->
           {{-- <li class="header">Other menus</li> --}}

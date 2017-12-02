@@ -28,6 +28,8 @@ class UserCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
+        $this->crud->removeButton('create');
+
         // $this->crud->setFromDb();
         $nameArray = [   // Browse
             'name' => 'name',
@@ -47,17 +49,28 @@ class UserCrudController extends CrudController
             'type' => 'checkbox'
         ];
 
+        $blockedField = [   // Browse
+            'name' => 'is_blocked',
+            'label' => 'Blocked?',
+            'type' => 'checkbox'
+        ];
+
         $adminColumn = [
          'name' => 'is_admin', // The db column name
          'label' => 'Admin?', // Table column heading
          'type' => 'check'
         ];
 
+        $blockedColumn = [
+         'name' => 'is_blocked', // The db column name
+         'label' => 'Blocked?', // Table column heading
+         'type' => 'check'
+        ];
 
 
-        $this->crud->addFields([$nameArray,$emailArray,$adminField], 'both');
+        $this->crud->addFields([$nameArray,$emailArray,$adminField,$blockedField], 'both');
 
-        $this->crud->addColumns([$nameArray,$adminColumn]);
+        $this->crud->addColumns([$nameArray,$adminColumn,$blockedColumn]);
 
         // $this->crud->removeColumn('body'); // remove a column from the stack
         // ------ CRUD FIELDS

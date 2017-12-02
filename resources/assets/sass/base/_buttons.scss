@@ -8,6 +8,8 @@
   border-radius: $base-border-radius;
   cursor: pointer;
   display: inline-block;
+  color: $action-color;
+  text-transform: lowercase;
   font-family: $base-font-family;
   font-size: $base-font-size;
   -webkit-font-smoothing: antialiased;
@@ -31,7 +33,7 @@
     border-color: shade($action-color, 20%);
   }
 
-  &:disabled {
+  &[disabled] {
     cursor: not-allowed;
     opacity: 0.5;
 
@@ -39,14 +41,36 @@
       background-color: $action-color;
     }
   }
+  &.block {
+    display: block;
+  }
+
   &.primary {
     background-color: $action-color;
     color: white;
+    border-color: shade($action-color, 5%);
+
     &:hover,
     &:focus {
-      background-color: shade($action-color, 20%);
+      background-color: shade($action-color, 5%);
       color: #fff;
-      border-color: shade($action-color, 20%);
+      border-color: shade($action-color, 10%);
     }
   }
+  &.text {
+    border-color: transparent;
+    background-color: transparent;
+    &:first-child {
+      padding-left: 0;
+      padding-right: 0;
+      border-left-width: 0
+    }
+    &:hover,
+    &:focus {
+      border-color: transparent;
+      background-color: transparent;
+      color: shade($action-color, 20%);
+    }
+  }
+
 }

@@ -11,7 +11,7 @@ class Like extends Model
      *
      * @var string
      */
-    protected $table = 'pp_likes';
+    protected $table = 'likes';
 
     /**
 	 * Fillable array

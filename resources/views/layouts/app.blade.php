@@ -16,18 +16,14 @@
       <div class="container">
         <a href="/" title="Go to home page" rel="home" class="site-title">The People’s Plan</a>
         <nav class="site-navigation">
-          <a href="#">see the ideas</a>
+          <a href="/ideas/">see all ideas</a>
         </nav>
         <nav class="site-navigation right">
 
             @if (Auth::guest())
               <a class="button" href="{{ url('/login') }}">Login</a>
             @else
-              @if(Auth::user()->is_admin)
-                <a href="/admin/">Admin</a>
-              @endif
-              <a class="button" href="#">Add your idea</a>
-              <a href="{{ url('/logout') }}"
+              <a class="button text" href="{{ url('/logout') }}"
                   onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
                 Logout
@@ -35,6 +31,11 @@
               <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
               </form>
+              @if(Auth::user()->is_admin)
+                <a class="button" href="/admin/">Admin</a>
+              @else
+                <a class="button" href="/ideas/add/">Add your idea</a>
+              @endif
             @endif
         </nav>
       </div>

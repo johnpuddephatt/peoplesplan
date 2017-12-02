@@ -1,6 +1,6 @@
 .masthead
   background-color: #fff
-  line-height: 2 * $base-spacing
+  line-height: $base-spacing
   .container
     display: flex
     flex-direction: row
@@ -8,7 +8,8 @@
   .site-title
     font-weight: 700
     text-transform: lowercase
-
+    margin-top: $small-spacing
+    margin-bottom: $small-spacing
     margin-right: $small-spacing
     @media screen and (min-width: $medium-screen)
       font-size: modular-scale(1)
@@ -16,12 +17,16 @@
     @media screen and (min-width: $large-screen)
       margin-right: 2 * $base-spacing
     &:focus
-      box-shadow: inset 0 0 0 4px $peach
+      box-shadow: 0 0 0 4px $peach
   .site-navigation
-    overflow: hidden
+
     text-transform: lowercase
 
     a
+      margin-top: $small-spacing
+      margin-bottom: $small-spacing
+      padding-left: $small-spacing
+      padding-right: $small-spacing
       display: inline-block
       -webkit-font-smoothing: antialiased
       font-weight: 700
@@ -32,6 +37,9 @@
         margin-right: $small-spacing
         @media screen and (min-width: $medium-screen)
           margin-right: $base-spacing
+      &.button
+        margin-top: $small-spacing/2
+        margin-bottom: 0
     &.right
       margin-left: auto
 

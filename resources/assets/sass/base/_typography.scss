@@ -8,6 +8,15 @@ body {
   letter-spacing: 0.02em
 }
 
+::-moz-selection {
+  color: white;
+  background-color: $orange
+}
+
+::selection {
+  background-color: $orange;
+  color: white;
+}
 
 // Headings
 

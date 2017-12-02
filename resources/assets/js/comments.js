@@ -1,7 +1,7 @@
 
 // $('.laravelLike-icon').on('click', function(){
 
-  var likeIcons = document.querySelectorAll('.laravelLike-icon');
+  var likeIcons = document.querySelectorAll('.like-icon');
 
   for (var i = 0; i < likeIcons.length; i++) {
 
@@ -14,7 +14,6 @@
 
   var item_id = this.dataset.itemid;
   var vote = this.dataset.vote;
-  console.log(item_id + '...' + vote);
   $.ajax({
        method: "get",
        url: "/laravellikecomment/like/vote",
@@ -54,7 +53,7 @@ $(document).on('click', '.reply-button', function(){
   $("#"+toggle).fadeToggle('normal');
 });
 
-$(document).on('submit', '.laravelComment-form', function(){
+$(document).on('submit', '.comment-form', function(){
     var thisForm = $(this);
     var parent = $(this).data('parent');
     var item_id = $(this).data('item');
@@ -68,7 +67,7 @@ $(document).on('submit', '.laravelComment-form', function(){
       })
       .done(function(msg){
         $(thisForm).toggle('normal');
-        var newComment = '<div class="comment" id="comment-'+msg.id+'" style="display: initial;"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+msg.comment+'</div><div class="actions"><a class="reply reply-button" data-toggle="'+msg.id+'-reply-form">Reply</a></div><form class="ui laravelComment-form form" id="'+msg.id+'-reply-form" data-parent="'+msg.id+'" data-item="'+item_id+'" style="display: none;"><div class="field"><textarea id="'+msg.id+'-textarea" rows="2"></textarea></div><input type="submit" class="ui basic small submit button" value="Reply"></form></div><div class="ui threaded comments" id="'+item_id+'-comment-'+msg.id+'"></div></div>';
+        var newComment = '<div class="comment comment-new" id="comment-'+msg.id+'"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+msg.comment+'</div><div class="actions"></div></div><div class="ui threaded comments" id="'+item_id+'-comment-'+msg.id+'"></div></div>';
         $('#'+item_id+'-comment-'+parent).prepend(newComment);
         $('textarea#'+parent+'-textarea').val('');
       })

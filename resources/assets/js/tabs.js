@@ -1,6 +1,7 @@
 (function() {
   // Get relevant elements and collections
   const tabbed = document.querySelector('.tabbed');
+  if(!tabbed) return;
   const tablist = tabbed.querySelector('ul');
   const tabs = tablist.querySelectorAll('a');
   const panels = tabbed.querySelectorAll('[id^="section"]');

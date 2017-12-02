@@ -1,17 +1,25 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<div class="panel-body">
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
+    <title>{{env('APP_NAME')}}</title>
 
-    You are logged in!
-</div>
+    <link rel="stylesheet" href="{{ mix ('/css/app.css') }}">
+
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="container">
+        <a href="/" title="Go to home page" rel="home" class="site-title">The People’s Plan</a>
+
+      </div>
+    </header>
 
 
-@section('content')
   <section class="section--home-header">
     <div class="container">
       <div class="header-introduction">
@@ -19,7 +27,6 @@
         {{-- <p>As Parliament debates how to make the United Kingdom the world’s digital leader, it’s important we end up with the right plan.</p >
         <p>That’s why we’ve created the People’s Plan for Digital, a place where anyone – including you – can suggest and discuss the ideas you think Parliament should listen to.</p> --}}
         <p>Politicians are debating how to make the United Kingdom the world’s digital leader, so we’ve created a place where you can suggest and discuss the ideas you want Parliament to listen to.</p>
-        <a class="button" href="#">View the ideas</a><a class="button primary" href="#">Add your idea</a>
 
       </div>
       <div class="header-image">
@@ -61,6 +68,43 @@
     </div>
   </section>
 
+@if ($interviews->count())
+  <section class="section--home-interviews">
+    <div class="container">
+      <h2 class="section-title">Interviews</h2>
+      <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
+
+
+      <div class="home-interviews-scroller scroller-outer">
+        <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
+        <div class="home-interviews-inner scroller-inner">
+          @foreach ($interviews as $interview)
+            <a href="/interviews/{{ $interview->slug }}" class="home-interviews-item">
+              <div class="home-interviews-image">
+                <img  src="{{ $interview->thumb }}" alt="Video thumbnail showing {{$interview->name}}">
+                @include("inc.playbutton")
+              </div>
+              <p class="home-interviews-quote">{{ $interview->quote }}</p>
+              <h3 class="home-interviews-title">{{ $interview->name }}</h3>
+            </a>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
+@endif
+  <section class="section--home-quote">
+    <div class="container">
+      <div class="home-quote--text">
+        <div class="quote-body">we want to use digital tools to help Parliament draw on the best ideas to get the UK’s digital policy right</div>
+        <div class="quote-attribute">Liam Byrne MP, Shadow Digital Minister.</div>
+      </div>
+      <div class="home-quote--megaphone">
+        <img src="images/megaphone.svg" alt="Megaphone illustration">
+      </div>
+    </div>
+  </section>
+
   <section class="section--home-themes">
     <div class="container">
       <h2 class="section-title">Themes</h2>
@@ -94,53 +138,6 @@
             <div class="home-theme-date">June</div>
             <p>How can the government deliver great services online in areas like education and health? And how can digital tools get more people involved in debates and decision-making?</p></li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="section--home-interviews">
-    <div class="container">
-      <h2 class="section-title">Interviews</h2>
-      <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
-
-
-      <div class="home-interviews-scroller scroller-outer">
-        <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
-        <div class="home-interviews-inner scroller-inner">
-          <a href="#" class="home-interviews-item">
-            <div class="home-interviews-image">
-              <img  src="/images/example-video-still.jpg" alt="">
-              @include("inc.playbutton")
-            </div>
-            <p class="home-interviews-quote">We are in need of a digital skills revolution</p>
-            <h3 class="home-interviews-title">Martha Lane Fox</h3>
-          </a>
-          <a href="#" class="home-interviews-item">
-            <div class="home-interviews-image">
-              <img  src="/images/example-video-still.jpg" alt="">
-              @include("inc.playbutton")
-            </div>
-            <p class="home-interviews-quote">We’re desperately in need of a digital skills revolution</p>
-            <h3 class="home-interviews-title">Martha Lane Fox</h3>
-          </a>
-          <a href="#" class="home-interviews-item">
-            <div class="home-interviews-image">
-              <img  src="/images/example-video-still.jpg" alt="">
-              @include("inc.playbutton")
-            </div>
-            <p class="home-interviews-quote">Digital provides a huge opportunity to fix our productivity problem</p>
-            <h3 class="home-interviews-title">Martha Lane Fox</h3>
-          </a>
-          <a href="#" class="home-interviews-item">
-            <div class="home-interviews-image">
-              <img  src="/images/example-video-still.jpg" alt="">
-              @include("inc.playbutton")
-            </div>
-            <p class="home-interviews-quote">We are in need of a digital skills revolution</p>
-            <h3 class="home-interviews-title">Martha Lane Fox</h3>
-          </a>
-        </div>
       </div>
     </div>
   </section>
@@ -211,4 +208,16 @@
       </div>
     </div>
   </section>
-@stop
+
+
+
+      <footer class="site-footer">
+        <div class="container">
+          <p>People’s Plan for Digital</p>
+        </div>
+      </footer>
+    </body>
+
+    <script type="text/javascript" src="{{mix ('/js/app.js')}}"></script>
+
+  </html>

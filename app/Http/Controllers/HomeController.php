@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Theme;
+use App\Models\Idea;
+use App\Models\Interview;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +25,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function preview()
     {
-        return view('home');
+        $themes = Theme::all();
+        $interviews = Interview::all();
+        return view('preview', compact('themes','interviews'));
+
     }
+
+    public function index() {
+      $interviews = Interview::all();
+      return view('home', compact('interviews'));
+    }
+
+    public function welcome() {
+      $user = Auth::user();
+      $ideas = Idea::where('author_id',Auth::user()->id)->get();
+      return view('welcome', compact('user','ideas'));
+    }
+
 }

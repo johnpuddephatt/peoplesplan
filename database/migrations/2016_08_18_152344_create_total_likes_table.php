@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLaravellikecommetCommentsTable extends Migration
+class CreateTotalLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateLaravellikecommetCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pp_comments', function (Blueprint $table) {
+        Schema::create('total_likes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('parent_id');
             $table->string('item_id'); // ModelName_modelId
-            $table->string('comment');
+            $table->integer('total_like');
+            $table->integer('total_dislike');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateLaravellikecommetCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pp_comments');
+        Schema::drop('total_likes');
     }
 }

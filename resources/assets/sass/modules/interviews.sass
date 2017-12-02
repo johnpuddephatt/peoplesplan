@@ -1,0 +1,51 @@
+.interview-content
+	width: 100%
+.interview-video
+	width: 100%
+	padding-top: 56.25%
+	position: relative
+	iframe,object
+		width: 100%
+		height: 100%
+		position: absolute
+		top: 0
+		left: 0
+
+.interview-quote
+  margin: 1.5 * $small-spacing 0
+  font-size: modular-scale(4)
+  font-weight: 700
+  color: $green
+  line-height: $heading-line-height
+  position: relative
+  transition: color 2 * $base-duration $base-timing
+  &::before, &::after
+    opacity: .2
+    position: absolute
+    font-size: modular-scale(4)
+    line-height: .85
+    display: inline-block
+  &::before
+    content: '“'
+    right: 100%
+    margin-right: $small-spacing/2
+  &::after
+    content: '”'
+    margin-left: $small-spacing/2
+
+.interview-likes
+	float: right
+	position: relative
+	z-index: 99
+	padding-left: 2 * $base-spacing
+	margin-top: $base-spacing
+	.like-icon
+		height: 2 * $base-spacing
+		width: 2 * $base-spacing
+		padding: $base-spacing/3
+		&.down
+			margin-left: $base-spacing/3
+	span
+		line-height: 2 * $base-spacing
+		vertical-align: top
+		font-size: modular-scale(1)

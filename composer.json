@@ -11,8 +11,10 @@
         "backpack/newscrud": "^2.1",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "risul/laravel-like-comment": "^2.0"
+        "risul/laravel-like-comment": "^2.0",
+        "vinkla/hashids": "^3.3"
     },
     "require-dev": {
         "backpack/generators": "^1.1",

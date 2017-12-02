@@ -50,7 +50,6 @@ class CommentController extends Controller
 
 	    $id = $comment->id;
     	return response()->json(['flag' => 1, 'id' => $id, 'comment' => $commentBody, 'item_id' => $itemId, 'userName' => $user['name'], 'userPic' => $userPic]);
-// dd($comment);
     }
 
     /**
@@ -59,10 +58,10 @@ class CommentController extends Controller
      * @return void
      * @author
      **/
-    public static function viewLike($id){
-        echo view('comments.like')
-                ->with('like_item_id', $id);
-    }
+    // public static function viewLike($id){
+    //     echo view('comments.like')
+    //             ->with('like_item_id', $id);
+    // }
 
     /**
      * undocumented function
@@ -74,7 +73,7 @@ class CommentController extends Controller
         $comments = Comment::where('item_id', $itemId)->orderBy('id', 'desc')->get();
 
         foreach ($comments as $comment){
-            $comment->withUsers();
+            $comment->withUser();
             $comment->withLikes();
         }
         return $comments;

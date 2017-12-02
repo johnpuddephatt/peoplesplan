@@ -169,7 +169,7 @@ return [
          */
 
         // risul\LaravelLikeComment\LikeCommentServiceProvider::class,
-
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +230,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // Other aliases
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
 
     ],
 

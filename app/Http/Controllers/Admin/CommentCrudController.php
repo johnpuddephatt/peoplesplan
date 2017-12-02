@@ -18,7 +18,7 @@ class CommentCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('risul\LaravelLikeComment\Models\Comment');
+        $this->crud->setModel('App\Models\Comment');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/comments');
         $this->crud->setEntityNameStrings('comment', 'comments');
 
@@ -27,12 +27,18 @@ class CommentCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
+        $this->crud->removeButton('create');
+
 
         $userArray = [
-          'name' => 'user_id',
-          'label' => 'User',
-          'type' => 'text'
+          'label' => "User",
+          'type' => 'select',
+          'name' => 'user_id', // the db column for the foreign key
+          'entity' => 'comments', // the method that defines the relationship in your Model
+          'attribute' => 'name', // foreign key attribute that is shown to user
+          'model' => "App\User" // foreign key model
         ];
+
         $commentColumn = [
           'name' => 'comment',
           'label' => 'Comment',

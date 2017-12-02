@@ -15,21 +15,22 @@ class Comment extends Model
      *
      * @var string
      */
-    protected $table = 'pp_comments';
+    protected $table = 'comments';
 
     /**
 	 * Fillable array
      */
     protected $fillable = ['user_id', 'parent_id', 'item_id', 'comment'];
 
-
-    public function withUsers() {
+    public function withUser() {
       $userId = $this->user_id;
       $user = User::getAuthor($userId);
       $this->name = $user['name'];
       $this->email = $user['email'];
       $this->url = $user['url'];
-      if($user['avatar'] == 'gravatar'){
+      $this->avatar = $user['avatar'];
+      $this->is_admin = $user['admin'];
+      if($this->avatar == 'gravatar'){
           $hash = md5(strtolower(trim($user['email'])));
           $this->avatar = "http://www.gravatar.com/avatar/$hash?d=identicon";
       }
@@ -37,7 +38,7 @@ class Comment extends Model
     }
 
     public function withLikes() {
-      $this->likes = LikeController::getLikeViewData('comment-' . $this->id);      
+      $this->likes = LikeController::getLikeViewData('comment-' . $this->id);
       return $this;
     }
 
