@@ -2176,6 +2176,15 @@ hr {
   font-size: 1.25em;
 }
 
+.interview-header {
+  background-image: radial-gradient(circle at center, #50565E 0%, #333333);
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
+  padding-bottom-color: white;
+  padding-bottom-margin-bottom: 1.6rem;
+  padding-bottom-background-color: #50565E;
+}
+
 .interview-content {
   width: 100%;
 }

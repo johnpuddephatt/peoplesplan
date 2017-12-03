@@ -2,7 +2,7 @@
 
 @section('content')
 
-<header class="single-header">
+<header class="interview-header">
   <div class="container container--interview">
     <div class="interview-content">
 
@@ -13,7 +13,7 @@
       <div class="interview-likes">
         @include('comments.like')
       </div>
-      
+
       <h1 class="interview-quote">{{ $interview->quote }}</h1>
       <h2 class="interview-name">{{ $interview->name }}</h2>
 
