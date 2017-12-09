@@ -16,8 +16,8 @@
       <!-- ========================================================= -->
       <!-- ========== Top menu right items (ordered left) ========== -->
       <!-- ========================================================= -->
-
       <!-- <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> <span>Home</span></a></li> -->
+      <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/backup') }}"><i class="fa fa-hdd-o"></i> <span>Backups</span></a></li>
       @if (config('backpack.base.setup_auth_routes'))
         @if (Auth::guest())
             <li><a href="{{ route('backpack.auth.login') }}">{{ trans('backpack::base.login') }}</a></li>

@@ -16,5 +16,11 @@ class Like extends Model
     /**
 	 * Fillable array
      */
-    protected $fillable = ['user_id', 'item_id', 'vote'];
+    protected $fillable = ['user_id', 'vote', 'likeable_id', 'likeable_type',];
+
+
+    public function likeable()
+    {
+        return $this->morphTo();
+    }
 }

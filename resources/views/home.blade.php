@@ -1,32 +1,14 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@extends('layouts.app')
 
-    <title>{{env('APP_NAME')}}</title>
-
-    <link rel="stylesheet" href="{{ mix ('/css/app.css') }}">
-
-  </head>
-  <body>
-    <header class="masthead">
-      <div class="container">
-        <a href="/" title="Go to home page" rel="home" class="site-title">The People’s Plan</a>
-
-      </div>
-    </header>
-
-
+@section('content')
   <section class="section--home-header">
     <div class="container">
       <div class="header-introduction">
-        <h1 class="page-title page-title--home">Let’s plan the most advanced digital society in the world &ndash; together</h1>
+        <h1 class="page-title page-title--home">Let’s design the most advanced digital society in the world &ndash; together</h1>
         {{-- <p>As Parliament debates how to make the United Kingdom the world’s digital leader, it’s important we end up with the right plan.</p >
         <p>That’s why we’ve created the People’s Plan for Digital, a place where anyone – including you – can suggest and discuss the ideas you think Parliament should listen to.</p> --}}
-        <p>Politicians are debating how to make the United Kingdom the world’s digital leader, so we’ve created a place where you can suggest and discuss the ideas you want Parliament to listen to.</p>
+        <p>Our country is debating how to become the world’s digital leader. So we’ve created a place where you can share and shape the ideas you want Parliament to listen to.</p>
+        <a class="button" href="/ideas/">See all ideas</a><a class="button primary" href="/ideas/add/">Add your idea</a>
 
       </div>
       <div class="header-image">
@@ -71,8 +53,8 @@
 @if ($interviews->count())
   <section class="section--home-interviews">
     <div class="container">
-      <h2 class="section-title">Interviews</h2>
-      <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
+      <h2 class="section-title">Viewpoints</h2>
+      <p class="section-subtitle">How does the UK become the world’s most advanced digital society?</p>
 
 
       <div class="home-interviews-scroller scroller-outer">
@@ -86,6 +68,7 @@
               </div>
               <p class="home-interviews-quote">{{ $interview->quote }}</p>
               <h3 class="home-interviews-title">{{ $interview->name }}</h3>
+              <span>{{ $interview->comments_count }} comments</span>
             </a>
           @endforeach
         </div>
@@ -93,6 +76,7 @@
     </div>
   </section>
 @endif
+
   <section class="section--home-quote">
     <div class="container">
       <div class="home-quote--text">
@@ -109,50 +93,29 @@
     <div class="container">
       <h2 class="section-title">Themes</h2>
       <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
-
       <div class="home-themes-scroller scroller-outer">
         <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
         <ul class="home-themes-inner scroller-inner">
-          <li class="home-theme-item home-theme-item--safety">
-            <h3 class="home-theme-title">Safety</h3>
-            <div class="home-theme-date">January</div>
-            <p>How do we create online spaces that ensure the safety of users, especially children? And how do we build online trust through strong data protection and proper content regulation?</p></li>
-          <li class="home-theme-item home-theme-item--infrastructure">
-            <h3 class="home-theme-title">Infrastructure</h3>
-            <div class="home-theme-date">February</div>
-            <p>How do we provide world-leading connectivity so that data moves quickly, cheaply and securely? And how do we ensure competitive online services for people and businesses?</p></li>
-          <li class="home-theme-item home-theme-item--skills">
-            <h3 class="home-theme-title">Skills &amp; enterprise</h3>
-            <div class="home-theme-date">March</div>
-            <p>How do we ensure everyone has the basic digital skills they need to participate in online life? And how do we reach train sufficient levels of <abbr title="Information and Communications Technology">ICT</abbr> professionals and <abbr title="Science, Technology, Engineering & Maths">STEM</abbr> graduates?</p></li>
-          <li class="home-theme-item home-theme-item--security">
-            <h3 class="home-theme-title">Cybersecurity</h3>
-            <div class="home-theme-date">April</div>
-            <p>How can we keep our country, citizens and devices safe online? And how can the UK lead in the provision and uptake of safe, secure electronic payment options?</p></li>
-          <li class="home-theme-item home-theme-item--jobs">
-            <h3 class="home-theme-title">Jobs for the future</h3>
-            <div class="home-theme-date">May</div>
-            <p>How do create new jobs by attracting world-leading innovators, nurturing new technology startups and being at the forefront of technology research and development?</p></li>
-          <li class="home-theme-item home-theme-item--government">
-            <h3 class="home-theme-title">Government &amp; democracy</h3>
-            <div class="home-theme-date">June</div>
-            <p>How can the government deliver great services online in areas like education and health? And how can digital tools get more people involved in debates and decision-making?</p></li>
+          @foreach ($themes as $theme)
+            <li class="home-theme-item home-theme-item--{{ str_slug($theme->title) }}">
+              <h3 class="home-theme-title">
+                {{ $theme->title }}
+              </h3>
+              <div class="home-theme-date">
+                {{$theme->getMonth()}}
+              </div>
+              <p>{{ $theme->description }}</p>
+
+              @if (strtotime($theme->date) < time())
+                <a href="/themes/{{str_slug($theme->title)}}" class="button">Join the debate</a>
+              @else
+                <a href="#" class="button" disabled>Coming soon</a>
+              @endif
+
+            </li>
+          @endforeach
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="section--home-quote">
-    <div class="container">
-      <div class="home-quote--text">
-        <div class="quote-body">we want to use digital tools to help Parliament draw on the best ideas to get the UK’s digital policy right</div>
-        <div class="quote-attribute">Liam Byrne MP, Shadow Digital Minister.</div>
-      </div>
-      <div class="home-quote--megaphone">
-        <img src="images/megaphone.svg" alt="Megaphone illustration">
-      </div>
-
-
     </div>
   </section>
 
@@ -178,8 +141,8 @@
         <section id="section1">
           <h2>What is the People’s Plan?</h2>
           <p>In 2015, the Digital Democracy Commission set an ambitious goal: to make Parliament, ‘fully interactive and digital’ by 2020, using new technologies to involve the public in Parliamentary debates and drafting new laws.</p>
-          <p>This site aims to help. We hope to hasten digital democracy by pioneering new technologies to help Parliament get the United Kingdom’s policy for digital technology right.</p>
-          <p>Created by Liam Byrne MP, Shadow Digital Minister, our ambition is to help all members of government listen to and consult with citizens, business and trade unions as we share and debate ideas for the United Kingdom’s digital future.</p>
+          <p>This site aims to help. We hope to accelerate digital democracy by pioneering new technologies to help Parliament get the United Kingdom’s policy for digital technology right.</p>
+          <p>Created by Liam Byrne MP, Shadow Digital Minister, our ambition is to help all members of Parliament listen to and consult with citizens, business and trade unions as we share and debate ideas for the United Kingdom’s digital future.</p>
         </section>
         <section id="section2">
           <h2>Why are you doing this?</h2>
@@ -208,16 +171,4 @@
       </div>
     </div>
   </section>
-
-
-
-      <footer class="site-footer">
-        <div class="container">
-          <p>People’s Plan for Digital</p>
-        </div>
-      </footer>
-    </body>
-
-    <script type="text/javascript" src="{{mix ('/js/app.js')}}"></script>
-
-  </html>
+@stop

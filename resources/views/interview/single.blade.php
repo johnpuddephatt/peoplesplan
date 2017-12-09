@@ -11,7 +11,7 @@
       </div>
 
       <div class="interview-likes">
-        @include('comments.like')
+        @include('comments.like', ['like_item' => $interview])
       </div>
 
       <h1 class="interview-quote">{{ $interview->quote }}</h1>
@@ -28,7 +28,8 @@
 </div>
 
 <div class="container container--comments" id="comments">
-  @include('comments.list')
+
+  @include('comments.list', ['comment_item' => $interview])
 </div>
 
 @stop

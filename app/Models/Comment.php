@@ -17,29 +17,26 @@ class Comment extends Model
      */
     protected $table = 'comments';
 
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany('App\Models\Like', 'likeable');
+    }
+
+
     /**
 	 * Fillable array
      */
-    protected $fillable = ['user_id', 'parent_id', 'item_id', 'comment'];
-
-    public function withUser() {
-      $userId = $this->user_id;
-      $user = User::getAuthor($userId);
-      $this->name = $user['name'];
-      $this->email = $user['email'];
-      $this->url = $user['url'];
-      $this->avatar = $user['avatar'];
-      $this->is_admin = $user['admin'];
-      if($this->avatar == 'gravatar'){
-          $hash = md5(strtolower(trim($user['email'])));
-          $this->avatar = "http://www.gravatar.com/avatar/$hash?d=identicon";
-      }
-      return $this;
-    }
-
-    public function withLikes() {
-      $this->likes = LikeController::getLikeViewData('comment-' . $this->id);
-      return $this;
-    }
+    protected $fillable = ['user_id', 'parent_id', 'commentable_id', 'commentable_type', 'comment'];
 
 }

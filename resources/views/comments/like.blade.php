@@ -1,18 +1,20 @@
-{{-- @php dd($comments) @endphp --}}
-
-<div class="laravel-like">
-	<i id="{{ $like_item_id }}-like"
-	   class="icon {{ $likedata['likeDisabled'] }} {{ $likedata['likeIconOutlined'] }} like-icon thumbs up"
-	   data-itemid="{{ $like_item_id }}"
-	   data-vote="1">
-		 @include('inc/icon-thumb')
+<div class="like-container">
+	<span class="like-total">{{ $like_item->likes->sum('vote') }}</span>
+	<i id="{{ $like_item->id }}-{{ get_class($like_item) }}-like"
+		{{-- class="@if(Auth::check())enabled @if($like_item->likes->where('user_id',Auth::User()->id)->where('vote','1')->first())active @endif @endif icon like-icon thumbs up" --}}
+		class="enabled @if(Auth::check()) @if($like_item->likes->where('user_id',Auth::User()->id)->where('vote','1')->first())active @endif @endif icon like-icon thumbs up"
+		data-type="{{get_class($like_item)}}"
+	  data-id="{{ $like_item->id }}"
+	  data-vote="1">
+		@include('inc/icon-thumb')
     </i>
-	<span id="{{ $like_item_id }}-total-like">{{ $likedata['total_like'] }}</span>
-	<i id="{{ $like_item_id }}-dislike"
-	   class="icon {{ $likedata['likeDisabled'] }} {{ $likedata['dislikeIconOutlined'] }} like-icon thumbs down"
-	   data-itemid="{{ $like_item_id }}"
-	   data-vote="-1">
-		 @include('inc/icon-thumb')
+	<span id="{{ $like_item->id }}-{{ get_class($like_item) }}-total-like">+{{ $like_item->likes->where('vote',1)->sum('vote') }}</span>
+	<i id="{{ $like_item->id }}-{{ get_class($like_item) }}-dislike"
+	  class="enabled @if(Auth::check()) @if($like_item->likes->where('user_id',Auth::User()->id)->where('vote','-1')->first())active @endif @endif icon like-icon thumbs down"
+		data-type="{{get_class($like_item)}}"
+		data-id="{{ $like_item->id }}"
+	  data-vote="-1">
+		@include('inc/icon-thumb')
    </i>
-   <span id="{{ $like_item_id }}-total-dislike">{{ $likedata['total_dislike'] }}</span>
+   <span id="{{ $like_item->id }}-{{ get_class($like_item) }}-total-dislike">-{{ $like_item->likes->where('vote',-1)->sum('vote') }}</span>
 </div>

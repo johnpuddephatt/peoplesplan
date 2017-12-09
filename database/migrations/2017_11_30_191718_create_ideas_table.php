@@ -19,7 +19,7 @@ class CreateIdeasTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->integer('theme_id');
-            $table->integer('author_id');
+            $table->integer('user_id');
             $table->text('description_what');
             $table->text('description_why');
             $table->integer('approved')->default(0);

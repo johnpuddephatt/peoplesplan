@@ -170,6 +170,8 @@ return [
 
         // risul\LaravelLikeComment\LikeCommentServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Creativeorange\Gravatar\GravatarServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -181,7 +183,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\CommentsServiceProvider::class,
 
-
+        Spatie\Backup\BackupServiceProvider::class,
+        Backpack\BackupManager\BackupManagerServiceProvider::class,
     ],
 
     /*
@@ -234,6 +237,7 @@ return [
         // Other aliases
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
 
     ],
 

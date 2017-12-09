@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container container--login">
   <div class="panel panel--login">
     <div class="column column--sign-in">
       <h1 class="panel-heading">Register</h1>
       <form class="form-horizontal" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
+        @if ($errors->has('registrationfailed'))
+          <div class="help-block">
+            <strong>{{ $errors->first('registrationfailed') }}</strong>
+          </div>
+        @endif
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
           <label for="name" class="control-label">Name</label>
           <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -56,7 +60,7 @@
       <a href="{{ url('/auth/twitter') }}" class="button button--social button--twitter block">Sign up with Twitter</a>
       <a href="{{ url('/auth/facebook') }}" class="button button--social button--facebook block">Sign up with Facebook</a>
 
-      
+
 
 
     </div>

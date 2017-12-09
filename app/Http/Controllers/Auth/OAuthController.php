@@ -70,6 +70,7 @@ class OAuthController extends Controller
       $existingEmailUser->name = $user->name;
       $existingEmailUser->provider_id = $user->id;
       $existingEmailUser->avatar = $user->avatar;
+      $existingEmailUser->verified = 1;
       $existingEmailUser->save();
       return $existingEmailUser;
     }
@@ -81,6 +82,7 @@ class OAuthController extends Controller
        'provider' => $provider,
        'provider_id' => $user->id,
        'avatar' => $user->avatar,
+       'verified' => 1,
     ]);
     return $newUser;
   }

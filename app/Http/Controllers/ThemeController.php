@@ -11,28 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class ThemeController extends Controller
 {
-    public function show($slug)
-    {
-      $theme = Theme::where('slug',$slug)->firstOrFail();
+  public function show($slug)
+  {
+    $theme = Theme::where('slug',$slug)->firstOrFail();
 
-      if (strtotime($theme->date) < time() || Auth::user()->is_admin ) {
-        $ideas = Idea::where('theme_id',$theme->id)->where('approved',true)->get();
-        foreach ($ideas as $idea){
-            $idea->withLikes();
-            $idea->withUser();
-        }
-        return view('theme.single', compact('theme','ideas'));
-      }
-      else {
-        return view('errors.403');
-      }
+    if (strtotime($theme->date) < time() || Auth::user()->is_admin ) {
+      $ideas = Idea::where('theme_id',$theme->id)->with(['user','likes'])->withCount('comments')->where('approved',true)->get();
+      return view('theme.single', compact('theme','ideas'));
     }
-
-    public function index()
-    {
-      $themes = Theme::all();
-      return view('theme.index', compact('themes'));
+    else {
+      return view('errors.403');
     }
+  }
 
-
+  public function index()
+  {
+    $themes = Theme::all();
+    return view('theme.index', compact('themes'));
+  }
+  
 }

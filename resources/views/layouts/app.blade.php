@@ -12,6 +12,10 @@
 
   </head>
   <body>
+
+    
+
+
     <header class="masthead">
       <div class="container">
         <a href="/" title="Go to home page" rel="home" class="site-title">The People’s Plan</a>
@@ -23,14 +27,23 @@
             @if (Auth::guest())
               <a class="button" href="{{ url('/login') }}">Login</a>
             @else
-              <a class="button text" href="{{ url('/logout') }}"
-                  onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
-                Logout
-              </a>
-              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-              </form>
+              <button class="button text navigation-account dropdown" href="#">
+                <div class="avatar">
+                  @include('inc.avatar', ['user' => Auth::user() ])
+                </div>
+                {{ Auth::user()->name }}
+                <div class="navigation-account-menu">
+                  <a class="button text" href="{{ url('/logout') }}"
+                      onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                    Logout
+                  </a>
+                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>
+                </div>
+              </button>
+
               @if(Auth::user()->is_admin)
                 <a class="button" href="/admin/">Admin</a>
               @else
@@ -41,16 +54,25 @@
       </div>
     </header>
 
+    <div class="container">
+      @include('flash::message')
+    </div>
 
     @yield('content')
 
 
     <footer class="site-footer">
       <div class="container">
-        <p>People’s Plan for Digital</p>
+        <p>The People’s Plan for Digital</p>
+        <p>Developed and promoted by Liam Byrne MP</p>
+        <p>&copy; 2017-18</p>
       </div>
     </footer>
   </body>
+
+  <script type="text/javascript">
+  var APP_URL = {!! json_encode(url('/')) !!}
+  </script>
 
   <script type="text/javascript" src="{{mix ('/js/app.js')}}"></script>
 

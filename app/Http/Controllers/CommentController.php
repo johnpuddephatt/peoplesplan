@@ -11,81 +11,22 @@ use Auth;
 
 class CommentController extends Controller
 {
-    /**
-     * undocumented function
-     *
-     * @return void
-     * @author
-     **/
-    public function index(){
-    	return view('comments.like');
-    }
 
-    /**
-     * undocumented function
-     *
-     * @return void
-     * @author
-     **/
-    public function add(Request $request){
-    	$userId = Auth::user()->id;
-    	$parent = $request->parent;
-    	$commentBody = $request->comment;
-    	$itemId = $request->item_id;
+  public function index(){
+  	return view('comments.like');
+  }
 
-        $user = self::getUser($userId);
-        $userPic = $user['avatar'];
-        if($userPic == 'gravatar'){
-            $hash = md5(strtolower(trim($user['email'])));
-            $userPic = "http://www.gravatar.com/avatar/$hash?d=identicon";
-        }
+  public function add(Request $request){
 
-	    $comment = new Comment;
-	    $comment->user_id = $userId;
-	    $comment->parent_id = $parent;
-	    $comment->item_id = $itemId;
-	    $comment->comment = $commentBody;
+    if (!Auth::check()) {
+  		return response()->json(['flag' => 0]);
+  	}
 
-	    $comment->save();
+    $new_comment = new Comment($request->all());
+    $new_comment->user_id = Auth::user()->id;
+    $new_comment->save();
 
-	    $id = $comment->id;
-    	return response()->json(['flag' => 1, 'id' => $id, 'comment' => $commentBody, 'item_id' => $itemId, 'userName' => $user['name'], 'userPic' => $userPic]);
-    }
+  	return response()->json(['flag' => 1, 'id' => $new_comment->id, 'comment' => $new_comment->comment, 'commentable_id' => $new_comment->commentable_id, 'commentable_type' => $new_comment->commentable_type, 'userName' => Auth::user()->name, 'userPic' => Auth::user()->avatar]);
+  }
 
-    /**
-     * undocumented function
-     *
-     * @return void
-     * @author
-     **/
-    // public static function viewLike($id){
-    //     echo view('comments.like')
-    //             ->with('like_item_id', $id);
-    // }
-
-    /**
-     * undocumented function
-     *
-     * @return void
-     * @author
-     **/
-    public static function getCommentsWithUsersandLikes($itemId){
-        $comments = Comment::where('item_id', $itemId)->orderBy('id', 'desc')->get();
-
-        foreach ($comments as $comment){
-            $comment->withUser();
-            $comment->withLikes();
-        }
-        return $comments;
-    }
-
-    /**
-     * undocumented function
-     *
-     * @return void
-     * @author
-     **/
-    public static function getUser($userId){
-        return User::getAuthor($userId);
-    }
 }

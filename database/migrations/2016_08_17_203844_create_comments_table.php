@@ -16,7 +16,10 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('parent_id');
-            $table->string('item_id'); // ModelName_modelId
+            $table->integer('commentable_id');
+            $table->string('commentable_type');
+            // $table->string('item_class');
+            // $table->string('item_id');
             $table->string('comment');
             $table->timestamps();
         });

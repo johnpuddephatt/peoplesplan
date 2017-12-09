@@ -22,7 +22,7 @@
 
     text-transform: lowercase
 
-    a
+    a, button
       margin-top: $small-spacing
       margin-bottom: $small-spacing
       padding-left: $small-spacing
@@ -33,7 +33,7 @@
       font-size: modular-scale(-1)
       @media screen and (min-width: $medium-screen)
         font-size: modular-scale(0)
-      + a
+      + a, + button
         margin-right: $small-spacing
         @media screen and (min-width: $medium-screen)
           margin-right: $base-spacing
@@ -42,5 +42,35 @@
         margin-bottom: 0
     &.right
       margin-left: auto
+      a, button
+        + a, + button
+          margin-right: 0
+          margin-left: $small-spacing
+          @media screen and (min-width: $medium-screen)
+            margin-right: 0
+            margin-left: $base-spacing
+
+    .navigation-account
+      position: relative
+      &:hover .navigation-account-menu
+        display: block
+      .avatar
+        width: 1.5 * $base-spacing
+        height: 1.5 * $base-spacing
+        margin-top: -.25 * $small-spacing
+        margin-bottom: -.25 * $small-spacing
+        float: left
+        border: 1px solid $light-gray
+        margin-right: $small-spacing/2
+        border-radius: 50%
+      .navigation-account-menu
+        display: none
+        position: absolute
+        width: 200%
+        padding-top: $small-spacing/2
+        right: -$small-spacing
+        > *
+          background-color: #fff
+          display: block
 
 

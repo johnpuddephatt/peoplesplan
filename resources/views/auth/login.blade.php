@@ -2,9 +2,12 @@
 
 @section('content')
 
-<div class="container container--login">
+  <div class="container container--login">
   <div class="panel panel--login">
     <div class="column column--sign-in">
+
+        <h1>{{ session('redirectTo')}}</h1>
+
       <h1 class="panel-heading">Sign in</h1>
 
       <div class="form-group form-group--social">
@@ -14,7 +17,11 @@
 
       <form method="POST" action="{{ route('login') }}" class="login-form">
         {{ csrf_field() }}
-
+        @if ($errors->has('loginfailed'))
+          <div class="help-block">
+            <strong>{{ $errors->first('loginfailed') }}</strong>
+          </div>
+        @endif
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
           <label for="email" class="control-label">E-Mail Address</label>
           <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
@@ -43,6 +50,8 @@
             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
           </label>
         </div>
+
+        <input type="hidden" name="redirect" value="{{ Request::get('redirectTo') ?: URL::previous() }}">
 
         <div class="form-group">
           <a class="button text" href="{{ route('password.request') }}">

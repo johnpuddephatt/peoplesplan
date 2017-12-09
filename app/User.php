@@ -14,78 +14,72 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use CrudTrait;
-    use SoftDeletes;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'is_admin', 'provider', 'provider_id', 'avatar'
-    ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+  use Notifiable;
+  use CrudTrait;
+  use SoftDeletes;
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'name',
+    'email',
+    'password',
+    'is_admin',
+    'provider',
+    'provider_id',
+    'avatar',
+    'login_count',
+    'email_token'
+  ];
 
-    protected $appends = ['new_user'];
+  /**
+   * The attributes that should be hidden for arrays.
+   *
+   * @var array
+   */
+  protected $hidden = [
+    'password',
+    'remember_token',
+  ];
 
-    protected $dates = ['deleted_at'];
+  protected $appends = ['new_user'];
 
-    protected $casts = [
-            'is_admin' => 'boolean',
-            'is_blocked' => 'boolean',
-            'first_login' => 'boolean'
-        ];
+  protected $dates = ['deleted_at'];
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-      $this->notify(new ResetPasswordNotification($token));
-    }
+  protected $casts = [
+    'is_admin' => 'boolean',
+    'is_blocked' => 'boolean',
+    'first_login' => 'boolean'
+  ];
 
-    /**
-    * Return the user attributes.
+  /**
+   * Send the password reset notification.
+   *
+   * @param  string  $token
+   * @return void
+   */
+  public function sendPasswordResetNotification($token)
+  {
+    $this->notify(new ResetPasswordNotification($token));
+  }
 
-    * @return array
-    */
-   public static function getAuthor($id)
-   {
-       $user = self::find($id);
-       return [
-           'id'     => $user->id,
-           'name'   => $user->name,
-           'email'  => $user->email,
-           'url'    => '',  // Optional
-           'avatar' => $user->avatar ? $user->avatar : 'gravatar',  // Default avatar
-           'admin'  => $user->is_admin, // bool
-       ];
-   }
+  public function ideas() {
+    return $this->hasMany('App\Models\Idea');
+  }
 
-   public function getNewStatus()
-    {
-        return $this->attributes['new_user']; //some logic to return numbers
-    }
+  public function comments() {
+    return $this->hasMany('Comment');
+  }
 
-   public function ideas() {
-     return $this->hasMany('Idea');
-   }
-
-   public function comments() {
-     return $this->hasMany('Comment');
-   }
-
+  // Set the verified status to true and make the email token null
+  public function verified()
+  {
+    $this->verified = 1;
+    $this->email_token = null;
+    $this->save();
+  }
 
 }

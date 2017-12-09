@@ -13,9 +13,8 @@
 
 
 Route::get('/', 'HomeController@index');
-Route::get('/preview', 'HomeController@preview');
-Route::get('/welcome', 'HomeController@welcome');
-
+Route::get('/static', 'HomeController@static');
+Route::get('/welcome', 'HomeController@welcome')->middleware('auth');
 
 Route::get('/blog/{slug}', 'ArticleController@show');
 Route::get('/blog/', 'ArticleController@index');
@@ -26,7 +25,7 @@ Route::get('/themes/', 'ThemeController@index');
 Route::get('/interviews/{slug}', 'InterviewController@show');
 
 Route::get('/ideas/', 'IdeaController@index');
-Route::get('/ideas/add/', 'IdeaController@add');
+Route::get('/ideas/add/', 'IdeaController@add')->middleware('auth');
 Route::get('/ideas/{slug}', 'IdeaController@show');
 
 Route::post('/themes/new/{userhash}', 'IdeaController@store');
@@ -54,19 +53,24 @@ Route::group(
   CRUD::resource('users', 'UserCrudController');
   CRUD::resource('ideas', 'IdeaCrudController');
   CRUD::resource('interviews', 'InterviewCrudController');
-
 });
+
+Route::get('/admin/logout', 'HomeController@index');
+
 
 // Like and comment routes
 Route::group(['prefix'=>'laravellikecomment', 'middleware' => 'web'], function (){
-	Route::group(['middleware' => 'auth'], function (){
 		Route::get('/like/vote', 'LikeController@vote');
+	Route::group(['middleware' => 'auth'], function (){
 		Route::get('/comment/add', 'CommentController@add');
 	});
 });
 
 // Auth routes
 Auth::routes();
+
+Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
+
 
 
 // OAuth Routes

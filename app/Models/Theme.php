@@ -14,6 +14,11 @@ class Theme extends Model
   protected $fillable = ['title','slug','description','date','icon'];
 
 
+  public function ideas() {
+    return $this->hasMany('App\Models\Idea');
+  }
+
+
   public function getMonth()
     {
     return date('F', strtotime($this->date));
@@ -33,10 +38,6 @@ class Theme extends Model
     else {
       $imagerequest = null;
     }
-  }
-
-  public function ideas() {
-    return $this->hasMany('App\Models\Idea');
   }
 
   public function addIdea(Idea $idea) {

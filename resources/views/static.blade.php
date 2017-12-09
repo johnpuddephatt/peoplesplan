@@ -1,6 +1,25 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('content')
+    <title>{{env('APP_NAME')}}</title>
+
+    <link rel="stylesheet" href="{{ mix ('/css/app.css') }}">
+
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="container">
+        <a href="/" title="Go to home page" rel="home" class="site-title">The People’s Plan</a>
+
+      </div>
+    </header>
+
+
   <section class="section--home-header">
     <div class="container">
       <div class="header-introduction">
@@ -8,7 +27,6 @@
         {{-- <p>As Parliament debates how to make the United Kingdom the world’s digital leader, it’s important we end up with the right plan.</p >
         <p>That’s why we’ve created the People’s Plan for Digital, a place where anyone – including you – can suggest and discuss the ideas you think Parliament should listen to.</p> --}}
         <p>Politicians are debating how to make the United Kingdom the world’s digital leader, so we’ve created a place where you can suggest and discuss the ideas you want Parliament to listen to.</p>
-        <a class="button" href="/ideas/">See all ideas</a><a class="button primary" href="/ideas/add/">Add your idea</a>
 
       </div>
       <div class="header-image">
@@ -75,7 +93,6 @@
     </div>
   </section>
 @endif
-
   <section class="section--home-quote">
     <div class="container">
       <div class="home-quote--text">
@@ -92,29 +109,50 @@
     <div class="container">
       <h2 class="section-title">Themes</h2>
       <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
+
       <div class="home-themes-scroller scroller-outer">
         <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
         <ul class="home-themes-inner scroller-inner">
-          @foreach ($themes as $theme)
-            <li class="home-theme-item home-theme-item--{{ str_slug($theme->title) }}">
-              <h3 class="home-theme-title">
-                {{ $theme->title }}
-              </h3>
-              <div class="home-theme-date">
-                {{$theme->getMonth()}}
-              </div>
-              <p>{{ $theme->description }}</p>
-
-              @if (strtotime($theme->date) < time())
-                <a href="/themes/{{str_slug($theme->title)}}" class="button">Join the debate</a>
-              @else
-                <a href="#" class="button" disabled>Coming soon</a>
-              @endif
-
-            </li>
-          @endforeach
+          <li class="home-theme-item home-theme-item--safety">
+            <h3 class="home-theme-title">Trust</h3>
+            <div class="home-theme-date">January</div>
+            <p>How do we create online spaces where citizens feel safe, especially children? And how do we build online trust through strong data protection and proper content regulation?</p></li>
+          <li class="home-theme-item home-theme-item--infrastructure">
+            <h3 class="home-theme-title">Infrastructure</h3>
+            <div class="home-theme-date">February</div>
+            <p>How do we provide world-leading connectivity so that data moves quickly, cheaply and securely? And how do we ensure competitive online services for people and businesses?</p></li>
+          <li class="home-theme-item home-theme-item--skills">
+            <h3 class="home-theme-title">Skills &amp; enterprise</h3>
+            <div class="home-theme-date">March</div>
+            <p>How do we ensure everyone has the basic digital skills they need to join in online life? And how do we reach train sufficient levels of <abbr title="Information and Communications Technology">ICT</abbr> professionals and <abbr title="Science, Technology, Engineering & Maths">STEM</abbr> graduates?</p></li>
+          <li class="home-theme-item home-theme-item--security">
+            <h3 class="home-theme-title">Cybersecurity</h3>
+            <div class="home-theme-date">April</div>
+            <p>How can we keep our country, citizens and devices safe online? And how can the UK lead in the provision and uptake of safe, secure electronic payment options?</p></li>
+          <li class="home-theme-item home-theme-item--jobs">
+            <h3 class="home-theme-title">Jobs for the future</h3>
+            <div class="home-theme-date">May</div>
+            <p>How do create new jobs by attracting world-leading innovators, nurturing new technology startups and leading the research and development of technology?</p></li>
+          <li class="home-theme-item home-theme-item--government">
+            <h3 class="home-theme-title">Government &amp; democracy</h3>
+            <div class="home-theme-date">June</div>
+            <p>How can the government deliver great services online? And how can digital tools get more people involved in debates and decision-making?</p></li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="section--home-quote">
+    <div class="container">
+      <div class="home-quote--text">
+        <div class="quote-body">we want to use digital tools to help Parliament draw on the best ideas to get the UK’s digital policy right</div>
+        <div class="quote-attribute">Liam Byrne MP, Shadow Digital Minister.</div>
+      </div>
+      <div class="home-quote--megaphone">
+        <img src="images/megaphone.svg" alt="Megaphone illustration">
+      </div>
+
+
     </div>
   </section>
 
@@ -170,4 +208,16 @@
       </div>
     </div>
   </section>
-@stop
+
+
+
+      <footer class="site-footer">
+        <div class="container">
+          <p>People’s Plan for Digital</p>
+        </div>
+      </footer>
+    </body>
+
+    <script type="text/javascript" src="{{mix ('/js/app.js')}}"></script>
+
+  </html>

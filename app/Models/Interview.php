@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
 class Interview extends Model
 {
@@ -45,12 +47,23 @@ class Interview extends Model
       }
     }
 
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
 
+    public function comments()
+     {
+         return $this->morphMany('App\Models\Comment', 'commentable');
+     }
+
+     public function likes()
+     {
+         return $this->morphMany('App\Models\Like', 'likeable');
+     }
+     
     /*
     |--------------------------------------------------------------------------
     | SCOPES

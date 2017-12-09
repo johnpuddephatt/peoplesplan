@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 use App\User;
 
 
@@ -12,7 +13,7 @@ class Idea extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['title','theme_id','description_what','description_why','author_id','approved','slug'];
+    protected $fillable = ['title','theme_id','description_what','description_why','user_id','approved','slug'];
 
      /*
     |--------------------------------------------------------------------------
@@ -95,31 +96,14 @@ class Idea extends Model
       return $this->belongsTo('App\User');
     }
 
-    public function commentTotal()
+    public function comments()
     {
-      $total = Comment::where('item_id', 'idea-' . $this->id)->count();
-      return $total;
+      return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
-
-    public function withUser() {
-      $userId = $this->author_id;
-      $user = User::getAuthor($userId);
-      $this->name = $user['name'];
-      $this->email = $user['email'];
-      $this->url = $user['url'];
-      $this->avatar = $user['avatar'];
-      if($this->avatar == 'gravatar'){
-          $hash = md5(strtolower(trim($user['email'])));
-          $this->avatar = "http://www.gravatar.com/avatar/$hash?d=identicon";
-      }
-      return $this;
-    }
-
-
-    public function withLikes() {
-      $this->likes = LikeController::getLikeViewData('idea-' . $this->id);
-      return $this;
+    public function likes()
+    {
+      return $this->morphMany('App\Models\Like', 'likeable');
     }
 
 
