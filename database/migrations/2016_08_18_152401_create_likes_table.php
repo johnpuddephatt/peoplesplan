@@ -18,7 +18,7 @@ class CreateLikesTable extends Migration
             $table->string('likeable_id');
             $table->string('likeable_type');
             // $table->string('item_id');
-            $table->smallInteger('vote');
+            $table->tinyInteger('vote');
             $table->timestamps();
         });
     }

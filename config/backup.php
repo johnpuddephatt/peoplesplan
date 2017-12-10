@@ -19,7 +19,8 @@ return [
                  * specify individual files as well.
                  */
                 'include' => [
-                    base_path(),
+                    '.env',
+                    base_path('public'),
                 ],
 
                 /*
@@ -27,8 +28,7 @@ return [
                  * You can specify individual files as well.
                  */
                 'exclude' => [
-                    base_path('vendor'),
-                    storage_path(),
+
                 ],
 
                 /*

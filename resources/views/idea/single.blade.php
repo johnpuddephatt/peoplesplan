@@ -8,7 +8,7 @@
       <p>Theme: {{$idea->theme->title}}</p>
 
       <div class="avatar">
-        @include('inc.avatar',['user' => $idea->user])
+        {{-- @include('inc.avatar',['user' => $idea->user]) --}}
         {{$idea->user->name }}
       </div>
 

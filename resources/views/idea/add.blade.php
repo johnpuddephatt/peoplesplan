@@ -9,24 +9,41 @@
       Your account has been temporarily suspended for contravening our community guidelines. Please try again later or contact us for more information.
     </div>
   @else
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     <div class="idea-form">
       <form method="POST" action="/themes/new/{{ Hashids::encode(Auth::user()->id) }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h3 class="panel-heading">Add your idea</h3>
-
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <div class="form-group">
           <label for="ideatitle">Your idea</label>
-          <input id="ideatitle" name="title" class="form-control" placeholder="Your idea"/>
+          <input id="ideatitle" name="title" class="form-control" placeholder="Your idea" value="{{ old('title') }}"/>
         </div>
 
         <div class="form-group">
           <label for="ideawhat">Explain what you think should happen</label>
-          <textarea id="ideawhat" rows="6" name="description_what" class="form-control" placeholder="Your idea"></textarea>
+          <textarea id="ideawhat" rows="6" name="description_what" class="form-control" placeholder="Your idea">{{ old('description_what') }}</textarea>
         </div>
 
         <div class="form-group">
           <label for="ideawhy">Explain why you think this should happen?</label>
-          <textarea id="ideawhy" rows="6" name="description_why" class="form-control" placeholder="Your idea"></textarea>
+          <textarea id="ideawhy" rows="6" name="description_why" class="form-control" placeholder="Your idea">{{ old('description_why') }}</textarea>
         </div>
 
         <div class="form-group">

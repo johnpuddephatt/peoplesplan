@@ -22,7 +22,8 @@ class CreateIdeasTable extends Migration
             $table->integer('user_id');
             $table->text('description_what');
             $table->text('description_why');
-            $table->integer('approved')->default(0);
+            $table->tinyInteger('approved')->default(0);
+            $table->tinyInteger('featured')->default(0);
         });
     }
 

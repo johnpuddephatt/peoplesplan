@@ -34,6 +34,11 @@ class IdeaController extends Controller
 
   public function store(Request $request, $userhash)
   {
+    $validatedData = $request->validate([
+      'title' => 'required|max:80',
+      'description_what' => 'required|max:600',
+      'description_why' => 'required|max:600',
+    ]);
 
     $user_id = Hashids::decode($userhash)[0];
     $request['user_id'] = $user_id;

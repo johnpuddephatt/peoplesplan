@@ -52,6 +52,14 @@ $(document).on('click', '.reply-button', function(){
   $("#"+toggle).fadeToggle('normal');
 });
 
+var entityMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '/': '&#x2F;', '`': '&#x60;', '=': '&#x3D;' };
+
+function escapeHtml (string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+    return entityMap[s];
+  });
+}
+
 $(document).on('submit', '.comment-form', function(){
     var thisForm = $(this);
     var parent_id = $(this).data('parent');
@@ -67,7 +75,8 @@ $(document).on('submit', '.comment-form', function(){
       })
       .done(function(msg){
         $(thisForm).toggle('normal');
-        var newComment = '<div class="comment comment-new" id="comment-'+msg.id+'"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+msg.comment+'</div><div class="actions"></div></div><div class="ui threaded comments" id="'+commentable_id+'-comment-'+msg.id+'"></div></div>';
+
+        var newComment = '<div class="comment comment-new" id="comment-'+msg.id+'"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+escapeHtml(msg.comment)+'</div><div class="actions"></div></div><div class="ui threaded comments" id="'+commentable_id+'-comment-'+msg.id+'"></div></div>';
         $('#'+commentable_id+'-comment-'+parent_id).prepend(newComment);
         $('textarea#'+parent_id+'-textarea').val('');
       })

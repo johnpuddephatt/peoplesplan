@@ -13,7 +13,7 @@ class Idea extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['title','theme_id','description_what','description_why','user_id','approved','slug'];
+    protected $fillable = ['title','theme_id','description_what','description_why','user_id','approved','slug','featured'];
 
      /*
     |--------------------------------------------------------------------------

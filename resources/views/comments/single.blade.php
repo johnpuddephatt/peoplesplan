@@ -28,7 +28,7 @@
     @if(Auth::check() && !Auth::user()->is_blocked)
       <form id="{{ $comment->id }}-reply-form" class="comment-form form" data-parent="{{ $comment->id }}" data-type="{{get_class($comment_item)}}" data-id="{{ $comment_item->id }}" style="display: none;">
         <div class="avatar">
-          @include('inc.avatar',['user' => Auth::user()->user])
+          @include('inc.avatar',['user' => Auth::user()])
         </div>
         <textarea id="{{ $comment->id }}-textarea" rows="2" placeholder="Enter your reply" autofocus></textarea>
         <input type="submit" class="button" value="Post comment">

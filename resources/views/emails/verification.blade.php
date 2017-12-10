@@ -2,21 +2,18 @@
 
 # Hello {{ $user->name }}!
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Thank you for creating a People's Plan account. You're just one step away from joining the debate.
 
-@component('mail::panel', ['url' => 'yadayada'])
-
-Click the button below to get started.
+Click the button below to verify your email address and start helping to plan the most advanced digital society in the world.
 
   @component('mail::button', ['url' => url('register/verify/'.$user->email_token) ])
 
-  Verify now
+  Verify your email
 
   @endcomponent
 
-@endcomponent
-
-Thanks!
+Regards,
+The People's Plan
 
 @endcomponent
 

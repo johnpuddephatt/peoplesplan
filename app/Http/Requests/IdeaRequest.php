@@ -27,11 +27,11 @@ class IdeaRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     {
         return [
             // 'name' => 'required|min:5|max:255'
-            'title' => 'required|max:255',
+            'title' => 'required|max:80',
             'theme_id' => 'required',
             'user_id' => 'required',
-            'description_what' => 'required',
-            'description_why' => 'required',
+            'description_what' => 'required|max:600',
+            'description_why' => 'required|max:600',
         ];
     }
 

@@ -23,11 +23,9 @@
   <section class="section--home-header">
     <div class="container">
       <div class="header-introduction">
-        <h1 class="page-title page-title--home">Let’s plan the most advanced digital society in the world &ndash; together</h1>
-        {{-- <p>As Parliament debates how to make the United Kingdom the world’s digital leader, it’s important we end up with the right plan.</p >
-        <p>That’s why we’ve created the People’s Plan for Digital, a place where anyone – including you – can suggest and discuss the ideas you think Parliament should listen to.</p> --}}
-        <p>Politicians are debating how to make the United Kingdom the world’s digital leader, so we’ve created a place where you can suggest and discuss the ideas you want Parliament to listen to.</p>
-
+        <h1 class="page-title page-title--home">Let’s design the most advanced digital society in the world &ndash; together</h1>
+        <p>Our country is debating how to become the world’s digital leader. So we’ve created a place where you can share and shape the ideas you want Parliament to listen to.</p>
+        <a class="button" href="/ideas/">See all ideas</a><a class="button primary" href="/ideas/add/">Add your idea</a>
       </div>
       <div class="header-image">
         @include('inc.homepage-header')
