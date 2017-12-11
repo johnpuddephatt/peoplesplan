@@ -43,7 +43,6 @@ for (var i = 0; i < scrollers.length; i++) {
         dragging = true;
         //curXPos is where the click begins
         scrollerInner.scrollLeft = curLeft - 1.35 * (e.pageX - curXPos);
-        console.log(e.pageY - curYPos);
         if(Math.abs(e.pageY - curYPos) > 60) {
           curDown = false;
         }
@@ -75,7 +74,6 @@ for (var i = 0; i < scrollers.length; i++) {
     var hasTouch;
     window.addEventListener('touchstart', function setHasTouch () {
         hasTouch = true;
-        alert('removing touch handlers!');
         // Remove event listener once fired, otherwise it'll kill scrolling
         // performance
         window.removeEventListener('touchstart', setHasTouch);
