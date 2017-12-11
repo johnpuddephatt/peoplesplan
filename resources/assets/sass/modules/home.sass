@@ -4,13 +4,14 @@
     height: calc(100vh - #{2 * $base-spacing})
     display: flex
     flex-direction: column
+    justify-content: center
     @media screen and (min-width: $medium-screen)
       flex-direction: row
 
 
   .header-introduction
     flex: 0 0 auto
-    margin-top: auto
+    margin-bottom: 2 * $base-spacing
     @media screen and (min-width: $medium-screen)
       margin: auto
       flex: 0 0 50%
@@ -19,7 +20,6 @@
   .header-image
     width: 100%
     flex: 0 0 30%
-    margin-top: auto
     @media screen and (min-width: $medium-screen)
       margin: auto
       flex: 0 0 50%
@@ -41,31 +41,34 @@
 
 
 
-.section--home-introduction
-  .container
-    @include clearfix
-    border-bottom: 1px dashed $light-gray
-    padding-top: 2 * $base-spacing
-    padding-bottom: 2 * $base-spacing
-    display: flex
-    flex-direction: row
-    align-items: center
+// .section--home-introduction
+//   .container
+//     @include clearfix
+//     border-bottom: 1px dashed $light-gray
+//     padding-top: 2 * $base-spacing
+//     padding-bottom: 2 * $base-spacing
+//     display: flex
+//     flex-direction: row
+//     align-items: center
+//
+// .home-introduction
+//   &--text
+//     @include grid-column(6)
+//   &--image
+//     @include grid-column(6)
+//     text-align: left
+//     img
+//       display: block
+//       width: 55%
+//       margin: -2 * $base-spacing auto 0
 
-.home-introduction
-  &--text
-    @include grid-column(6)
-  &--image
-    @include grid-column(6)
-    text-align: left
-    img
-      display: block
-      width: 55%
-      margin: -2 * $base-spacing auto 0
+
 
 .section--home-quote
   .container
     @include clearfix
     position: relative
+
 
 .home-quote
   &--text
@@ -86,7 +89,8 @@
       font-weight: 700
       line-height: $heading-line-height
       &::before, &::after
-        opacity: .2
+        // opacity: .2
+        color: $light-green
         position: absolute
         font-size: modular-scale(4)
         line-height: .85
@@ -99,21 +103,22 @@
         content: '”'
         margin-left: $small-spacing/2
     .quote-attribute
+      color: $light-green
 
   &--clock
     min-height: $base-spacing
-
     @include grid-column(2)
     @media screen and (min-width: $medium-screen)
       @include grid-column(4)
     img
       position: absolute
       bottom: 0
-      width: auto
-      height: 102%
-      right: -15%
+      width: 6 * $base-spacing
+      height: auto
+      right: -2%
       @media screen and (min-width: $medium-screen)
         height: 107%
+        width: auto
         right: auto
 
       display: block
@@ -147,12 +152,19 @@
     margin-left: auto
     margin-right: auto
   .stage-heading
-    font-size: modular-scale(2)
+    font-size: modular-scale(1)
+    @media screen and (min-width: $medium-screen)
+      font-size: modular-scale(2)
   .container
     padding-top: 4 * $base-spacing
     padding-bottom: 4 * $base-spacing
   .stages-container
     @include clearfix
+    margin: 1.5 * $base-spacing auto 0
+    @media screen and (min-width: $medium-screen)
+      margin: 0 auto
+    @media screen and (min-width: $large-screen)
+      max-width: 75%
     .stage-column
       text-align: left
       @include clearfix
@@ -164,7 +176,10 @@
 
       img
         float: left
-        margin-right: $base-spacing
+        width: 3 * $base-spacing
+        margin-right: $small-spacing
+        margin-left: $small-spacing
+        margin-top: $small-spacing/2
         @media screen and (min-width: $medium-screen)
           margin: 2 * $base-spacing 0 $small-spacing
           float: none
@@ -246,75 +261,4 @@
   .home-interviews-scroller::before
     background: linear-gradient(to left,rgba(255,255,255,0), $off-white)
   .home-interviews-scroller::after
-    background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
-  .home-interviews-item
-    flex: 0 0 100%
-    margin-left: $small-spacing
-    border: 1px solid $light-gray
-    border-radius: $small-spacing/2
-    background-color: white
-    display: flex
-    flex-direction: column
-    @media screen and (min-width: $medium-screen)
-      flex: 0 0 33.3%
-      flex: 0 0 calc(50%)
-
-    @media screen and (min-width: $large-screen)
-      flex: 0 0 33.3%
-      flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
-      margin-left: $base-spacing
-
-    @media screen and (max-width: $medium-screen)
-      &:first-child
-        margin-left: 0
-
-    &:hover
-      .home-interviews-image img
-        transform: scale(1.05)
-      .home-interviews-quote, .home-interviews-title
-        color: $peach
-  .home-interviews-image
-    position: relative
-    display: block
-    overflow: hidden
-    img
-      display: block
-      transition: 3 * $base-duration $base-timing
-    svg
-      position: absolute
-      left: 50%
-      top: 50%
-      transform: translate(-50%,-50%)
-      width: 3 * $base-spacing
-      filter: drop-shadow(6px 6px 6px rgba(0,0,0,0.7))
-  .home-interviews-title
-    font-size: modular-scale(0)
-    text-align: right
-    font-weight: 400
-    margin-top: auto
-    padding: 0 1.5 * $base-spacing
-    line-height: 1.5 * $base-spacing
-    border-top: 1px dashed $light-gray
-    margin-bottom: 0
-    transition: color 2 * $base-duration $base-timing
-  .home-interviews-quote
-    margin: 1.5 * $small-spacing 1.5 * $base-spacing
-    font-size: modular-scale(1)
-    font-weight: 700
-    color: $green
-    line-height: $heading-line-height
-    position: relative
-    transition: color 2 * $base-duration $base-timing
-    &::before, &::after
-      opacity: .2
-      position: absolute
-      font-size: modular-scale(4)
-      line-height: .85
-      display: inline-block
-    &::before
-      content: '“'
-      right: 100%
-      margin-right: $small-spacing/2
-    &::after
-      content: '”'
-      margin-left: $small-spacing/2
+    background: linear-gradient(to right,rgba(255,255,255,0), $off-white)  

@@ -1,15 +1,19 @@
 <div class="card card--idea">
-  <a href="/ideas/{{ $idea->slug }}">
     <div class="avatar card-avatar">
       @include('inc.avatar',['user' => $idea->user])
-      <span>{{$idea->user['name']}}</span>
+      <div class="card-avatar-name">
+        {{ $idea->user->name }}
+      </div>
+      <div class="card-meta">Submitted {{ $idea->created_at->diffForHumans() }} on {{ date('jS F Y', strtotime($idea->created_at)) }}</div>
+
     </div>
-    <div class="card-body">
+    <a href="/ideas/{{ $idea->slug }}" class="card-body">
+
       <h2 class="card-title">{{$idea->title}}</h2>
+
+    </a>
+    <div class="card-footer">
+      <div class="card-comments">{{ $idea->comments_count }} comments</div>
+      @include('comments.like', ['like_item' => $idea])
     </div>
-  </a>
-  <div class="card-meta">
-    @include('comments.like', ['like_item' => $idea])
-    <span class="card-comments">{{ $idea->comments_count }} comments</span>
-  </div>
 </div>

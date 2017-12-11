@@ -1,109 +1,231 @@
-
-
 .container--ideas
-	padding-top: 2 * $base-spacing
-	padding-bottom: 2 * $base-spacing
+	padding-top: 4 * $base-spacing
+	padding-bottom: 4 * $base-spacing
 
-
-/*** Idea card ***/
-
-.card-list
-	margin-top: 2 * $base-spacing
+.idea-card-list
+	.section-title
+		margin-top: 3 * $base-spacing
 
 .card
-	display: flex
-	flex-direction: row
-	align-items: center
-	padding: $small-spacing
-	border-radius: $small-spacing/2
+	border-radius: $base-border-radius
 	margin: $base-spacing auto
 	background-color: #fff
-	box-shadow: 0 10px 50px rgba(50,50,50,.15)
+	box-shadow: 0 15px 50px -15px rgba(50, 50, 50, 0.25)
+	overflow: hidden
 
 .card-avatar
-		width: 4 * $base-spacing
-		flex: 0 0 auto
+	height: 100%
+	width: auto
+	position: relative
+	padding: $base-spacing $base-spacing 0
+	img
+		border-radius: 50%
+		width: 2 * $base-spacing
+		width: 2 * $base-spacing
+		float: left
+		margin-right: $small-spacing
 
-.card-body
-	padding: $small-spacing $base-spacing
-	flex: 1 1 auto
+
+
+.card-avatar-name
+	font-weight: 700
+	color: $medium-gray
 
 .card-meta
-	flex: 0 0 auto
-	padding: $small-spacing $base-spacing
+	font-size: modular-scale(-1)
+	color: $medium-gray
 
+.card-body
+	clear: both
+	display: block
+	padding: $small-spacing $base-spacing $base-spacing
+	border-bottom: 1px dashed $light-gray
 	.laravel-like
 		margin-bottom: $small-spacing/2
 
+.card-footer
+	.like-container
+		float: right
+		width: 40%
+		display: flex
+		flex-direction: row
+		justify-content: flex-end
+		padding: $small-spacing $base-spacing
+		.like-total
+			display: inline-block
+			line-height: $base-spacing
+			height: $base-spacing
+			margin-right: $small-spacing
+			color: $light-gray
+		.icon.like-icon
+			padding-top: 0
+			padding-bottom: 0
+			height: $base-spacing
+			margin: 0
+			svg
+				height: $base-spacing
+			+ span
+				display: inline-block
+				line-height: 1.2 * $base-spacing
+				height: $base-spacing
+
 .card-comments
-	text-align: center
+	padding: $small-spacing $base-spacing
+	float: left
+	width: 40%
+
+
 
 .card-title
-	font-size: modular-scale(2)
+	font-size: modular-scale(3)
 	margin-bottom: 0
 
-/*** Idea form ***/
+
+
+
+
 
 .container--add
 	padding-top: 2 * $base-spacing
 	padding-bottom: 2 * $base-spacing
+
+
 .idea-form
-	background: linear-gradient(-45deg, $peach 30%, white 30%)
-	display: flex
-	padding: $base-spacing
-	align-items: center
-	flex-direction: row
+	box-shadow: $base-box-shadow
+	background: linear-gradient(-45deg, #{$peach} 30%, white 30%)
+	padding: $small-spacing
+
+	@media screen and (min-width: $medium-screen)
+		display: flex
+		padding: $base-spacing
+		align-items: center
+		flex-direction: row
+
 
 	form
 		flex: 0 0 60%
 
-	.ideas-guidelines
-	  text-align: center
-	  margin-left: 3 * $base-spacing
-	  flex: 1 1 40%
-	  background-color: white
-	  padding: 3 * $base-spacing 2 * $base-spacing
-	  border-radius: $small-spacing/2
-	  box-shadow: 0px 15px 60px rgba(50,50,50,.25)
+.ideas-guidelines
+	background-color: white
+	padding: 2 * $base-spacing $base-spacing
+	border-radius: $base-border-radius
+	box-shadow: $base-box-shadow
+	margin-top: $base-spacing
+
+	@media screen and (min-width: $medium-screen)
+		margin-top: 0
+		padding: 2 * $base-spacing 1.5 * $base-spacing
+		margin-left: 3 * $base-spacing
+		flex: 1 1 40%
+	ul
+		font-size: modular-scale(-1)
+		@media screen and (min-width: $medium-screen)
+			font-size: modular-scale(0)
+		li
+			margin-bottom: $small-spacing
+			&:last-child
+				margin-bottom: 0
 
 
-	.ideas-guidelines p
-			font-size: modular-scale(-1)
 
-
-/*** Idea page ***/
 
 .idea-header
-  background-color: $medium-gray
-  background-image: radial-gradient(circle at center, $medium-gray 0%,$dark-gray)
-  color: white
-  margin-bottom: $base-spacing
+	background-color: $medium-gray
+	background-image: radial-gradient(circle at center, $medium-gray 0%,$dark-gray)
+	color: white
+	margin-bottom: $base-spacing
 
-.container--idea
-  padding-top: 2 * $base-spacing
-  padding-bottom: 2 * $base-spacing
-  display: flex
-  flex-direction: row
-  align-items: center
+	.container--idea
+		@media screen and (max-width: $medium-screen)
+			padding: 2 * $base-spacing
+		&::after
+			content: ''
+			display: table
+			width: 100%
+		@media screen and (min-width: $medium-screen)
+			padding-top: 3 * $base-spacing
+			padding-bottom: 3 * $base-spacing
+			display: flex
+			flex-direction: row
+			align-items: flex-start
 
 
-.idea-title
-  font-size: modular-scale(4)
-  color: $peach
+	.avatar
+		width: 4 * $base-spacing
+		margin-left: auto
+		flex: 0 0 auto
+		margin-bottom: $base-spacing
+		@media screen and (min-width: $medium-screen)
+			width: 6 * $base-spacing
+			margin-right: 3 * $base-spacing
+	.avatar-name
+		text-align: center
+		margin-top: $small-spacing
+	.idea-theme
+		font-weight: 700
+		margin-bottom: $small-spacing
+	.idea-intro
+		flex: 1 1 99999%
 
-.interview-likes
-	float: right
-	position: relative
-	z-index: 99
-	padding-left: 2 * $base-spacing
-	margin-top: $base-spacing
-	.like-icon
-		height: 2 * $base-spacing
-		width: 2 * $base-spacing
-		padding: $base-spacing/3
-		&.down
-			margin-left: $base-spacing/3
-	span
-		line-height: 2 * $base-spacing
-		vertical-align: top
-		font-size: modular-scale(1)
+	.idea-title
+		font-size: modular-scale(4)
+		color: $green
+		margin-bottom: 0
+		position: relative
+		&::before, &::after
+			color: $light-green
+			position: absolute
+			font-size: modular-scale(4)
+			line-height: .85
+			display: inline-block
+		&::before
+			content: '“'
+			right: 100%
+			margin-right: $small-spacing/2
+		&::after
+			content: '”'
+			margin-left: $small-spacing/2
+
+	.idea-likes
+		float: right
+		position: relative
+		z-index: 99
+		padding-left: 2 * $base-spacing
+		margin-top: $base-spacing
+		@media screen and (min-width: $medium-screen)
+			margin-top: 2 * $base-spacing
+
+		.like-icon
+			height: 2 * $base-spacing
+			width: 2 * $base-spacing
+			padding: $base-spacing/3 0
+			&.down
+				margin-left: $base-spacing/3
+		.like-total
+			line-height: 2.5 * $base-spacing
+			height: 2 * $base-spacing
+			color: $light-gray
+			font-weight: 400
+			vertical-align: top
+			font-size: modular-scale(3)
+			display: block
+			float: left
+			margin-right: $small-spacing
+
+.container--idea-details
+	@media screen and (min-width: $medium-screen)
+		display: flex
+	padding-top: 2 * $base-spacing
+	padding-bottom: 2 * $base-spacing
+	flex-direction: row
+	.card
+		flex: 1 1 50%
+		padding: 2 * $base-spacing
+		margin-top: $base-spacing
+		@media screen and (min-width: $medium-screen)
+			margin-top: 0
+	.card + .card
+
+		@media screen and (min-width: $medium-screen)
+			margin-top: 0
+			margin-left: $base-spacing

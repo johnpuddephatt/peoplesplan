@@ -1,6 +1,6 @@
 // Breakpoints
-$medium-screen: 600px;
-$large-screen: 960px;
+$medium-screen: 700px;
+$large-screen: 1000px;
 $xl-screen: 1400px;
 
 
@@ -16,9 +16,9 @@ $base-line-height: 1.6;
 $heading-line-height: 1.25;
 
 // Other Sizes
-$base-border-radius: 3px;
 $base-spacing: $base-line-height * 1rem;
 $small-spacing: $base-spacing / 2;
+$base-border-radius: $small-spacing/4;
 $base-z-index: 0;
 
 // Colors
@@ -28,7 +28,8 @@ $medium-gray: #50565E;
 
 $light-gray: #E2E2E1;
 $off-white: #F2F4F4;
-$green: #79CDC8;
+$light-green: #79CDC8;
+$green: #47C5CC;
 $peach: #F5D0B7;
 $orange: #EDB569;
 
@@ -51,3 +52,7 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+// Box shadow
+$base-box-shadow: 0px 0px 3 * $base-spacing rgba(50,50,50,.10)
+

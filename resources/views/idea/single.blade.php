@@ -4,30 +4,31 @@
 
   <header class="idea-header">
     <div class="container container--idea">
-    <div class="idea-content">
-      <p>Theme: {{$idea->theme->title}}</p>
-
       <div class="avatar">
-        {{-- @include('inc.avatar',['user' => $idea->user]) --}}
-        {{$idea->user->name }}
+        @include('inc.avatar',['user' => $idea->user])
+        <div class="avatar-name">
+          {{$idea->user->name }}
+        </div>
       </div>
-
-      <h1 class="idea-title">{{ $idea->title }}</h1>
-      <div class="theme-description">
+      <div class="idea-intro">
+        <div class="idea-theme">{{$idea->theme->title}}:</div>
+        <h1 class="idea-title">{{ $idea->title }}</h1>
+        <div class="idea-likes">
+          @include('comments.like', ['like_item' => $idea])
+        </div>
       </div>
-      <div class="idea-likes">
-        @include('comments.like', ['like_item' => $idea])
-      </div>
-
     </div>
-  </div>
-</header>
+  </header>
 
 <div class="container container--idea-details">
-  <h2>What</h2>
-  {!! $idea->description_what !!}
-  <h2>Why</h2>
-  {!! $idea->description_why !!}
+  <div class="card">
+    <h2>What</h2>
+    {!! $idea->description_what !!}
+  </div>
+  <div class="card">
+    <h2>Why</h2>
+    {!! $idea->description_why !!}
+  </div>
 </div>
 
 

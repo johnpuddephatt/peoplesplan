@@ -82,4 +82,14 @@ class User extends Authenticatable
     $this->save();
   }
 
+
+  public function getAvatar() {
+    if($this->avatar) {
+      return $this->avatar;
+    }
+    else {
+      return \Gravatar::get($this->email);
+    }
+  }
+
 }

@@ -64,7 +64,7 @@
       <p class="login-terms">By signing up you agree to our <a href="/terms">Terms &amp; Conditions</a></p>
     </div>
     <div class="column column--sign-up">
-      <h2>No account yet?</h2>
+      <h2 class="side-panel-heading">No account yet?</h2>
       <p>Creating a new account takes seconds.</p>
       <a href="/register" class="button block">Sign up</a>
     </div>

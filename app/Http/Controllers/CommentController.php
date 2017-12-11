@@ -26,7 +26,7 @@ class CommentController extends Controller
     $new_comment->user_id = Auth::user()->id;
     $new_comment->save();
 
-  	return response()->json(['flag' => 1, 'id' => $new_comment->id, 'comment' => $new_comment->comment, 'commentable_id' => $new_comment->commentable_id, 'commentable_type' => $new_comment->commentable_type, 'userName' => Auth::user()->name, 'userPic' => Auth::user()->avatar]);
+  	return response()->json(['flag' => 1, 'id' => $new_comment->id, 'comment' => $new_comment->comment, 'commentable_id' => $new_comment->commentable_id, 'commentable_type' => $new_comment->commentable_type, 'userName' => Auth::user()->name, 'userPic' => Auth::user()->getAvatar()]);
   }
 
 }

@@ -3,7 +3,7 @@
 @section('content')
   <div class="container container--ideas">
     <h1 class="page-title">See all ideas</h1>
-    <div class="card-list">
+    <div class="idea-card-list">
 
 
       @foreach ($themes as $theme)

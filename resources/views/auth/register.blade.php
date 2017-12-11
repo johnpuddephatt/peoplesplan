@@ -55,7 +55,7 @@
     </div>
     <div class="column column--sign-up">
 
-      <h2>Sign up with an existing account</h2>
+      <h2 class="side-panel-heading">Or sign up with an existing account</h2>
 
       <a href="{{ url('/auth/twitter') }}" class="button button--social button--twitter block">Sign up with Twitter</a>
       <a href="{{ url('/auth/facebook') }}" class="button button--social button--facebook block">Sign up with Facebook</a>

@@ -1,16 +1,42 @@
 .masthead
   background-color: #fff
   line-height: $base-spacing
+  box-shadow: 0 0px 30px rgba(50,50,50,.10)
+  position: fixed
+  z-index: 999
+  left: 0
+  right: 0
+  bottom: 0
+  @media screen and (min-width: $medium-screen)
+    bottom: auto
+    top: 0
   .container
     display: flex
     flex-direction: row
+
 
   .site-title
     font-weight: 700
     text-transform: lowercase
     margin-top: $small-spacing
     margin-bottom: $small-spacing
-    margin-right: $small-spacing
+    margin-right: $small-spacing/2
+    @media screen and (min-width: $medium-screen)
+      margin-right: $small-spacing
+    .site-logo
+      display: block
+      float: left
+      height: $base-spacing
+      width: auto
+      margin: 0 0 0 $small-spacing/2
+      @media screen and (min-width: $medium-screen)
+        margin: 0 $small-spacing
+
+    span
+      display: none
+      @media screen and (min-width: $medium-screen)
+        display: inline
+
     @media screen and (min-width: $medium-screen)
       font-size: modular-scale(1)
       margin-right: $base-spacing
@@ -19,21 +45,22 @@
     &:focus
       box-shadow: 0 0 0 4px $peach
   .site-navigation
-
     text-transform: lowercase
-
+    position: relative
     a, button
       margin-top: $small-spacing
       margin-bottom: $small-spacing
-      padding-left: $small-spacing
-      padding-right: $small-spacing
+      padding-left: $small-spacing/2
+      padding-right: $small-spacing/2
       display: inline-block
       -webkit-font-smoothing: antialiased
       font-weight: 700
       font-size: modular-scale(-1)
       @media screen and (min-width: $medium-screen)
+        padding-left: $small-spacing
+        padding-right: $small-spacing
         font-size: modular-scale(0)
-      + a, + button
+      something + something
         margin-right: $small-spacing
         @media screen and (min-width: $medium-screen)
           margin-right: $base-spacing
@@ -45,15 +72,43 @@
       a, button
         + a, + button
           margin-right: 0
-          margin-left: $small-spacing
+          margin-left: $small-spacing/2
           @media screen and (min-width: $medium-screen)
             margin-right: 0
-            margin-left: $base-spacing
+            margin-left: $base-spacing/2
 
     .navigation-account
       position: relative
-      &:hover .navigation-account-menu
-        display: block
+      padding-left: 0
+      padding-right: $small-spacing
+
+      &.dropdown
+        &::after
+          content: ''
+          display: block
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(-40%)
+          border-left: transparent solid 4px
+          border-right: transparent solid 4px
+          border-bottom: $light-green solid 8px
+          @media screen and (min-width: $medium-screen)
+            border-top: $light-green solid 8px
+            border-bottom: none
+
+      .navigation-account-name
+        display: none
+        @media screen and (min-width: $medium-screen)
+          display: inline-block
+          max-width: 8rem
+          height: $base-spacing
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+
+
+
       .avatar
         width: 1.5 * $base-spacing
         height: 1.5 * $base-spacing
@@ -61,16 +116,51 @@
         margin-bottom: -.25 * $small-spacing
         float: left
         border: 1px solid $light-gray
-        margin-right: $small-spacing/2
         border-radius: 50%
-      .navigation-account-menu
-        display: none
+        @media screen and (min-width: $medium-screen)
+          margin-right: $small-spacing/2
+    .navigation-account-menu
+      pointer-events: none
+      opacity: 1
+      position: fixed
+      right: 0
+      bottom: 2.5 * $base-spacing
+      width: 100%
+      padding: $small-spacing/2 $base-spacing
+      animation: slideDown $base-duration ease forwards
+      &.open
+        opacity: 1
+        pointer-events: all
+        animation: slideUp $base-duration ease forwards
+      a, button
+        box-shadow: $base-box-shadow
+        margin-left: 0 !important
+        margin-right: 0 !important
+
+      @media screen and (min-width: $medium-screen)
         position: absolute
-        width: 200%
-        padding-top: $small-spacing/2
-        right: -$small-spacing
-        > *
-          background-color: #fff
-          display: block
+        width: 8 * $base-spacing
+        top: 100%
+        bottom: auto
+        padding: 0
+
+      > *
+        background-color: #fff
+        display: block
+
+@keyframes slideUp
+  0%
+    opacity: 0
+    transform: translateY($small-spacing)
+  100%
+    opacity: 1
+    transform: translateY(0)
 
 
+@keyframes slideDown
+  0%
+    opacity: 1
+    transform: translateY(0)
+  100%
+    opacity: 0
+    transform: translateY($small-spacing)

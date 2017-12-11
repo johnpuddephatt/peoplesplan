@@ -19,7 +19,7 @@
   </div>
 </header>
 
-<div class="container container--ideas">
+<div class="container container--theme-ideas">
 
 
   @if (Auth::guest())
@@ -51,12 +51,12 @@
         </div>
 
         <div class="form-group">
-          <label for="ideawhat">Explain what you think should happen</label>
+          <label for="ideawhat">Tell us <strong>what</strong> you think should happen</label>
           <textarea id="ideawhat" rows="6" name="description_what" class="form-control" placeholder="Your idea">{{ old('description_what') }}</textarea>
         </div>
 
         <div class="form-group">
-          <label for="ideawhy">Explain why you think this should happen?</label>
+          <label for="ideawhy">Tell us <strong>why</strong> you think this should happen?</label>
           <textarea id="ideawhy" rows="6" name="description_why" class="form-control" placeholder="Your idea">{{ old('description_why') }}</textarea>
         </div>
 
@@ -69,8 +69,12 @@
       </form>
       <div class="ideas-guidelines">
         <h2>Guidelines</h2>
-        <p>Ideas will be reviewed by a moderator before appearing on the site. Ideas not meeting our community guidelines will not be approved.</p>
-      </div>
+        <ul>
+          <li><strong>Keep it brief</strong> – smaller ideas are better than long ideas </li>
+          <li><strong>Keep it clear</strong> – try to explain your idea as simply as possible</li>
+          <li><strong>Keep it friendly</strong> – your idea must follow our <a href="/terms/">community guidelines</a></li>
+        </ul>
+     </div>
     </div>
   @endif
   <div class="card-list">

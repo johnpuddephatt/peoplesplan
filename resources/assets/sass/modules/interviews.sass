@@ -1,3 +1,112 @@
+// Card
+
+
+.interview-card
+	margin-left: $small-spacing
+	border: 1px solid $light-gray
+	border-radius: $base-border-radius
+	background-color: white
+	display: flex
+	overflow: hidden
+	flex-direction: column
+	flex: 0 0 100%
+	@media screen and (min-width: $medium-screen)
+		flex: 0 0 50%
+		flex: 0 0 calc(50% - #{$base-spacing})
+	@media screen and (min-width: $large-screen)
+		flex: 0 0 33.3%
+		flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+		margin-left: $base-spacing
+	@media screen and (max-width: $medium-screen)
+		&:first-child
+			margin-left: 0
+
+	&:hover
+		.home-interviews-image img
+			transform: scale(1.05)
+		.home-interviews-quote, .home-interviews-title
+			color: $peach
+.interview-card-image
+	position: relative
+	display: block
+	overflow: hidden
+	img
+		display: block
+		width: 100%
+		height: auto
+		transition: 3 * $base-duration $base-timing
+	svg
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%,-50%)
+		width: 3 * $base-spacing
+		filter: drop-shadow(6px 6px 6px rgba(0,0,0,0.7))
+
+.interview-card-footer
+	margin-top: auto
+	padding: 0 1.5 * $base-spacing
+	line-height: 1.5 * $base-spacing
+	border-top: 1px dashed $light-gray
+	margin-bottom: 0
+	transition: color 2 * $base-duration $base-timing
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+
+.interview-card-title
+	font-size: modular-scale(0)
+	font-weight: 700
+	margin-bottom: 0
+	line-height: inherit
+
+.interview-card-commentcount
+	font-size: modular-scale(-1)
+	color: $light-green
+.interview-card-quote
+	margin: 1.5 * $small-spacing 1.5 * $base-spacing
+	font-size: modular-scale(1)
+	font-weight: 700
+	color: $green
+	line-height: $heading-line-height
+	position: relative
+	transition: color 2 * $base-duration $base-timing
+	&::before, &::after
+		color: $light-green
+		position: absolute
+		font-size: modular-scale(4)
+		line-height: .85
+		display: inline-block
+	&::before
+		content: '“'
+		right: 100%
+		margin-right: $small-spacing/2
+	&::after
+		content: '”'
+		margin-left: $small-spacing/2
+
+
+// Index viewBox
+
+.container--interview-index
+	padding-top: 3 * $base-spacing
+	padding-bottom: 3 * $base-spacing
+	@media screen and (min-width: $medium-screen)
+		padding-right: 0
+
+.interview-card-list
+	margin-top: 2 * $base-spacing
+	display: flex
+	flex-wrap: wrap
+	.interview-card
+		margin-bottom: 1.5 * $base-spacing
+		margin-left: 0
+		margin-right: $base-spacing
+		@media screen and (min-width: $large-screen)
+			margin-right: 1.333 * $base-spacing
+
+// Single page
+
 .interview-header
 	background-image: radial-gradient(circle at center, $medium-gray 0%,$dark-gray)
 	padding-top: $base-spacing
@@ -6,54 +115,64 @@
   margin-bottom: $base-spacing
   background-color: $medium-gray
 
-.interview-content
-	width: 100%
-.interview-video
-	width: 100%
-	padding-top: 56.25%
-	position: relative
-	iframe,object
+	.interview-content
 		width: 100%
-		height: 100%
-		position: absolute
-		top: 0
-		left: 0
 
-.interview-quote
-  margin: 1.5 * $small-spacing 0
-  font-size: modular-scale(4)
-  font-weight: 700
-  color: $green
-  line-height: $heading-line-height
-  position: relative
-  transition: color 2 * $base-duration $base-timing
-  &::before, &::after
-    opacity: .2
-    position: absolute
-    font-size: modular-scale(4)
-    line-height: .85
-    display: inline-block
-  &::before
-    content: '“'
-    right: 100%
-    margin-right: $small-spacing/2
-  &::after
-    content: '”'
-    margin-left: $small-spacing/2
+	.interview-name
+		color: $light-green
+		font-size: modular-scale(2)
 
-.interview-likes
-	float: right
-	position: relative
-	z-index: 99
-	padding-left: 2 * $base-spacing
-	margin-top: $base-spacing
-	.like-icon
-		height: 2 * $base-spacing
-		width: 2 * $base-spacing
-		padding: $base-spacing/3
-		&.down
-			margin-left: $base-spacing/3
-	span
-		line-height: 2 * $base-spacing
-		vertical-align: top
-		font-size: modular-scale(1)
+	.interview-video
+		width: 100%
+		padding-top: 56.25%
+		position: relative
+		iframe,object
+			width: 100%
+			height: 100%
+			position: absolute
+			top: 0
+			left: 0
+
+	.interview-quote
+	  margin: 1.5 * $small-spacing 0
+	  font-size: modular-scale(4)
+	  font-weight: 700
+	  color: $green
+	  line-height: $heading-line-height
+	  position: relative
+	  transition: color 2 * $base-duration $base-timing
+	  &::before, &::after
+	    opacity: .2
+	    position: absolute
+	    font-size: modular-scale(4)
+	    line-height: .85
+	    display: inline-block
+	  &::before
+	    content: '“'
+	    right: 100%
+	    margin-right: $small-spacing/2
+	  &::after
+	    content: '”'
+	    margin-left: $small-spacing/2
+
+	.interview-likes
+		float: right
+		position: relative
+		z-index: 99
+		padding-left: 2 * $base-spacing
+		margin-top: $base-spacing
+		.like-icon
+			height: 2 * $base-spacing
+			width: 2 * $base-spacing
+			padding: $base-spacing/3
+			&.down
+				margin-left: 0
+			+ span
+				font-size: modular-scale(1)
+		.like-total
+			line-height: 2 * $base-spacing
+			display: block
+			font-size: modular-scale(3)
+			color: $light-gray
+			font-weight: 400
+			margin-left: -.5em

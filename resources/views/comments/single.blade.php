@@ -1,7 +1,7 @@
 @php
   ++$comment_level
 @endphp
-<div class="comment" id="comment-{{ $comment->id }}">
+<div class="comment" id="{{ $comment_item->id }}-comment-{{ $comment->id }}">
 
   <a class="avatar">
     @include('inc.avatar',['user' => $comment->user])
@@ -10,12 +10,6 @@
     @endif
   </a>
   <div class="content">
-    <div class="actions">
-      @include('comments.like', ['like_item' => $comment])
-      @if(Auth::check() && !Auth::user()->is_blocked && ($comment_level < 3))
-        <a class="reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Reply</a>
-      @endif
-    </div>
     <span class="author">{{ $comment->user['name'] }}</span>
     <div class="metadata">
       <span class="date" title="{{ date('g:ia, jS F Y', strtotime($comment->updated_at)) }}">{{ $comment->updated_at->diffForHumans() }}</span>
@@ -23,6 +17,13 @@
     <div class="text">
       {{ $comment->comment }}
     </div>
+    <div class="actions">
+      @include('comments.like', ['like_item' => $comment])
+      @if(Auth::check() && !Auth::user()->is_blocked && ($comment_level < 3))
+        <a class="reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Reply</a>
+      @endif
+    </div>
+
 
 
     @if(Auth::check() && !Auth::user()->is_blocked)
@@ -35,7 +36,7 @@
       </form>
     @endif
     @if($comment_level <= 3)
-      <div class="comments" id="{{ $comment->item_id }}-comment-{{ $comment->id }}">
+      <div class="comments" id="{{ $comment_item->id }}-comments-{{ $comment->id }}">
         @foreach ($comment_item->comments as $child)
           @if($child->parent_id == $comment->id)
             @include('comments.single', ['comment' => $child])

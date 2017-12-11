@@ -9,15 +9,6 @@
       Your account has been temporarily suspended for contravening our community guidelines. Please try again later or contact us for more information.
     </div>
   @else
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-    @endif
     <div class="idea-form">
       <form method="POST" action="/themes/new/{{ Hashids::encode(Auth::user()->id) }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -62,7 +53,11 @@
       </form>
       <div class="ideas-guidelines">
         <h2>Guidelines</h2>
-        <p>Ideas will be reviewed by a moderator before appearing on the site. Ideas not meeting our community guidelines will not be approved.</p>
+        <ul>
+          <li><strong>Keep it brief</strong> – smaller ideas are better than long ideas </li>
+          <li><strong>Keep it clear</strong> – try to explain your idea as simply as possible</li>
+          <li><strong>Keep it friendly</strong> – your idea must follow our <a href="/terms/">community guidelines</a></li>
+        </ul>
       </div>
     </div>
   @endif

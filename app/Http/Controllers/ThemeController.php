@@ -26,8 +26,8 @@ class ThemeController extends Controller
 
   public function index()
   {
-    $themes = Theme::all();
+    $themes = Theme::all()->with(['ideas.user','ideas.likes']);
     return view('theme.index', compact('themes'));
   }
-  
+
 }

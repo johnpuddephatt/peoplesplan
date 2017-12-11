@@ -19023,12 +19023,53 @@ module.exports = function(module) {
 __webpack_require__("./resources/assets/js/bootstrap.js");
 
 window.smoothScroll = __webpack_require__("./resources/assets/js/smoothscroll.min.js");
-
 window.$ = __webpack_require__("./resources/assets/js/jquery-3.2.1.min.js");
 
 __webpack_require__("./resources/assets/js/scroller.js");
 __webpack_require__("./resources/assets/js/comments.js");
 __webpack_require__("./resources/assets/js/tabs.js");
+
+var navButton = document.querySelector('.navigation-account');
+var navMenu = document.querySelector('.navigation-account-menu');
+
+if (navButton && navMenu) {
+
+  navMenu.addEventListener('focusout', function () {
+    setTimeout(function () {
+      // navMenu.classList.remove('open');
+    }, 100);
+  });
+
+  navButton.addEventListener('focusin', function () {
+    setTimeout(function () {
+      navMenu.classList.add('open');
+    }, 0);
+  });
+  navButton.addEventListener('focusout', function () {
+    setTimeout(function () {
+      navMenu.classList.remove('open');
+    }, 0);
+  });
+
+  navMenu.addEventListener('focusin', function () {
+    setTimeout(function () {
+      navMenu.classList.add('open');
+    }, 0);
+  });
+
+  navMenu.addEventListener('focusout', function () {
+    setTimeout(function () {
+      navMenu.classList.remove('open');
+    }, 0);
+  });
+
+  navMenu.addEventListener('click', function (e) {
+
+    if (e.target.getAttribute('href')) {
+      // e.preventDefault();
+    }
+  });
+}
 
 /***/ }),
 
@@ -19128,6 +19169,12 @@ for (var i = 0; i < likeIcons.length; i++) {
         if (msg.downvote_delta == -1) {
           document.getElementById(likeable_id + '-' + likeable_type + '-dislike').classList.remove('active');
         }
+        likeTotal = document.getElementById(likeable_id + '-' + likeable_type + '-like-total');
+        var newTotal = parseInt(likeTotal.innerText) + (msg.upvote_delta - msg.downvote_delta);
+        if (newTotal > 0) {
+          newTotal = '+' + newTotal;
+        }
+        likeTotal.innerText = newTotal;
       } else if (msg.flag == 0) {
         window.location = '/login';
       }
@@ -19165,9 +19212,9 @@ $(document).on('submit', '.comment-form', function () {
     dataType: "json"
   }).done(function (msg) {
     $(thisForm).toggle('normal');
-
+    console.log('#' + commentable_id + '-comment-' + parent_id);
     var newComment = '<div class="comment comment-new" id="comment-' + msg.id + '"><a class="avatar"><img src="' + msg.userPic + '"></a><div class="content"><a class="author">' + msg.userName + '</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">' + escapeHtml(msg.comment) + '</div><div class="actions"></div></div><div class="ui threaded comments" id="' + commentable_id + '-comment-' + msg.id + '"></div></div>';
-    $('#' + commentable_id + '-comment-' + parent_id).prepend(newComment);
+    $('#' + commentable_id + '-comments-' + parent_id).prepend(newComment);
     $('textarea#' + parent_id + '-textarea').val('');
   }).fail(function (msg) {
     alert('Error occured! See console');

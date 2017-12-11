@@ -5,8 +5,6 @@
     <div class="container">
       <div class="header-introduction">
         <h1 class="page-title page-title--home">Let’s design the most advanced digital society in the world &ndash; together</h1>
-        {{-- <p>As Parliament debates how to make the United Kingdom the world’s digital leader, it’s important we end up with the right plan.</p >
-        <p>That’s why we’ve created the People’s Plan for Digital, a place where anyone – including you – can suggest and discuss the ideas you think Parliament should listen to.</p> --}}
         <p>Our country is debating how to become the world’s digital leader. So we’ve created a place where you can share and shape the ideas you want Parliament to listen to.</p>
         <a class="button" href="/ideas/">See all ideas</a><a class="button primary" href="/ideas/add/">Add your idea</a>
 
@@ -61,15 +59,7 @@
         <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
         <div class="home-interviews-inner scroller-inner">
           @foreach ($interviews as $interview)
-            <a href="/interviews/{{ $interview->slug }}" class="home-interviews-item">
-              <div class="home-interviews-image">
-                <img  src="{{ $interview->thumb }}" alt="Video thumbnail showing {{$interview->name}}">
-                @include("inc.playbutton")
-              </div>
-              <p class="home-interviews-quote">{{ $interview->quote }}</p>
-              <h3 class="home-interviews-title">{{ $interview->name }}</h3>
-              <span>{{ $interview->comments_count }} comments</span>
-            </a>
+            @include('interview.card')
           @endforeach
         </div>
       </div>

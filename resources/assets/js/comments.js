@@ -34,6 +34,14 @@ for (var i = 0; i < likeIcons.length; i++) {
         if(msg.downvote_delta == -1) {
           document.getElementById(likeable_id+'-'+ likeable_type +'-dislike').classList.remove('active');
         }
+        likeTotal = document.getElementById(likeable_id+'-'+ likeable_type +'-like-total');
+        let newTotal = parseInt(likeTotal.innerText) + (msg.upvote_delta - msg.downvote_delta);
+        if(newTotal > 0) {
+          newTotal = '+' + newTotal;
+        }
+        likeTotal.innerText = newTotal;
+
+
       }
       else if(msg.flag == 0) {
         window.location = '/login';
@@ -75,9 +83,9 @@ $(document).on('submit', '.comment-form', function(){
       })
       .done(function(msg){
         $(thisForm).toggle('normal');
-
+        console.log('#'+commentable_id+'-comment-'+parent_id);
         var newComment = '<div class="comment comment-new" id="comment-'+msg.id+'"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+escapeHtml(msg.comment)+'</div><div class="actions"></div></div><div class="ui threaded comments" id="'+commentable_id+'-comment-'+msg.id+'"></div></div>';
-        $('#'+commentable_id+'-comment-'+parent_id).prepend(newComment);
+        $('#'+commentable_id+'-comments-'+parent_id).prepend(newComment);
         $('textarea#'+parent_id+'-textarea').val('');
       })
       .fail(function(msg){

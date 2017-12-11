@@ -26,6 +26,14 @@ class IdeaController extends Controller
     return view('idea.index', compact('ideas','themes'));
   }
 
+  public function user()
+  {
+    $user_id = Auth::user()->id;
+    $ideas = Idea::where([['approved',true],['user_id',$user_id]])->with(['user','likes'])->withCount('comments')->get();
+    $pending_ideas = Idea::where([['approved',false],['user_id',$user_id]])->with(['user','likes'])->withCount('comments')->get();
+    return view('idea.user', compact('ideas','pending_ideas'));
+  }
+
   public function add() {
     $themes = Theme::all();
     return view('idea.add', compact('themes'));
@@ -50,7 +58,7 @@ class IdeaController extends Controller
     $theme->addIdea(
       new Idea($request->all())
     );
-    flash('Thank you. Your idea is being reviewed to ensure it meets our community guidelines.');
+    flash('Thank you! Your idea has been submitted and will be reviewed to ensure it meets our community guidelines.')->error();
     return back();
   }
 

@@ -43,16 +43,18 @@
   }
   &.block {
     display: block;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   &.primary {
-    background-color: $action-color;
+    background-color: $light-green;
     color: white;
-    border-color: shade($action-color, 5%);
+    border-color: $green;
 
     &:hover,
     &:focus {
-      background-color: shade($action-color, 5%);
+      background-color: $green;
       color: #fff;
       border-color: shade($action-color, 10%);
     }

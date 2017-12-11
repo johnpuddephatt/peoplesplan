@@ -14,4 +14,10 @@ class InterviewController extends Controller
     $interview = Interview::where('slug',$slug)->with(['comments.user','comments.likes','likes'])->firstOrFail();
     return view('interview.single', compact('interview'));
   }
+
+  public function index()
+  {
+    $interviews = Interview::withCount('comments')->get();
+    return view('interview.index', compact('interviews'));
+  }
 }

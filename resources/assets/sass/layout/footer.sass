@@ -2,6 +2,17 @@
   background-color: $medium-gray
   padding: $base-spacing
   color: white
-  text-align: center  
+  text-align: center
+  display: none
+  @media screen and (min-width: $medium-screen)
+    display: block
+  p
+    font-size: modular-scale(-1)
   p:last-child
     margin-bottom: 0
+
+
+.footer-title
+  font-size: modular-scale(1)
+  text-transform: lowercase
+  font-weight: 700

@@ -1,6 +1,17 @@
+body
+  padding-bottom: 2 * $base-spacing
+  @media screen and (min-width: $medium-screen)
+    padding-bottom: 0
+    padding-top: 2 * $base-spacing
+
+main
+  min-height: calc(100vh - #{4 * $base-spacing})
+
 .container
   padding: 0 $small-spacing
   @media screen and (min-width: $medium-screen)
+    padding: 0 $small-spacing
+  @media screen and (min-width: $large-screen)
     padding: 0 $base-spacing
   margin: 0 auto
   max-width: $large-screen
@@ -8,9 +19,13 @@
 
 .panel
   background-color: #fff
-  padding: 2 * $base-spacing
-  margin-top: $base-spacing
-  margin-bottom: $base-spacing
+  padding: $base-spacing
+  @media screen and (min-width: $medium-screen)
+    padding: 1.5 * $base-spacing
+    margin-top: $base-spacing
+    margin-bottom: $base-spacing
+  @media screen and (min-width: $large-screen)
+    padding: 2 * $base-spacing
 
 
 .alert
@@ -23,20 +38,40 @@
     color: white
     border-bottom: 1px dashed white
 
+.flash-message
+  position: fixed
+  bottom: 1.5 * $base-spacing
+  left: 0
+  right: 0
+  animation: flashInOut ease 7s forwards
+  @media screen and (min-width: $medium-screen)
+    bottom: .25 * $base-spacing
+
+@keyframes flashInOut
+  0%
+    opacity: 0
+    transform: translateY(3 * $base-spacing)
+  20%, 80%
+    opacity: 1
+    transform: translateY(0)
+  100%
+    opacity: 0
+    transform: translateY(3 * $base-spacing)
 
 .form-group
-  display: flex
-  flex-wrap: wrap
-  label
-    flex: 1 1 30%
-    width: 30%
-    margin-right: $small-spacing
-  .button
-    flex: 1 1 37.5%
-    width: 37.5%
-  #{$all-text-inputs}
-    flex: 1 1 57.5%
-    width: 57.5%
+  @media screen and (min-width: $medium-screen)
+    display: flex
+    flex-wrap: wrap
+    label
+      flex: 1 1 37.5%
+      width: 37.5%
+      margin-right: $small-spacing
+    .button
+      flex: 1 1 37.5%
+      width: 37.5%
+    #{$all-text-inputs}
+      flex: 1 1 57.5%
+      width: 57.5%
 
 .help-block
   display: block

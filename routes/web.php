@@ -16,18 +16,25 @@ Route::get('/', 'HomeController@index');
 Route::get('/static', 'HomeController@static');
 Route::get('/welcome', 'HomeController@welcome')->middleware('auth');
 
+Route::get('/terms', function(){
+  return View::make('pages.terms');
+});
+
+
 Route::get('/blog/{slug}', 'ArticleController@show');
-Route::get('/blog/', 'ArticleController@index');
+Route::get('/blog', 'ArticleController@index');
 
 Route::get('/themes/{slug}', 'ThemeController@show');
-Route::get('/themes/', 'ThemeController@index');
+Route::get('/themes', 'ThemeController@index');
+
 
 Route::get('/interviews/{slug}', 'InterviewController@show');
+Route::get('/interviews', 'InterviewController@index');
 
-Route::get('/ideas/', 'IdeaController@index');
-Route::get('/ideas/add/', 'IdeaController@add')->middleware('auth');
+Route::get('/ideas', 'IdeaController@index');
+Route::get('/ideas/add', 'IdeaController@add')->middleware('auth');
 Route::get('/ideas/{slug}', 'IdeaController@show');
-
+Route::get('/user', 'IdeaController@user');
 Route::post('/themes/new/{userhash}', 'IdeaController@store');
 
 // Backpack dashboard routes

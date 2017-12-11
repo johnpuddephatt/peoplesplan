@@ -18,7 +18,7 @@ class OAuthController extends Controller
    *
    * @var string
    */
-  protected $redirectTo = '/welcome';
+  protected $redirectTo = '/';
 
   /**
    * Redirect the user to the OAuth Provider.
@@ -44,6 +44,7 @@ class OAuthController extends Controller
 
        $authUser = $this->findOrCreateUser($user, $provider);
        Auth::login($authUser, true);
+       flash('Success. You’re now signed in and ready to post or discuss ideas.');
        return redirect($this->redirectTo);
    }
 

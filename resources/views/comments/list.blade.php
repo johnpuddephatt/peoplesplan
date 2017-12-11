@@ -15,7 +15,7 @@
       </form>
     @endif
 
-    <div class="comments" id="{{ $comment_item->id }}-comment-0">
+    <div class="comments" id="{{ $comment_item->id }}-comments-0">
 
       @foreach ($comment_item->comments as $comment)
 
