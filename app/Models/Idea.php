@@ -8,11 +8,14 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\User;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Idea extends Model
 {
     use CrudTrait;
-
+    use SoftDeletes;
+    
     protected $fillable = ['title','theme_id','description_what','description_why','user_id','approved','slug','featured'];
 
      /*
