@@ -202,7 +202,7 @@
   padding-bottom: 4 * $base-spacing
   .container
   .home-theme-title
-    margin-bottom: $base-spacing
+    margin-bottom: 1.5 * $base-spacing
     margin-right: 2.5 *$base-spacing
   .home-theme-date
     color: $light-gray
@@ -233,7 +233,9 @@
 
     .home-theme-icon
       position: absolute
-      right: 0
+      right: $small-spacing
+      @media screen and (min-width: $large-screen)
+        right: $base-spacing
       top: 0
       height: auto
       width: 2 * $base-spacing
