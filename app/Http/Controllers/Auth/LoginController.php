@@ -65,7 +65,7 @@ class LoginController extends Controller
       }
 
       return redirect()->back()
-      ->withInput($request->only($this->name, $this->username(), 'remember'))
+      ->withInput($request->only('email', 'remember'))
       ->withErrors($errors);
     }
 

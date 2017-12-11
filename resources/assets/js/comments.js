@@ -74,7 +74,10 @@ $(document).on('submit', '.comment-form', function(){
     var commentable_id = $(this).data('id');
     var commentable_type = $(this).data('type');
     var comment = $('textarea#'+parent_id+'-textarea').val();
-
+    if (!comment) {
+      alert('Comment cannot be empty!');
+      return false;
+    }
     $.ajax({
          method: "get",
          url: "/laravellikecomment/comment/add",
@@ -84,7 +87,7 @@ $(document).on('submit', '.comment-form', function(){
       .done(function(msg){
         $(thisForm).toggle('normal');
         console.log('#'+commentable_id+'-comment-'+parent_id);
-        var newComment = '<div class="comment comment-new" id="comment-'+msg.id+'"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="text">'+escapeHtml(msg.comment)+'</div><div class="actions"></div></div><div class="ui threaded comments" id="'+commentable_id+'-comment-'+msg.id+'"></div></div>';
+        var newComment = '<div class="comment comment-new" id="comment-'+msg.id+'"><a class="avatar"><img src="'+msg.userPic+'"></a><div class="content"><a class="author">'+msg.userName+'</a><div class="metadata"><span class="date">Today at 5:42PM</span></div><div class="comment-text">'+escapeHtml(msg.comment)+'</div><div class="actions"></div></div><div class="ui threaded comments" id="'+commentable_id+'-comment-'+msg.id+'"></div></div>';
         $('#'+commentable_id+'-comments-'+parent_id).prepend(newComment);
         $('textarea#'+parent_id+'-textarea').val('');
       })

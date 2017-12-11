@@ -221,19 +221,16 @@
 		line-height: $base-spacing;
 
 	}
-	.text {
+	.comment-text {
 		clear: left;
 		margin: $small-spacing 0;
 	}
 	.actions {
-		overflow: hidden;
+		// overflow: hidden;
 	}
-	.reply-button {
-		float: left;
-		margin-left: $small-spacing/2;
-		line-height: 1.5 * $base-spacing;
-		font-size: modular-scale(-1);
-		cursor: pointer
+	.reply-button,.report-button {
+		padding-left: $small-spacing/2;
+		padding-right: $small-spacing/2;
 	}
 	.like-container {
 		float: left;

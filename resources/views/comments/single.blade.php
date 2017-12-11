@@ -14,13 +14,17 @@
     <div class="metadata">
       <span class="date" title="{{ date('g:ia, jS F Y', strtotime($comment->updated_at)) }}">{{ $comment->updated_at->diffForHumans() }}</span>
     </div>
-    <div class="text">
+    <div class="comment-text">
       {{ $comment->comment }}
     </div>
     <div class="actions">
       @include('comments.like', ['like_item' => $comment])
       @if(Auth::check() && !Auth::user()->is_blocked && ($comment_level < 3))
-        <a class="reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Reply</a>
+        <button class="reply reply-button text" data-toggle="{{ $comment->id }}-reply-form">Reply</button>
+        <a class="report report-button button text" href="mailto:mail@peoplesplan.co.uk?subject=Comment #{{$comment->id}} on People's Plan reported&body=Comment ID: {{$comment->id }}%0D%0AParent item ID: {{ $comment->parent_id}}%0D%0A====================%0D%0AReason for reporting comment: %0D%0AYour name:">Report</a>
+
+
+
       @endif
     </div>
 

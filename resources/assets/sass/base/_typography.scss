@@ -93,6 +93,10 @@ a {
   }
 }
 
+button:focus {
+  box-shadow: 0 0 0 4px $peach
+}
+
 hr {
   border-bottom: $base-border;
   border-left: 0;

@@ -4,7 +4,7 @@
   <section class="section--home-header">
     <div class="container">
       <div class="header-introduction">
-        <h1 class="page-title page-title--home">Let’s design the most advanced digital society in the world &ndash; together</h1>
+        <h1 class="page-title page-title--home">Let’s design the most advanced digital society in the world &ndash; together</h1>
         <p>Our country is debating how to become the world’s digital leader. So we’ve created a place where you can share and shape the ideas you want Parliament to listen to.</p>
         <a class="button" href="/ideas/">See all ideas</a><a class="button primary" href="/ideas/add/">Add your idea</a>
 

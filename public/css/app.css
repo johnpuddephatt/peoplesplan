@@ -549,6 +549,11 @@ a:focus {
           box-shadow: 0 0 0 4px #F5D0B7;
 }
 
+button:focus {
+  -webkit-box-shadow: 0 0 0 4px #F5D0B7;
+          box-shadow: 0 0 0 4px #F5D0B7;
+}
+
 hr {
   border-bottom: 1px solid #E2E2E1;
   border-left: 0;
@@ -1419,7 +1424,7 @@ main {
 }
 
 .section--home-themes .home-theme-title {
-  margin-bottom: 0;
+  margin-bottom: 1.6rem;
   margin-right: 4rem;
 }
 
@@ -1732,21 +1737,15 @@ main {
   line-height: 1.6rem;
 }
 
-.comment-container .text {
+.comment-container .comment-text {
   clear: left;
   margin: 0.8rem 0;
 }
 
-.comment-container .actions {
-  overflow: hidden;
-}
-
-.comment-container .reply-button {
-  float: left;
-  margin-left: 0.4rem;
-  line-height: 2.4rem;
-  font-size: 0.8em;
-  cursor: pointer;
+.comment-container .reply-button,
+.comment-container .report-button {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
 }
 
 .comment-container .like-container {
