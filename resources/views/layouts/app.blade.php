@@ -83,7 +83,7 @@
     <footer class="site-footer">
       <div class="container">
         <h2 class="footer-title">The People’s Plan</h2>
-        <p>The People’s Plan for digital is developed and promoted by <a href="http://liambyrne.co.uk/" target="_blank">Liam Byrne MP</a>. &copy; 2017-2018</p>
+        <p>The People’s Plan for Digital is developed and promoted by <a href="http://liambyrne.co.uk/" target="_blank">Liam Byrne MP</a>. &copy; 2017-2018</p>
       </div>
     </footer>
   </body>
