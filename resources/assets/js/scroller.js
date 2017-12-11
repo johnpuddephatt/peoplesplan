@@ -37,36 +37,54 @@ for (var i = 0; i < scrollers.length; i++) {
     });
 
 
-    scrollerInner.addEventListener('mousemove', function(e) {
+    scrollerInner.addEventListener('mousemove', function mouseMoveScroller(e) {
 
       if (curDown) {
         dragging = true;
         //curXPos is where the click begins
         scrollerInner.scrollLeft = curLeft - 1.35 * (e.pageX - curXPos);
+        console.log(e.pageY - curYPos);
+        if(Math.abs(e.pageY - curYPos) > 60) {
+          curDown = false;
+        }
 
       }
     });
 
 
-    scrollerInner.addEventListener('mousedown', function(e) {
+    scrollerInner.addEventListener('mousedown', function mouseDownScroller(e) {
       curXPos = e.pageX;
+      curYPos = e.pageY;
       curDown = true;
       curLeft = scrollerInner.scrollLeft;
       dragging = false;
       scrollerInner.classList.add('grabbing');
     });
 
-    scrollerInner.addEventListener('mouseup', function(e) {
+    scrollerInner.addEventListener('mouseup', function mouseUpScroller(e) {
       curDown = false;
       scrollerInner.classList.remove('grabbing');
     });
 
-    scrollerInner.addEventListener('mouseleave', function(e) {
+    scrollerInner.addEventListener('mouseleave', function mouseLeaveScroller(e) {
       curDown = false;
       scrollerInner.classList.remove('grabbing');
     });
 
 
+    var hasTouch;
+    window.addEventListener('touchstart', function setHasTouch () {
+        hasTouch = true;
+        alert('removing touch handlers!');
+        // Remove event listener once fired, otherwise it'll kill scrolling
+        // performance
+        window.removeEventListener('touchstart', setHasTouch);
+        scrollerInner.removeEventListener('mousemove', mouseMoveScroller);
+        scrollerInner.removeEventListener('mousedown', mouseDownScroller);
+        scrollerInner.removeEventListener('mouseup', mouseUpScroller);
+        scrollerInner.removeEventListener('mouseleave', mouseLeaveScroller);
+
+    }, false);
 
     nextButton.addEventListener('click', ()=> {
       themeScroll('backwards');

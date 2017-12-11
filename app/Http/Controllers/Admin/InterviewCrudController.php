@@ -154,7 +154,9 @@ class InterviewCrudController extends CrudController
     {
         // your additional operations before save here
         $request['slug'] = str_slug($request->name);
-        // $request['thumb'] = Interview::storeImage($request['thumb']);
+        if($request['thumb']) {
+          $request['thumb'] = Interview::storeImage($request['thumb']);
+        }
 
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
