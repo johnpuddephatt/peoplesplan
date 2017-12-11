@@ -2228,6 +2228,8 @@ main {
 }
 
 .panel--login {
+  -webkit-box-shadow: 0px 0px 4.8rem rgba(50, 50, 50, 0.1);
+          box-shadow: 0px 0px 4.8rem rgba(50, 50, 50, 0.1);
   background: linear-gradient(-45deg, #F5D0B7 30%, white 30%);
 }
 
@@ -2300,8 +2302,6 @@ main {
 
 .login-form {
   margin: 1.6rem 0;
-  -webkit-box-shadow: 0px 0px 4.8rem rgba(50, 50, 50, 0.1);
-          box-shadow: 0px 0px 4.8rem rgba(50, 50, 50, 0.1);
 }
 
 .login-terms {
