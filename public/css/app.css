@@ -1476,7 +1476,7 @@ main {
   position: absolute;
   right: 0;
   top: 0;
-  height: 3.2rem;
+  height: auto;
   width: 3.2rem;
 }
 
