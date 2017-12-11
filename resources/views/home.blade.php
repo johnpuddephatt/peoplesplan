@@ -91,6 +91,7 @@
               <h3 class="home-theme-title">
                 {{ $theme->title }}
               </h3>
+              <img src="{{$theme->icon}}" class="home-theme-icon" alt="">
               <div class="home-theme-date">
                 {{$theme->getMonth()}}
               </div>

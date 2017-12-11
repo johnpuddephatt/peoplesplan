@@ -1420,6 +1420,7 @@ main {
 
 .section--home-themes .home-theme-title {
   margin-bottom: 0;
+  margin-right: 4rem;
 }
 
 .section--home-themes .home-theme-date {
@@ -1435,6 +1436,7 @@ main {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
+  position: relative;
   padding: 0.8rem 0.8rem;
   border-left: 1px dashed #E2E2E1;
   margin-top: 3.2rem;
@@ -1470,41 +1472,12 @@ main {
   border-left: none;
 }
 
-.section--home-themes .home-theme-item::before {
-  content: counter(theme);
-  display: block;
-  font-size: 3.81469727em;
-  color: #E2E2E1;
-  line-height: 3.2rem;
-  padding-top: 3.2rem;
-  margin-bottom: 1.6rem;
-  background-position: right bottom;
-  background-size: 4rem auto;
-  background-repeat: no-repeat;
-}
-
-.section--home-themes .home-theme-item--safety::before {
-  background-image: url(/images/theme-safety.svg);
-}
-
-.section--home-themes .home-theme-item--infrastructure::before {
-  background-image: url(/images/theme-infrastructure.svg);
-}
-
-.section--home-themes .home-theme-item--skills::before {
-  background-image: url(/images/theme-skills.svg);
-}
-
-.section--home-themes .home-theme-item--security::before {
-  background-image: url(/images/theme-security.svg);
-}
-
-.section--home-themes .home-theme-item--jobs::before {
-  background-image: url(/images/theme-jobs.svg);
-}
-
-.section--home-themes .home-theme-item--government::before {
-  background-image: url(/images/theme-government.svg);
+.section--home-themes .home-theme-item .home-theme-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 3.2rem;
+  width: 3.2rem;
 }
 
 .section--home-interviews .container {

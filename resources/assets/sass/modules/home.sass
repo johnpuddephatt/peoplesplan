@@ -203,6 +203,7 @@
   .container
   .home-theme-title
     margin-bottom: 0
+    margin-right: 2.5 *$base-spacing
   .home-theme-date
     color: $light-gray
     margin-bottom: $small-spacing
@@ -212,6 +213,7 @@
     float: left
     width: 20%
     flex: 0 0 100%
+    position: relative
     padding: $small-spacing $small-spacing
     border-left: 1px dashed $light-gray
     margin-top: 2 * $base-spacing
@@ -228,29 +230,36 @@
     &:first-child
       border-left: none
       // margin-left: $base-spacing
-    &::before
-      content: counter(theme)
-      display: block
-      font-size: modular-scale(6)
-      color: $light-gray
-      line-height: 2 * $base-spacing
-      padding-top: 2 * $base-spacing
-      margin-bottom: $base-spacing
-      background-position: right bottom
-      background-size: #{2.5 * $base-spacing} auto
-      background-repeat: no-repeat
-    &--safety::before
-        background-image: url(/images/theme-safety.svg)
-    &--infrastructure::before
-        background-image: url(/images/theme-infrastructure.svg)
-    &--skills::before
-        background-image: url(/images/theme-skills.svg)
-    &--security::before
-        background-image: url(/images/theme-security.svg)
-    &--jobs::before
-        background-image: url(/images/theme-jobs.svg)
-    &--government::before
-        background-image: url(/images/theme-government.svg)
+
+    .home-theme-icon
+      position: absolute
+      right: 0
+      top: 0
+      height: 2 * $base-spacing
+      width: 2 * $base-spacing
+    // &::before
+    //   content: counter(theme)
+    //   display: block
+    //   font-size: modular-scale(6)
+    //   color: $light-gray
+    //   line-height: 2 * $base-spacing
+    //   padding-top: 2 * $base-spacing
+    //   margin-bottom: $base-spacing
+    //   background-position: right bottom
+    //   background-size: #{2.5 * $base-spacing} auto
+    //   background-repeat: no-repeat
+    // &--safety::before
+    //     background-image: url(/images/theme-safety.svg)
+    // &--infrastructure::before
+    //     background-image: url(/images/theme-infrastructure.svg)
+    // &--skills::before
+    //     background-image: url(/images/theme-skills.svg)
+    // &--security::before
+    //     background-image: url(/images/theme-security.svg)
+    // &--jobs::before
+    //     background-image: url(/images/theme-jobs.svg)
+    // &--government::before
+    //     background-image: url(/images/theme-government.svg)
 
 .section--home-interviews
   .container
@@ -261,4 +270,4 @@
   .home-interviews-scroller::before
     background: linear-gradient(to left,rgba(255,255,255,0), $off-white)
   .home-interviews-scroller::after
-    background: linear-gradient(to right,rgba(255,255,255,0), $off-white)  
+    background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
