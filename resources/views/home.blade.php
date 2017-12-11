@@ -92,9 +92,9 @@
                 {{ $theme->title }}
               </h3>
               <img src="{{$theme->icon}}" class="home-theme-icon" alt="">
-              <div class="home-theme-date">
+              {{-- <div class="home-theme-date">
                 {{$theme->getMonth()}}
-              </div>
+              </div> --}}
               <p>{{ $theme->description }}</p>
 
               @if (strtotime($theme->date) < time())
