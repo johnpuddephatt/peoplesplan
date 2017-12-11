@@ -116,6 +116,7 @@ class RegisterController extends Controller
     $user = User::where('email_token',$token)->firstOrFail();
     $user->verified();
     Auth::login($user, true);
+    flash('Account sucessfully verified. You’re now signed in and ready to join the debate.');
     return redirect($this->redirectTo);
   }
 
