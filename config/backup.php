@@ -19,7 +19,7 @@ return [
                  * specify individual files as well.
                  */
                 'include' => [
-                    '.env',
+                    '/.env',
                     base_path('public'),
                 ],
 
