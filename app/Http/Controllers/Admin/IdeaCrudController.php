@@ -77,20 +77,20 @@ class IdeaCrudController extends CrudController
       'type' => 'check',
     ];
 
-    $featuredField = [
-      'name' => 'featured',
-      'label' => 'Featured?',
-      'type' => 'checkbox',
-    ];
+    // $featuredField = [
+    //   'name' => 'featured',
+    //   'label' => 'Featured?',
+    //   'type' => 'checkbox',
+    // ];
+    //
+    // $featuredCol = [
+    //   'name' => 'featured',
+    //   'label' => 'Featured?',
+    //   'type' => 'check',
+    // ];
 
-    $featuredCol = [
-      'name' => 'featured',
-      'label' => 'Featured?',
-      'type' => 'check',
-    ];
-
-    $this->crud->addFields([$approvedField,$featuredField,$titleArray,$userArray,$themeArray,$whatArray,$whyArray,], 'both');
-    $this->crud->addColumns([$titleArray,$userArray,$themeArray,$featuredCol,$approvedCol]);
+    $this->crud->addFields([$approvedField,$titleArray,$userArray,$themeArray,$whatArray,$whyArray,], 'both');
+    $this->crud->addColumns([$titleArray,$userArray,$themeArray,$approvedCol]);
 
   }
 
