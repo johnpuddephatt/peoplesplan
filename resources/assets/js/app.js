@@ -26,10 +26,18 @@ if(navButton && navMenu) {
   });
 
   navButton.addEventListener('focusin',()=>{
+    console.log('nav');
     setTimeout(function () {
       navMenu.classList.add('open');
     },0);
   });
+
+  navButton.addEventListener('click',()=>{
+    setTimeout(function () {
+      navMenu.classList.add('open');
+    },0);
+  });
+
   navButton.addEventListener('focusout',()=>{
     setTimeout(function () {
       navMenu.classList.remove('open');

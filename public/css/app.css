@@ -796,6 +796,13 @@ hr {
   margin-right: 0 !important;
 }
 
+.masthead .site-navigation .navigation-account-menu a:focus,
+.masthead .site-navigation .navigation-account-menu button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 4px #F5D0B7;
+          box-shadow: 0 0 0 4px #F5D0B7;
+}
+
 @media screen and (min-width: 700px) {
   .masthead .site-navigation .navigation-account-menu {
     position: absolute;

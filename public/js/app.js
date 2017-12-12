@@ -19041,10 +19041,18 @@ if (navButton && navMenu) {
   });
 
   navButton.addEventListener('focusin', function () {
+    console.log('nav');
     setTimeout(function () {
       navMenu.classList.add('open');
     }, 0);
   });
+
+  navButton.addEventListener('click', function () {
+    setTimeout(function () {
+      navMenu.classList.add('open');
+    }, 0);
+  });
+
   navButton.addEventListener('focusout', function () {
     setTimeout(function () {
       navMenu.classList.remove('open');

@@ -70,7 +70,7 @@ class OAuthController extends Controller
       $existingEmailUser->provider = $provider;
       $existingEmailUser->name = $user->name;
       $existingEmailUser->provider_id = $user->id;
-      $existingEmailUser->avatar = $user->avatar;
+      $existingEmailUser->avatar = str_replace('http://','https://',$user->avatar);
       $existingEmailUser->verified = 1;
       $existingEmailUser->save();
       return $existingEmailUser;
@@ -82,7 +82,7 @@ class OAuthController extends Controller
        'email'    => $user->email,
        'provider' => $provider,
        'provider_id' => $user->id,
-       'avatar' => $user->avatar,
+       'avatar' => str_replace('http://','https://',$user->avatar),
        'verified' => 1,
     ]);
     return $newUser;
