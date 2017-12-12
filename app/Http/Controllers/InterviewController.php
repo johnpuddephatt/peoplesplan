@@ -7,13 +7,6 @@ use DB;
 use App\Models\Interview;
 use Illuminate\Support\Facades\Auth;
 
-
-
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-
-
 class InterviewController extends Controller
 {
   public function show($slug)
@@ -24,10 +17,6 @@ class InterviewController extends Controller
 
   public function index()
   {
-
-    Schema::table('ideas', function (Blueprint $table) {
-      $table->softDeletes();
-    });
     $interviews = Interview::withCount('comments')->get();
     return view('interview.index', compact('interviews'));
   }
