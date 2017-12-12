@@ -79,11 +79,21 @@ class UserCrudController extends CrudController
          'type' => 'check'
         ];
 
+        $contactableField = [   // Browse
+            'name' => 'contactable',
+            'label' => 'Contactable?',
+            'type' => 'checkbox'
+        ];
 
+        $contactableColumn = [
+         'name' => 'contactable', // The db column name
+         'label' => 'Contactable?', // Table column heading
+         'type' => 'check'
+        ];
 
-        $this->crud->addFields([$nameArray,$emailArray,$adminField,$blockedField,$verifiedField], 'both');
+        $this->crud->addFields([$nameArray,$emailArray,$adminField,$blockedField,$verifiedField,$contactableField], 'both');
 
-        $this->crud->addColumns([$nameArray,$adminColumn,$blockedColumn,$verifiedColumn]);
+        $this->crud->addColumns([$nameArray,$adminColumn,$blockedColumn,$verifiedColumn,$contactableColumn]);
 
         // $this->crud->removeColumn('body'); // remove a column from the stack
         // ------ CRUD FIELDS

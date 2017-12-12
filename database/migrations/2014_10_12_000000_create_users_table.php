@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
         $table->string('provider')->nullable();
         $table->string('provider_id')->nullable();
         $table->string('avatar')->nullable();
+        $table->tinyInteger('gravatar')->default(0);
+        $table->tinyInteger('contactable')->default(1);
         $table->softDeletes();
         $table->integer('login_count')->default(0);
         $table->tinyInteger('verified')->default(0);

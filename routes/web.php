@@ -20,6 +20,15 @@ Route::get('/terms', function(){
   return View::make('pages.terms');
 });
 
+Route::get('/privacy', function(){
+  return View::make('pages.privacy');
+});
+
+
+Route::get('/migrate', function(){
+  return View::make('migrate');
+})->middleware('auth');
+
 
 Route::get('/blog/{slug}', 'ArticleController@show');
 Route::get('/blog', 'ArticleController@index');
@@ -34,8 +43,12 @@ Route::get('/interviews', 'InterviewController@index');
 Route::get('/ideas', 'IdeaController@index');
 Route::get('/ideas/add', 'IdeaController@add')->middleware('auth');
 Route::get('/ideas/{slug}', 'IdeaController@show');
-Route::get('/user', 'IdeaController@user');
 Route::post('/themes/new/{userhash}', 'IdeaController@store');
+
+Route::get('/user/ideas', 'UserController@ideas')->middleware('auth');
+Route::get('/user/preferences', 'UserController@showPreferences')->middleware('auth');
+Route::post('/user/preferences/update', 'UserController@storePreferences')->middleware('auth');
+
 
 // Backpack dashboard routes
 Route::group(

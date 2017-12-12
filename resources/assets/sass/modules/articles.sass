@@ -1,6 +1,10 @@
 .article-content
   background-color: #fff
-  padding: 5 * $base-spacing 6 * $base-spacing
+  padding: 2 * $base-spacing 2 * $base-spacing
+  @media screen and (min-width: $medium-screen)
+    padding: 3 * $base-spacing 4 * $base-spacing
+  @media screen and (min-width: $large-screen)
+    padding: 5 * $base-spacing 6 * $base-spacing
   margin-top: 2 * $base-spacing
   margin-bottom: 2 * $base-spacing
 
@@ -18,6 +22,18 @@
     font-size: modular-scale(1)
     font-weight: bold
     margin-bottom: $base-spacing
+  h2
+    margin-top: 2 * $base-spacing
+    font-size: modular-scale(2)
+    color: $green
+  h3
+    margin-top: 1.5 * $base-spacing
+  ul
+    margin: $base-spacing 0 2 * $base-spacing
+  li
+    margin-bottom: $small-spacing
+    margin-left: $base-spacing
+    list-style-type: square
 
 .article-comments
   margin-top: 3 * $base-spacing

@@ -52,7 +52,8 @@
                 @if(Auth::user()->is_admin)
                   <a class="button text" href="/admin/">Admin</a>
                 @endif
-                <a class="button text" href="/user/">My ideas</a>
+                <a class="button text" href="/user/ideas">My ideas</a>
+                <a class="button text" href="/user/preferences">Preferences</a>
                 <a class="button text" href="{{ url('/logout') }}"
                     onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
@@ -85,6 +86,10 @@
         <h2 class="footer-title">The People’s Plan</h2>
         <p>The People’s Plan for Digital is developed and promoted by <a href="http://liambyrne.co.uk/" target="_blank">Liam Byrne MP</a>. &copy; 2017-2018</p>
       </div>
+      <nav class="footer-menu">
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms &amp; conditions</a>
+      </nav>
     </footer>
   </body>
 

@@ -1074,6 +1074,13 @@ main {
   font-weight: 700;
 }
 
+.footer-menu a {
+  display: inline-block;
+  padding: 0.8rem;
+  margin: 0.8rem;
+  color: #E2E2E1;
+}
+
 .avatar {
   width: 4.8rem;
 }
@@ -2101,9 +2108,21 @@ main {
 
 .article-content {
   background-color: #fff;
-  padding: 8rem 9.6rem;
+  padding: 3.2rem 3.2rem;
   margin-top: 3.2rem;
   margin-bottom: 3.2rem;
+}
+
+@media screen and (min-width: 700px) {
+  .article-content {
+    padding: 4.8rem 6.4rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .article-content {
+    padding: 8rem 9.6rem;
+  }
 }
 
 .article-title {
@@ -2121,6 +2140,26 @@ main {
   font-size: 1.25em;
   font-weight: bold;
   margin-bottom: 1.6rem;
+}
+
+.article-body h2 {
+  margin-top: 3.2rem;
+  font-size: 1.5625em;
+  color: #47C5CC;
+}
+
+.article-body h3 {
+  margin-top: 2.4rem;
+}
+
+.article-body ul {
+  margin: 1.6rem 0 3.2rem;
+}
+
+.article-body li {
+  margin-bottom: 0.8rem;
+  margin-left: 1.6rem;
+  list-style-type: square;
 }
 
 .article-comments {

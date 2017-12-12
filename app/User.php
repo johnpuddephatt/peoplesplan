@@ -31,8 +31,10 @@ class User extends Authenticatable
     'provider',
     'provider_id',
     'avatar',
+    'gravatar',
     'login_count',
-    'email_token'
+    'email_token',
+    'contactable',
   ];
 
   /**
@@ -52,7 +54,9 @@ class User extends Authenticatable
   protected $casts = [
     'is_admin' => 'boolean',
     'is_blocked' => 'boolean',
-    'first_login' => 'boolean'
+    'first_login' => 'boolean',
+    'gravatar' => 'boolean',
+    'contactable' => 'boolean'
   ];
 
   /**
@@ -87,8 +91,11 @@ class User extends Authenticatable
     if($this->avatar) {
       return $this->avatar;
     }
-    else {
+    elseif($this->gravatar) {
       return \Gravatar::get($this->email);
+    }
+    else {
+      return '/images/default-avatar.png';
     }
   }
 

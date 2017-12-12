@@ -47,6 +47,14 @@
           <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
         </div>
 
+        <div class="form-group form-group--gravatar">
+          <label>
+            <input type="checkbox" value="1" name="gravatar" {{ old('gravatar') ? 'checked' : '' }}> Use <a href="https://en.gravatar.com/" target="_blank">Gravatar</a>
+          </label>
+           <a href="/privacy#gravatar" class="help-icon">What does this mean?</a>
+        </div>
+
+
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Register</button>
         </div>

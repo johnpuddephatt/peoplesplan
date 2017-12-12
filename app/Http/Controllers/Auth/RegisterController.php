@@ -68,11 +68,19 @@ class RegisterController extends Controller
    */
   protected function create(array $data)
   {
+      if(array_key_exists('gravatar',$data)) {
+        $gravatar = 1;
+      }
+      else {
+        $gravatar = 0;
+      }
       return User::create([
           'name' => $data['name'],
           'email' => $data['email'],
           'password' => bcrypt($data['password']),
-          'email_token' => str_random(10)
+          'email_token' => str_random(10),
+          'gravatar' => $gravatar,
+
       ]);
   }
 
