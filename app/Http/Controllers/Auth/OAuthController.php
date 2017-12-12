@@ -66,7 +66,7 @@ class OAuthController extends Controller
 
     // OAuth returned email address matches existing account. Update accordingly.
     $existingEmailUser = User::where('email', $user->email)->first();
-    if($existingEmailUser) {
+    if($existingEmailUser && $user->email) {
       $existingEmailUser->provider = $provider;
       $existingEmailUser->name = $user->name;
       $existingEmailUser->provider_id = $user->id;
