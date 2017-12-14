@@ -34,7 +34,7 @@ class CommentCrudController extends CrudController
           'label' => "User",
           'type' => 'select',
           'name' => 'user_id', // the db column for the foreign key
-          'entity' => 'comments', // the method that defines the relationship in your Model
+          'entity' => 'user', // the method that defines the relationship in your Model
           'attribute' => 'name', // foreign key attribute that is shown to user
           'model' => "App\User" // foreign key model
         ];
