@@ -36,6 +36,7 @@ class ThemeCrudController extends CrudController
             'name' => 'title',
             'label' => 'Title',
             'type' => 'text',
+            'tab' => 'Overview',
             'attributes' => [
               'class' => 'form-control form-control-lg'
             ]
@@ -44,20 +45,22 @@ class ThemeCrudController extends CrudController
         $descArray = [   // Browse
             'name' => 'description',
             'label' => 'Description',
-            'type' => 'textarea'
+            'type' => 'textarea',
+            'tab' => 'Overview'
         ];
 
         $dateCol = [
           'label' => 'Month',
           'type' => 'model_function',
           'function_name' => 'getMonth',
-
+          'tab' => 'Overview'
         ];
 
         $dateField = [
           'name' => 'date',
           'label' => 'Date',
-          'type' => 'date'
+          'type' => 'date',
+          'tab' => 'Overview'
         ];
 
         $iconField = [ // image
@@ -68,9 +71,41 @@ class ThemeCrudController extends CrudController
           'crop' => true, // set to true to allow cropping, false to disable
           'aspect_ratio' => 0, // ommit or set to 0 to allow any aspect ratio
           // 'prefix' => 'uploads/images/profile_pictures/' // in case you only store the filename in the database, this text will be prepended to the database value
+          'tab' => 'Overview'
         ];
 
-        $this->crud->addFields([$titleArray,$descArray,$dateField, $iconField], 'both');
+        $wptitleArray = [   // Browse
+            'name' => 'whitepaper_title',
+            'label' => 'Whitepaper title',
+            'type' => 'text',
+            'tab' => 'Whitepaper'
+        ];
+
+        $wpsummaryArray = [   // Browse
+            'name' => 'whitepaper_summary',
+            'label' => 'Whitepaper summary',
+            'type' => 'textarea',
+            'tab' => 'Whitepaper'
+        ];
+
+        $wpbodyArray = [   // Browse
+            'name' => 'whitepaper_body',
+            'label' => 'Whitepaper body',
+            'type' => 'quill',
+            'tab' => 'Whitepaper'
+        ];
+
+        $wpfileArray = [   // Browse
+            'name' => 'whitepaper_file',
+            'label' => 'Whitepaper PDF',
+            'type' => 'upload',
+            'upload' => true,
+            'disk' => 'uploads', // if you store files in the /public folder, please ommit this; if you store them in /storage or S3, please specify it;
+            'tab' => 'Whitepaper'
+        ];
+
+
+        $this->crud->addFields([$titleArray,$descArray,$dateField, $iconField, $wptitleArray, $wpsummaryArray, $wpbodyArray, $wpfileArray], 'both');
 
         $this->crud->addColumns([$titleArray, $descArray, $dateCol]);
 
@@ -179,7 +214,6 @@ class ThemeCrudController extends CrudController
     {
         // your additional operations before save here
         $request['slug'] = str_slug($request->title);
-
         $request['icon'] = Theme::storeImage($request['icon']);
 
         $redirect_location = parent::storeCrud($request);

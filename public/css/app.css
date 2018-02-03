@@ -2225,6 +2225,81 @@ main {
   font-size: 1.25em;
 }
 
+.theme-whitepaper {
+  background-color: #fff;
+  margin-top: -1.6rem;
+  margin-bottom: 1.6rem;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+}
+
+.theme-whitepaper .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.whitepaper-title {
+  font-size: 1.953125em;
+  margin-bottom: 1.6rem;
+  font-weight: 700;
+}
+
+.whitepaper-wrapper {
+  background-color: #fff;
+  margin: 3.2rem auto;
+  padding: 9.6rem 6.4rem;
+}
+
+.whitepaper-wrapper ol,
+.whitepaper-wrapper li {
+  list-style-type: square;
+}
+
+.whitepaper-icon {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+  margin-right: 3.2rem;
+  margin-left: 4.8rem;
+}
+
+.whitepaper-summary {
+  margin-right: 4.8rem;
+}
+
+.whitepaper-body-summary {
+  font-size: 1.25em;
+  font-weight: 700;
+  margin-bottom: 3.2rem;
+}
+
+.draft-title {
+  display: inline-block;
+  background-color: white;
+  color: #F5D0B7;
+  font-size: 1.5625em;
+  padding: 0 0.8rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.draft-description {
+  font-size: 1.25em;
+}
+
+.draft-pdf {
+  margin-top: 1.6rem;
+}
+
 .container--login {
   min-height: calc(100vh - 3.2rem);
   display: -webkit-box;
@@ -2531,6 +2606,7 @@ main {
           box-shadow: 0px 0px 4.8rem rgba(50, 50, 50, 0.1);
   background: linear-gradient(-45deg, #F5D0B7 30%, white 30%);
   padding: 0.8rem;
+  margin-bottom: 1.6rem;
 }
 
 @media screen and (min-width: 700px) {

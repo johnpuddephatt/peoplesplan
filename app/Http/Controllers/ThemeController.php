@@ -30,4 +30,17 @@ class ThemeController extends Controller
     return view('theme.index', compact('themes'));
   }
 
+
+  public function whitepaper($slug)
+  {
+    $theme = Theme::where('slug',$slug)->with(['comments.user','comments.likes'])->firstOrFail();
+    if($theme->whitepaper_title) {
+      return view('theme.whitepaper', compact('theme'));
+    }
+    else {
+      return view('errors.403');
+    }
+  }
+
+
 }

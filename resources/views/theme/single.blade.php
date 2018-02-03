@@ -19,8 +19,24 @@
   </div>
 </header>
 
+@if ($theme->whitepaper_title && $theme->whitepaper_file)
+  <div class="theme-whitepaper">
+    <div class="container container--theme-whitepaper">
+      <div class="whitepaper-icon">
+        <img src="/images/report-icon.png" alt="" />
+      </div>
+      <div class="whitepaper-summary">
+        <h2 class="whitepaper-title">Draft plan now published</h2>
+        <p class="whitepaper-summary">Draft plans are taking shape based on your ideas. Add your views to help shape the final plan that will be presented to Parliament.</p>
+        <a class="button" href="/themes/{{ $theme->slug }}/whitepaper">Read and debate the draft plan</a>
+      </div>
+    </div>
+  </div>
+@endif
+
 <div class="container container--theme-ideas">
 
+  <h2>Your ideas</h2>
 
   @if (Auth::guest())
     <div class="alert">
@@ -79,16 +95,7 @@
   @endif
   <div class="card-list">
     @foreach ($ideas as $idea)
-      {{-- <a class="card card--idea" href="/ideas/{{ $idea->slug }}">
-
-        <h2 class="idea-title">{{$idea->title}}</h2>
-        <img src="{{ $idea->avatar }}" class="card-avatar">
-        <span>{{$idea->commentTotal()}} comments</span>
-        @include('comments.like', ['like_item_id' => 'idea-'.$idea->id, 'likedata' => $idea->likes])
-
-      </a> --}}
       @include('idea.card')
-
     @endforeach
   </div>
 </div>

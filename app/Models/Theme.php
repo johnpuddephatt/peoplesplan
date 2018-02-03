@@ -11,13 +11,16 @@ class Theme extends Model
   /**
   * Fillable array
   */
-  protected $fillable = ['title','slug','description','date','icon'];
-
+  protected $fillable = ['title','slug','description','date','icon','whitepaper_title','whitepaper_summary','whitepaper_body','whitepaper_file'];
 
   public function ideas() {
     return $this->hasMany('App\Models\Idea');
   }
 
+  public function comments()
+  {
+    return $this->morphMany('App\Models\Comment', 'commentable');
+  }
 
   public function getMonth()
     {
@@ -39,6 +42,15 @@ class Theme extends Model
       $imagerequest = null;
     }
   }
+
+  public function setWhitepaperFileAttribute($value)
+    {
+        $attribute_name = "whitepaper_file";
+        $disk = "public";
+
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, 'whitepapers');
+    }
 
   public function addIdea(Idea $idea) {
     return $this->ideas()->save($idea);

@@ -35,7 +35,7 @@ Route::get('/blog', 'ArticleController@index');
 
 Route::get('/themes/{slug}', 'ThemeController@show');
 Route::get('/themes', 'ThemeController@index');
-
+Route::get('/themes/{slug}/whitepaper', 'ThemeController@whitepaper');
 
 Route::get('/interviews/{slug}', 'InterviewController@show');
 Route::get('/interviews', 'InterviewController@index');
@@ -48,6 +48,8 @@ Route::post('/themes/new/{userhash}', 'IdeaController@store');
 Route::get('/user/ideas', 'UserController@ideas')->middleware('auth');
 Route::get('/user/preferences', 'UserController@showPreferences')->middleware('auth');
 Route::post('/user/preferences/update', 'UserController@storePreferences')->middleware('auth');
+
+
 
 
 // Backpack dashboard routes

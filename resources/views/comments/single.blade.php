@@ -22,13 +22,8 @@
       @if(Auth::check() && !Auth::user()->is_blocked && ($comment_level < 3))
         <button class="reply reply-button text" data-toggle="{{ $comment->id }}-reply-form">Reply</button>
         <a class="report report-button button text" href="mailto:mail@peoplesplan.co.uk?subject=Comment #{{$comment->id}} on People's Plan reported&body=Comment ID: {{$comment->id }}%0D%0AParent item ID: {{ $comment->parent_id}}%0D%0A====================%0D%0AReason for reporting comment: %0D%0AYour name:">Report</a>
-
-
-
       @endif
     </div>
-
-
 
     @if(Auth::check() && !Auth::user()->is_blocked)
       <form id="{{ $comment->id }}-reply-form" class="comment-form form" data-parent="{{ $comment->id }}" data-type="{{get_class($comment_item)}}" data-id="{{ $comment_item->id }}" style="display: none;">
