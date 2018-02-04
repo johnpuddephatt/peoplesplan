@@ -17,7 +17,7 @@ class InterviewController extends Controller
 
   public function index()
   {
-    $interviews = Interview::withCount('comments')->get();
+    $interviews = Interview::withCount('comments')->get()->sortByDesc('id');
     return view('interview.index', compact('interviews'));
   }
 }
