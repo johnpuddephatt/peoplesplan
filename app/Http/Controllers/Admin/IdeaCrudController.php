@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Mail;
+
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\IdeaRequest as StoreRequest;
 use App\Http\Requests\IdeaRequest as UpdateRequest;
+use App\Mail\IdeaApproved;
+
 
 use App\Models\Idea;
 
@@ -111,6 +115,14 @@ class IdeaCrudController extends CrudController
   public function update(UpdateRequest $request)
   {
     // your additional operations before save here
+    $idea = Idea::where('id',$request->id)->with('user')->firstOrFail();
+
+    if ($idea->approved == false && $request->approved == true) {
+      // Send confirmation email.
+      $email = new IdeaApproved($idea);
+      Mail::to($idea->user->email)->send($email);
+
+    }
     $request['slug'] = str_slug($request->title);
     $redirect_location = parent::updateCrud($request);
     // your additional operations after save here

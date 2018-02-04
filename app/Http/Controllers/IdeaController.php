@@ -22,9 +22,17 @@ class IdeaController extends Controller
   public function index()
   {
     $themes = Theme::all();
-    $ideas = Idea::where('approved',true)->with(['user','likes'])->withCount('comments')->get();
+    $ideas = Idea::where('approved',true)->with(['user','likes'])->withCount('comments')->get()->sortByDesc('created_at');
     return view('idea.index', compact('ideas','themes'));
   }
+
+  public function sort($orderBy)
+  {
+    $themes = Theme::all();
+    $ideas = Idea::where('approved',true)->with(['user','likes'])->withCount('likes')->withCount('comments')->get()->sortByDesc($orderBy);
+    return view('idea.index', compact('ideas','themes'));
+  }
+
 
   public function add() {
     $themes = Theme::all();
