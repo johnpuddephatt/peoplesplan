@@ -92,8 +92,8 @@ class UserCrudController extends CrudController
         ];
 
         $this->crud->addFields([$nameArray,$emailArray,$adminField,$blockedField,$verifiedField,$contactableField], 'both');
-
         $this->crud->addColumns([$nameArray,$adminColumn,$blockedColumn,$verifiedColumn,$contactableColumn]);
+        $this->crud->enableExportButtons();
 
         // $this->crud->removeColumn('body'); // remove a column from the stack
         // ------ CRUD FIELDS

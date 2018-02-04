@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\User;
+use App\Models\Idea;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+
+use Mail;
+use App\Mail\IdeaCommented;
 use Auth;
 
 class CommentController extends Controller
@@ -25,6 +29,13 @@ class CommentController extends Controller
     $new_comment = new Comment($request->all());
     $new_comment->user_id = Auth::user()->id;
     $new_comment->save();
+
+    if($new_comment->commentable_type == "App\Models\Idea") {
+      $idea = Idea::find($new_comment->commentable_id);
+      $email = new IdeaCommented($idea,$new_comment);
+      Mail::to($idea->user->email)->send($email);
+    }
+
 
   	return response()->json(['flag' => 1, 'id' => $new_comment->id, 'comment' => $new_comment->comment, 'commentable_id' => $new_comment->commentable_id, 'commentable_type' => $new_comment->commentable_type, 'userName' => Auth::user()->name, 'userPic' => Auth::user()->getAvatar()]);
   }
