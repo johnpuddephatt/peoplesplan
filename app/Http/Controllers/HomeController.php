@@ -24,7 +24,7 @@ class HomeController extends Controller
   public function index()
   {
       $themes = Theme::all();
-      $interviews = Interview::withCount('comments')->get()->sortByDesc('$orderBy');
+      $interviews = Interview::withCount('comments')->get()->sortByDesc('id');
       return view('home', compact('themes','interviews'));
   }
 
