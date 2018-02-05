@@ -89,6 +89,7 @@
       <nav class="footer-menu">
         <a href="/privacy">Privacy policy</a>
         <a href="/terms">Terms &amp; conditions</a>
+        <a href="http://github.com/johnpuddephatt/peoplesplan/issues">Report an issue</a>
       </nav>
     </footer>
   </body>
