@@ -43,4 +43,18 @@ class ThemeController extends Controller
   }
 
 
+  public function sort($slug,$orderBy)
+  {
+
+    $theme = Theme::where('slug',$slug)->firstOrFail();
+
+    if (strtotime($theme->date) < time() || Auth::user()->is_admin ) {
+      $ideas = Idea::where('theme_id',$theme->id)->with(['user','likes'])->withCount('comments')->where('approved',true)->get()->sortByDesc($orderBy);;
+      return view('theme.single', compact('theme','ideas'));
+    }
+    else {
+      return view('errors.403');
+    }
+
+  }
 }

@@ -2,15 +2,19 @@
 
 @section('content')
   <div class="container container--ideas">
-    <h1 class="page-title">See all ideas</h1>
-      <nav>
-        <a href="/ideas/by/created_at">Most recent</a>
-        <a href="/ideas/by/likes_count">Most liked</a>
-        <a href="/ideas/by/comments_count">Most commented</a>
-      </nav>
-    <div class="idea-card-list">
-      @foreach ($ideas as $idea)
-        @include('idea.card')
+    <h1 class="page-title">See the ideas</h1>
+    <p>Ideas are divided into themes.</p>
+    <div class="theme-card-list">
+      @foreach ($themes as $theme)
+        <a href="/themes/{{$theme->slug}}" class="card theme-card-item theme-card-item--{{ str_slug($theme->title) }}">
+          <img src="{{$theme->icon}}" class="theme-card-item-icon" alt="">
+          <div class="card-inner">
+            <h3 class="card-title theme-card-item-title">
+              {{ $theme->title }}
+            </h3>
+            <p>{{ $theme->description }}</p>
+          </div>
+        </a>
       @endforeach
     </div>
   </div>

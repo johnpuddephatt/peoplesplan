@@ -93,6 +93,12 @@
      </div>
     </div>
   @endif
+
+  <nav>
+    <a href="/themes/{{ $theme->slug }}/by/created_at">Most recent</a>
+    <a href="/themes/{{ $theme->slug }}/by/likes_count">Most liked</a>
+    <a href="/themes/{{ $theme->slug }}/by/comments_count">Most commented</a>
+  </nav>
   <div class="card-list">
     @foreach ($ideas as $idea)
       @include('idea.card')

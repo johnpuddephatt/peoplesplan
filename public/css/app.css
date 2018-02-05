@@ -2300,6 +2300,30 @@ main {
   margin-top: 1.6rem;
 }
 
+.theme-card-item {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 1.6rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.theme-card-item .card-inner p:last-child {
+  margin-bottom: 0;
+}
+
+.theme-card-item-icon {
+  width: 6.4rem;
+  float: left;
+  margin-right: 1.6rem;
+}
+
 .container--login {
   min-height: calc(100vh - 3.2rem);
   display: -webkit-box;
@@ -2500,6 +2524,7 @@ main {
 }
 
 .card {
+  display: block;
   border-radius: 0.2rem;
   margin: 1.6rem auto;
   background-color: #fff;

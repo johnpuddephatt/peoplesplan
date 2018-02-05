@@ -36,12 +36,12 @@ Route::get('/blog', 'ArticleController@index');
 Route::get('/themes/{slug}', 'ThemeController@show');
 Route::get('/themes', 'ThemeController@index');
 Route::get('/themes/{slug}/whitepaper', 'ThemeController@whitepaper');
+Route::get('/themes/{slug}/by/{orderby}', 'ThemeController@sort');
 
 Route::get('/interviews/{slug}', 'InterviewController@show');
 Route::get('/interviews', 'InterviewController@index');
 
 Route::get('/ideas', 'IdeaController@index');
-Route::get('/ideas/by/{orderby}', 'IdeaController@sort');
 Route::get('/ideas/add', 'IdeaController@add')->middleware('auth');
 Route::get('/ideas/{slug}', 'IdeaController@show');
 Route::post('/themes/new/{userhash}', 'IdeaController@store');

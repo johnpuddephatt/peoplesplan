@@ -26,12 +26,7 @@ class IdeaController extends Controller
     return view('idea.index', compact('ideas','themes'));
   }
 
-  public function sort($orderBy)
-  {
-    $themes = Theme::all();
-    $ideas = Idea::where('approved',true)->with(['user','likes'])->withCount('likes')->withCount('comments')->get()->sortByDesc($orderBy);
-    return view('idea.index', compact('ideas','themes'));
-  }
+
 
 
   public function add() {
