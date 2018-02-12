@@ -63,9 +63,21 @@ class InterviewCrudController extends CrudController
             'crop' => true, // set to true to allow cropping, false to disable
         ];
 
-        $this->crud->addFields([$nameArray,$quoteArray,$codeArray,$thumbArray], 'both');
+        $featuredField = [
+          'name' => 'featured',
+          'label' => 'Featured?',
+          'type' => 'checkbox',
+        ];
 
-        $this->crud->addColumns([$nameArray]);
+        $featuredCol = [
+          'name' => 'featured',
+          'label' => 'Featured?',
+          'type' => 'check',
+        ];
+
+        $this->crud->addFields([$nameArray,$quoteArray,$codeArray,$thumbArray,$featuredField], 'both');
+
+        $this->crud->addColumns([$nameArray,$featuredCol]);
 
         // $this->crud->removeColumn('body'); // remove a column from the stack
         // ------ CRUD FIELDS

@@ -13,7 +13,7 @@
 
     </a>
     <div class="card-footer">
-      <div class="card-comments">{{ $idea->comments_count }} comments</div>
+      <a class="card-comments" href="/ideas/{{ $idea->slug }}#comments">{{ $idea->comments_count }} comments</a>
       @include('comments.like', ['like_item' => $idea])
     </div>
 </div>

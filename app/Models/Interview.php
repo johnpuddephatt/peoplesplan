@@ -21,7 +21,7 @@ class Interview extends Model
     //protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['quote','name','code','thumb','slug'];
+    protected $fillable = ['quote','name','code','thumb','slug','featured'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -63,7 +63,7 @@ class Interview extends Model
      {
          return $this->morphMany('App\Models\Like', 'likeable');
      }
-     
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

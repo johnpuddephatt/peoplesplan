@@ -94,10 +94,11 @@
     </div>
   @endif
 
-  <nav>
-    <a href="/themes/{{ $theme->slug }}/by/created_at">Most recent</a>
-    <a href="/themes/{{ $theme->slug }}/by/likes_count">Most liked</a>
-    <a href="/themes/{{ $theme->slug }}/by/comments_count">Most commented</a>
+  <nav id="sort-ideas-navigation" @if(isset($orderBy))class="{{$orderBy}}"@endif>
+    Sort by:
+    <a href="/themes/{{ $theme->slug }}/by/created_at#sort-ideas-navigation" class="created_at">Most recent</a>
+    <a href="/themes/{{ $theme->slug }}/by/likes_count#sort-ideas-navigation" class="likes_count">Most liked</a>
+    <a href="/themes/{{ $theme->slug }}/by/comments_count#sort-ideas-navigation" class="comments_count">Most commented</a>
   </nav>
   <div class="card-list">
     @foreach ($ideas as $idea)

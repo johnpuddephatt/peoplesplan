@@ -24,8 +24,12 @@ class HomeController extends Controller
   public function index()
   {
       $themes = Theme::all();
+      $featuredtheme = Theme::whereMonth('date',date("m"))->first();
+      $featuredidea = Idea::where('theme_id',$featuredtheme->id)->withCount(['comments','likes'])->get()->sortByDesc('likes_count')->first();
+      $featuredinterview = Interview::where('featured',true)->withCount('comments')->first();
+
       $interviews = Interview::withCount('comments')->get()->sortByDesc('id');
-      return view('home', compact('themes','interviews'));
+      return view('home', compact('themes','interviews','featuredtheme','featuredidea', 'featuredinterview'));
   }
 
   public function static() {

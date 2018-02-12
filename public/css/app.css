@@ -771,14 +771,12 @@ hr {
 
 .masthead .site-navigation .navigation-account-menu {
   pointer-events: none;
-  opacity: 1;
+  opacity: 0;
   position: fixed;
   right: 0;
   bottom: 4rem;
   width: 100%;
   padding: 0.4rem 1.6rem;
-  -webkit-animation: slideDown 150ms ease forwards;
-          animation: slideDown 150ms ease forwards;
 }
 
 .masthead .site-navigation .navigation-account-menu.open {
@@ -843,34 +841,6 @@ hr {
     opacity: 1;
     -webkit-transform: translateY(0);
             transform: translateY(0);
-  }
-}
-
-@-webkit-keyframes slideDown {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(0.8rem);
-            transform: translateY(0.8rem);
-  }
-}
-
-@keyframes slideDown {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(0.8rem);
-            transform: translateY(0.8rem);
   }
 }
 
@@ -1526,6 +1496,109 @@ main {
 .section--home-interviews .home-interviews-scroller::after {
   background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#F2F4F4));
   background: linear-gradient(to right, rgba(255, 255, 255, 0), #F2F4F4);
+}
+
+.section--home-featured {
+  background-color: #fff;
+}
+
+.section--home-featured .container {
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+}
+
+@media screen and (min-width: 700px) {
+  .section--home-featured .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+.section--home-featured .container > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  height: auto;
+  margin-bottom: 1.6rem;
+}
+
+@media screen and (min-width: 700px) {
+  .section--home-featured .container > * {
+    margin-right: 1.6rem;
+    margin-bottom: 0;
+  }
+}
+
+.section--home-featured .container > *:last-child {
+  margin-right: 0;
+}
+
+.section--home-featured .featured-theme-icon {
+  height: auto;
+  width: 4.8rem;
+}
+
+.section--home-featured .featured-theme-date {
+  color: #E2E2E1;
+  margin-bottom: 0.8rem;
+  font-size: 1.25em;
+}
+
+.section--home-featured .button {
+  margin-top: 0.8rem;
+}
+
+.section--home-featured .button + .button {
+  margin-left: 0.4rem;
+}
+
+.section--home-featured .card {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.section--home-featured .interview-card {
+  margin-left: 0;
+}
+
+.section--home-featured .card--idea {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #E2E2E1;
+}
+
+.section--home-featured .card--idea .card-avatar {
+  height: auto;
+  padding: 0.8rem 0.8rem 0.8rem;
+}
+
+.section--home-featured .card--idea .card-body {
+  padding: 0.8rem 0.8rem 1.6rem;
+  border-bottom: none;
+}
+
+.section--home-featured .card--idea .card-footer {
+  margin-top: auto;
+  border-top: 1px dashed #E2E2E1;
+  line-height: 1.6rem;
+}
+
+.section--home-featured .card--idea .card-comments,
+.section--home-featured .card--idea .like-container {
+  width: 50%;
+  font-size: 0.8em;
+  padding: 0.4rem 1.6rem;
 }
 
 .container--comments {
@@ -2324,6 +2397,45 @@ main {
   margin-right: 1.6rem;
 }
 
+#sort-ideas-navigation {
+  text-align: right;
+  padding-top: 4.8rem;
+}
+
+#sort-ideas-navigation a {
+  display: inline-block;
+  margin-left: 0.8rem;
+  border-radius: 1.6rem;
+  padding: 0 0.8rem;
+  line-height: 2.4rem;
+  background-color: white;
+}
+
+#sort-ideas-navigation .created_at {
+  background-color: #47C5CC;
+  color: white;
+}
+
+#sort-ideas-navigation.comments_count .comments_count {
+  background-color: #47C5CC;
+  color: white;
+}
+
+#sort-ideas-navigation.comments_count .created_at {
+  background-color: white;
+  color: #47C5CC;
+}
+
+#sort-ideas-navigation.likes_count .likes_count {
+  background-color: #47C5CC;
+  color: white;
+}
+
+#sort-ideas-navigation.likes_count .created_at {
+  background-color: white;
+  color: #47C5CC;
+}
+
 .container--login {
   min-height: calc(100vh - 3.2rem);
   display: -webkit-box;
@@ -2542,6 +2654,8 @@ main {
 
 .card-avatar img {
   border-radius: 50%;
+  border: 1px solid #F2F4F4;
+  background-color: white;
   width: 3.2rem;
   width: 3.2rem;
   float: left;

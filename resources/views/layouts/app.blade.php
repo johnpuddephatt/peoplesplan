@@ -17,6 +17,7 @@
     </script>
 
     <link rel="stylesheet" href="{{ mix ('/css/app.css') }}">
+    <link rel="shortcut icon" href="{{{ asset('/images/favicon.png') }}}">
 
   </head>
   <body>

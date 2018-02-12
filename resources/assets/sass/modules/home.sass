@@ -273,3 +273,56 @@
     background: linear-gradient(to left,rgba(255,255,255,0), $off-white)
   .home-interviews-scroller::after
     background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
+
+
+.section--home-featured
+  background-color: #fff
+  .container
+    padding-top: 2 * $base-spacing
+    padding-bottom: 2 * $base-spacing
+    @media screen and (min-width: $medium-screen)
+      display: flex
+      flex-direction: row
+    & > *
+      flex: 1 1 50%
+      height: auto
+      margin-bottom: $base-spacing
+      @media screen and (min-width: $medium-screen)
+        margin-right: $base-spacing
+        margin-bottom: 0
+      &:last-child
+        margin-right: 0
+  .featured-theme-icon
+    height: auto
+    width: 3 * $base-spacing
+  .featured-theme-date
+    color: $light-gray
+    margin-bottom: $small-spacing
+    font-size: modular-scale(1)
+  .button
+    margin-top: $small-spacing
+  .button + .button
+    margin-left: $small-spacing/2
+  .card
+    margin-top: 0
+    display: flex
+    flex-direction: column
+  .interview-card
+    margin-left: 0
+  .card--idea
+    box-shadow: none
+    border: 1px solid $light-gray
+    .card-avatar
+      height: auto
+      padding: $small-spacing $small-spacing $small-spacing
+    .card-body
+      padding: $small-spacing $small-spacing $base-spacing
+      border-bottom: none
+    .card-footer
+      margin-top: auto
+      border-top: 1px dashed $light-gray
+      line-height: $base-spacing
+    .card-comments,.like-container
+      width: 50%
+      font-size: modular-scale(-1)
+      padding: $small-spacing/2 $base-spacing

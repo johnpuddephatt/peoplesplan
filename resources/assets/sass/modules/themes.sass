@@ -104,3 +104,31 @@
   float: left
   margin-right: $base-spacing
 
+#sort-ideas-navigation
+  text-align: right
+  padding-top: 3 * $base-spacing
+  a
+    display: inline-block
+    margin-left: $small-spacing
+    border-radius: $base-spacing
+    padding: 0 $small-spacing
+    line-height: 1.5 * $base-spacing
+    background-color: white
+
+  .created_at
+    background-color: $green
+    color: white
+  &.comments_count
+    .comments_count
+      background-color: $green
+      color: white
+    .created_at
+      background-color: white
+      color: $green
+  &.likes_count
+    .likes_count
+      background-color: $green
+      color: white
+    .created_at
+      background-color: white
+      color: $green

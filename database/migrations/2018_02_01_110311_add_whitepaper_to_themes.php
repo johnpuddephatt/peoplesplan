@@ -18,8 +18,6 @@ class AddWhitepaperToThemes extends Migration
         $table->text('whitepaper_summary')->nullable();
         $table->text('whitepaper_body')->nullable();
         $table->string('whitepaper_file')->nullable();
-
-
       });
     }
 
@@ -30,6 +28,11 @@ class AddWhitepaperToThemes extends Migration
      */
     public function down()
     {
-        //
+      Schema::table('themes', function (Blueprint $table) {
+        $table->dropColumn('whitepaper_title');
+        $table->dropColumn('whitepaper_summary');
+        $table->dropColumn('whitepaper_body');
+        $table->dropColumn('whitepaper_file');
+      });
     }
 }

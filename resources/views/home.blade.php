@@ -24,8 +24,6 @@
 
   <section class="section--home-stages">
     <div class="container">
-
-
       <h2 class="section-title">We want to create the best plan in the world.<br />That means finding the best ideas in the world.</h2>
       <p class="section-subtitle">Planning the most advanced digital society in the world involves three steps.</p>
       <div class="stages-container">
@@ -47,6 +45,27 @@
       </div>
     </div>
   </section>
+
+@if($featuredtheme)
+  <section class="section--home-featured">
+    <div class="container">
+      <div class="featured-intro">
+        <div class="featured-theme-date">This month:</div>
+        <img src="{{$featuredtheme->icon}}" class="featured-theme-icon" alt="">
+        <h2 class="section-title featured-title">{{$featuredtheme->title}}</h2>
+        <div class="featured-description">{{$featuredtheme->description}}</div>
+        <a class="button" href="/themes/{{$featuredtheme->slug}}">View ideas</a><a class="button primary" href="/themes/{{$featuredtheme->slug}}/whitepaper">Read plan</a>
+      </div>
+      @if($featuredidea)
+        @include('idea.card',['idea' => $featuredidea])
+      @endif
+      @if ($featuredinterview)
+        @include('interview.card',['interview'=> $featuredinterview])
+      @endif
+    </div>
+  </section>
+@endif
+
 
 @if ($interviews->count())
   <section class="section--home-interviews">
@@ -92,17 +111,11 @@
                 {{ $theme->title }}
               </h3>
               <img src="{{$theme->icon}}" class="home-theme-icon" alt="">
-              {{-- <div class="home-theme-date">
+              <div class="home-theme-date">
                 {{$theme->getMonth()}}
-              </div> --}}
+              </div>
               <p>{{ $theme->description }}</p>
-
-              @if (strtotime($theme->date) < time())
-                <a href="/themes/{{str_slug($theme->title)}}" class="button">Join the debate</a>
-              @else
-                <a href="#" class="button" disabled>Coming soon</a>
-              @endif
-
+              <a href="/themes/{{str_slug($theme->title)}}" class="button">Join the debate</a>
             </li>
           @endforeach
         </ul>
