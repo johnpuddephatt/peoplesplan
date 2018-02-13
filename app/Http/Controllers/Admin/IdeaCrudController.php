@@ -81,6 +81,12 @@ class IdeaCrudController extends CrudController
       'type' => 'check',
     ];
 
+    $dateCol = [
+      'name' => 'created_at',
+      'label' => 'Submitted',
+      'type' => 'datetime',
+    ];
+
     // $featuredField = [
     //   'name' => 'featured',
     //   'label' => 'Featured?',
@@ -94,7 +100,7 @@ class IdeaCrudController extends CrudController
     // ];
 
     $this->crud->addFields([$approvedField,$titleArray,$userArray,$themeArray,$whatArray,$whyArray,], 'both');
-    $this->crud->addColumns([$titleArray,$userArray,$themeArray,$approvedCol]);
+    $this->crud->addColumns([$titleArray,$userArray,$themeArray,$approvedCol,$dateCol]);
 
   }
 
