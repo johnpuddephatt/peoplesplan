@@ -54,7 +54,10 @@
         <img src="{{$featuredtheme->icon}}" class="featured-theme-icon" alt="">
         <h2 class="section-title featured-title">{{$featuredtheme->title}}</h2>
         <div class="featured-description">{{$featuredtheme->description}}</div>
-        <a class="button" href="/themes/{{$featuredtheme->slug}}">View ideas</a><a class="button primary" href="/themes/{{$featuredtheme->slug}}/whitepaper">Read plan</a>
+        <a class="button" href="/themes/{{$featuredtheme->slug}}">View ideas</a>
+        @if($featuredtheme->whitepaper_title)
+          <a class="button primary" href="/themes/{{$featuredtheme->slug}}/whitepaper">Read plan</a>
+        @endif
       </div>
       @if($featuredidea)
         @include('idea.card',['idea' => $featuredidea])
