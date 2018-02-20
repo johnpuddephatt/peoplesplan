@@ -31,21 +31,50 @@ class Interview extends Model
     |--------------------------------------------------------------------------
     */
 
-    public static function storeImage($imagerequest) {
-      if (starts_with($imagerequest, 'data:image')) {
-        $image = \Image::make($imagerequest);
-        $image->resize(500,null,function ($constraint) {
-          $constraint->aspectRatio();
-        });
-        $filename = md5(time()).'.jpg';
-        \Storage::disk('uploads')->put($filename, $image->stream());
-        $imagerequest = 'uploads/' . $filename;
-        return $imagerequest;
+    // public static function storeImage($imagerequest) {
+    //   if (starts_with($imagerequest, 'data:image')) {
+    //     $image = \Image::make($imagerequest);
+    //     $image->resize(500,null,function ($constraint) {
+    //       $constraint->aspectRatio();
+    //     });
+    //     $filename = md5(time()).'.jpg';
+    //     \Storage::disk('uploads')->put($filename, $image->stream());
+    //     $imagerequest = 'uploads/' . $filename;
+    //     return $imagerequest;
+    //   }
+    //   else {
+    //     $imagerequest = null;
+    //   }
+    // }
+
+    public function setIconAttribute($value)
+      {
+        $attribute_name = "thumb";
+        $disk = "public";
+        $destination_path = "interviews";
+
+        // if the image was erased
+        if ($value==null) {
+            // delete the image from disk
+            \Storage::disk($disk)->delete($this->{$attribute_name});
+
+            // set null in the database column
+            $this->attributes[$attribute_name] = null;
+        }
+
+        // if a base64 was sent, store it in the db
+        if (starts_with($value, 'data:image'))
+        {
+            // 0. Make the image
+            $image = \Image::make($value);
+            // 1. Generate a filename.
+            $filename = md5($value.time()).'.jpg';
+            // 2. Store the image on disk.
+            \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
+            // 3. Save the path to the database
+            $this->attributes[$attribute_name] = '/storage/'.$destination_path.'/'.$filename;
+        }
       }
-      else {
-        $imagerequest = null;
-      }
-    }
 
 
     /*
