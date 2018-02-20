@@ -47,7 +47,7 @@ class Interview extends Model
     //   }
     // }
 
-    public function setIconAttribute($value)
+    public function setThumbAttribute($value)
       {
         $attribute_name = "thumb";
         $disk = "public";
