@@ -24,11 +24,14 @@
 
 .theme-icon
   flex: 0 0 25%
-  margin-right: 2 * $base-spacing
-  margin-left: 3 * $base-spacing
+  margin-right: $base-spacing
+  @media screen and (min-width: $medium-screen)
+    margin-right: 2 * $base-spacing
+    margin-left: 3 * $base-spacing
 
 .theme-summary
-  margin-right: 3 * $base-spacing
+  @media screen and (min-width: $medium-screen)
+    margin-right: 3 * $base-spacing
 
 .theme-description
   font-size: modular-scale(1)
@@ -60,12 +63,15 @@
 
 .whitepaper-icon
   flex: 0 0 25%
-  margin-right: 2 * $base-spacing
-  margin-left: 3 * $base-spacing
+  margin-right: $base-spacing
+  @media screen and (min-width: $medium-screen)
+    margin-right: 2 * $base-spacing
+    margin-left: 3 * $base-spacing
 
 
 .whitepaper-summary
-  margin-right: 3 * $base-spacing
+  @media screen and (min-width: $medium-screen)
+    margin-right: 3 * $base-spacing
 
 .whitepaper-body-summary
   font-size: modular-scale(1)
@@ -109,12 +115,15 @@
   padding-top: 3 * $base-spacing
   a
     display: inline-block
-    margin-left: $small-spacing
+    margin-left: $small-spacing/2
+    font-size: modular-scale(-1)
     border-radius: $base-spacing
     padding: 0 $small-spacing
     line-height: 1.5 * $base-spacing
     background-color: white
-
+    @media screen and (min-width: $medium-screen)
+      margin-left: $small-spacing
+      font-size: modular-scale(0)
   .created_at
     background-color: $green
     color: white
