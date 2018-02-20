@@ -5,7 +5,7 @@
 <header class="theme-header">
   <div class="container container--theme">
     <div class="theme-icon">
-      <img src="/{{ $theme->icon }}" />
+      <img src="{{ $theme->icon }}" />
     </div>
     <div class="theme-summary">
       <div class="draft-title">Draft plan</div>
