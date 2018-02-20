@@ -214,7 +214,7 @@ class ThemeCrudController extends CrudController
     {
         // your additional operations before save here
         $request['slug'] = str_slug($request->title);
-        $request['icon'] = Theme::storeImage($request['icon']);
+        // $request['icon'] = Theme::storeImage($request['icon']);
 
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
@@ -226,9 +226,9 @@ class ThemeCrudController extends CrudController
     {
         // your additional operations before save here
         $request['slug'] = str_slug($request->title);
-        if($request['icon']) {
-          $request['icon'] = Theme::storeImage($request['icon']);
-        }
+        // if($request['icon']) {
+        //   $request['icon'] = Theme::storeImage($request['icon']);
+        // }
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry

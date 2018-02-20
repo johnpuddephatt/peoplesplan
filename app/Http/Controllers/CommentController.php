@@ -32,8 +32,10 @@ class CommentController extends Controller
 
     if($new_comment->commentable_type == "App\Models\Idea") {
       $idea = Idea::find($new_comment->commentable_id);
-      $email = new IdeaCommented($idea,$new_comment);
-      Mail::to($idea->user->email)->send($email);
+      if($idea->user->email) {
+        $email = new IdeaCommented($idea,$new_comment);
+        Mail::to($idea->user->email)->send($email);
+      }
     }
 
 

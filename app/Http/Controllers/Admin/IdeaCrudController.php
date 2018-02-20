@@ -125,9 +125,10 @@ class IdeaCrudController extends CrudController
 
     if ($idea->approved == false && $request->approved == true) {
       // Send confirmation email.
-      $email = new IdeaApproved($idea);
-      Mail::to($idea->user->email)->send($email);
-
+      if( $idea->user->email ) {
+        $email = new IdeaApproved($idea);
+        Mail::to($idea->user->email)->send($email);
+      }
     }
     $request['slug'] = str_slug($request->title);
     $redirect_location = parent::updateCrud($request);
