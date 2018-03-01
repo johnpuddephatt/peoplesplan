@@ -67,6 +67,12 @@ class UserCrudController extends CrudController
          'type' => 'check'
         ];
 
+        $emailColumn = [
+         'name' => 'email', // The db column name
+         'label' => 'Email address', // Table column heading
+         'type' => 'text'
+        ];
+
         $verifiedField = [   // Browse
             'name' => 'verified',
             'label' => 'Verified?',
@@ -92,7 +98,7 @@ class UserCrudController extends CrudController
         ];
 
         $this->crud->addFields([$nameArray,$emailArray,$adminField,$blockedField,$verifiedField,$contactableField], 'both');
-        $this->crud->addColumns([$nameArray,$adminColumn,$blockedColumn,$verifiedColumn,$contactableColumn]);
+        $this->crud->addColumns([$nameArray,$adminColumn,$blockedColumn,$verifiedColumn,$emailColumn,$contactableColumn]);
         $this->crud->enableExportButtons();
 
         // $this->crud->removeColumn('body'); // remove a column from the stack
