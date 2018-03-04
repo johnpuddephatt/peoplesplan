@@ -276,13 +276,19 @@
 
 
 .section--home-featured
-  background-color: #fff
+  background-color: #333
+  .home-featured-scroller
+    display: flex
+    flex-direction: row
+  .home-featured-scroller::before
+    background: linear-gradient(to left,rgba(255,255,255,0), $dark-gray)
+  .home-featured-scroller::after
+    background: linear-gradient(to right,rgba(255,255,255,0), $dark-gray)
+  .section-subtitle
+    color: $light-gray
   .container
     padding-top: 2 * $base-spacing
     padding-bottom: 2 * $base-spacing
-    @media screen and (min-width: $medium-screen)
-      display: flex
-      flex-direction: row
     & > *
       flex: 1 1 50%
       height: auto
@@ -326,3 +332,30 @@
       width: 50%
       font-size: modular-scale(-1)
       padding: $small-spacing/2 $base-spacing
+
+
+
+
+
+.section--home-featured .card--idea
+  margin-left: $small-spacing
+  margin-top: 1.5 * $base-spacing
+  @media screen and (min-width: $large-screen)
+    margin-left: $base-spacing
+    border: 1px solid $light-gray
+    border-radius: $base-border-radius
+    background-color: white
+    display: flex
+    overflow: hidden
+    flex-direction: column
+    flex: 0 0 100%
+    @media screen and (min-width: $medium-screen)
+      flex: 0 0 50%
+      flex: 0 0 calc(50% - #{$base-spacing})
+    @media screen and (min-width: $large-screen)
+      flex: 0 0 33.3%
+      flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+    @media screen and (max-width: $medium-screen)
+      &:first-child
+        margin-left: 0
+

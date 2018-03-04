@@ -22,31 +22,7 @@
     </div>
   </section> --}}
 
-  <section class="section--home-stages">
-    <div class="container">
-      <h2 class="section-title">We want to create the best plan in the world.<br />That means finding the best ideas in the world.</h2>
-      <p class="section-subtitle">Planning the most advanced digital society in the world involves three steps.</p>
-      <div class="stages-container">
-        <div class="stage-column">
-          <img src="images/icon-suggest.svg" alt="">
-          <h3 class="stage-heading">Suggest</h3>
-          <p>Put forward your ideas or debate ideas others have proposed</p>
-        </div>
-        <div class="stage-column">
-          <img src="images/icon-debate.svg" alt="">
-          <h3 class="stage-heading">Improve</h3>
-          <p>Review the draft plans which will be created based on your suggestions</p>
-        </div>
-        <div class="stage-column">
-          <img src="images/icon-improve.svg" alt="">
-          <h3 class="stage-heading">Launch</h3>
-          <p>See the plan presented in Parliament to help shape national policy</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-@if($featuredtheme)
+{{-- @if($featuredtheme)
   <section class="section--home-featured">
     <div class="container">
       <div class="featured-intro">
@@ -67,7 +43,25 @@
       @endif
     </div>
   </section>
+@endif --}}
+
+@if ($popularideas->count())
+  <section class="section--home-featured">
+    <div class="container">
+      <h2 class="section-title">Popular ideas</h2>
+      <p class="section-subtitle">See the ideas currently generating discussion</p>
+      <div class="home-featured-scroller scroller-outer">
+        <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
+        <div class="home-interviews-inner scroller-inner">
+          @foreach ($popularideas as $idea)
+            @include('idea.card')
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
 @endif
+
 
 @if ($interviews->count())
   <section class="section--home-interviews">
@@ -119,6 +113,30 @@
       </div>
     </section>
   @endif
+
+  <section class="section--home-stages">
+    <div class="container">
+      <h2 class="section-title">We want to create the best plan in the world.<br />That means finding the best ideas in the world.</h2>
+      <p class="section-subtitle">Planning the most advanced digital society in the world involves three steps.</p>
+      <div class="stages-container">
+        <div class="stage-column">
+          <img src="images/icon-suggest.svg" alt="">
+          <h3 class="stage-heading">Suggest</h3>
+          <p>Put forward your ideas or debate ideas others have proposed</p>
+        </div>
+        <div class="stage-column">
+          <img src="images/icon-debate.svg" alt="">
+          <h3 class="stage-heading">Improve</h3>
+          <p>Review the draft plans which will be created based on your suggestions</p>
+        </div>
+        <div class="stage-column">
+          <img src="images/icon-improve.svg" alt="">
+          <h3 class="stage-heading">Launch</h3>
+          <p>See the plan presented in Parliament to help shape national policy</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="section--home-themes">
     <div class="container">
