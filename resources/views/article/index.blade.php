@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-    <h1>Hello these are the articles</h1>
-    <ul class="container">
+  <div class="container container--articles">
+    <h1 class="page-title">Articles</h1>
+    <div class="article-card--list">
       @foreach ($articles as $article)
-        <li><a href="/blog/{{ $article->slug }}">{{$article->title}}</a></li>
+        @include('article.card')
       @endforeach
-    </ul>
+    </div>
   </div>
 @stop

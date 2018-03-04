@@ -17,7 +17,7 @@ for (var i = 0; i < scrollers.length; i++) {
 
 
 
-  if(scrollerInner) {
+  if(scrollerInner && nextButton) {
     var body = document.querySelector('body');
     var curYPos, curXPos, curDown, dragging = false;
 

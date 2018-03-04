@@ -1,10 +1,74 @@
+/* Articles section on homepage */
+
+.section--home-articles
+  background-color: #fff
+  .container
+    padding-top: 2 * $base-spacing
+    padding-bottom: 2 * $base-spacing
+
+/* Article index page */
+
+.container--articles
+	padding-top: 4 * $base-spacing
+	padding-bottom: 4 * $base-spacing
+
+.card.article-card--item
+	border: 1px solid $light-gray
+	border-radius: $base-border-radius
+	background-color: white
+	display: flex
+	overflow: hidden
+	flex-direction: column
+	flex: 0 0 100%
+	@media screen and (min-width: $medium-screen)
+		flex: 0 0 50%
+		flex: 0 0 calc(50% - #{$base-spacing})
+	@media screen and (min-width: $large-screen)
+		flex: 0 0 33.3%
+		flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+	@media screen and (max-width: $medium-screen)
+		&:first-child
+			margin-left: 0
+
+
+.section--home-articles .article-card--item
+  margin-left: $small-spacing
+  @media screen and (min-width: $large-screen)
+    margin-left: $base-spacing
+
+.article-card--body
+  padding: 1.5 * $base-spacing $base-spacing $base-spacing
+
+.article-card--footer
+	margin-top: auto
+	padding: 0 $base-spacing
+	line-height: 1.5 * $base-spacing
+	border-top: 1px dashed $light-gray
+	margin-bottom: 0
+	transition: color 2 * $base-duration $base-timing
+
+  text-align: right
+
+
+.article-card--title
+  font-size: modular-scale(2)
+  font-weight: 700
+  margin-bottom: $small-spacing/2
+
+.article-card--date
+  text-align: right
+  color: $base-font-color
+  font-size: modular-scale(-1)
+
+
+/* Article single page */
 .article-content
   background-color: #fff
   padding: 2 * $base-spacing 2 * $base-spacing
   @media screen and (min-width: $medium-screen)
     padding: 3 * $base-spacing 4 * $base-spacing
   @media screen and (min-width: $large-screen)
-    padding: 5 * $base-spacing 6 * $base-spacing
+    padding: 4 * $base-spacing 5 * $base-spacing
   margin-top: 2 * $base-spacing
   margin-bottom: 2 * $base-spacing
 
@@ -16,6 +80,11 @@
   margin-bottom: 2 * $base-spacing
   padding-bottom: $base-spacing
   border-bottom: 1px dashed $light-gray
+  .idea-likes
+    text-align: right
+    margin-top: -  2 * $base-spacing
+  .like-total
+    color: $light-gray
 
 .article-body
   p:first-child

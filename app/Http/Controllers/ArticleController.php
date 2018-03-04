@@ -12,8 +12,7 @@ class ArticleController extends Controller
 {
   public function show($slug)
   {
-    $article = Article::where('slug',$slug)->with(['comments.user'])->firstOrFail();
-    $article->withLikes();
+    $article = Article::where('slug',$slug)->with(['comments.user','comments','likes'])->firstOrFail();    
     return view('article.single', compact('article'));
   }
 

@@ -69,7 +69,6 @@
   </section>
 @endif
 
-
 @if ($interviews->count())
   <section class="section--home-interviews">
     <div class="container">
@@ -101,6 +100,26 @@
     </div>
   </section>
 
+
+  @if($articles->count())
+    <section class="section--home-articles">
+      <div class="container">
+        <h2 class="section-title">Articles</h2>
+        <p class="section-subtitle">Stay updated and follow our progress</p>
+        <div class="home-articles-scroller scroller-outer">
+          @if ($articles->count() > 3)
+            <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
+          @endif
+          <div class="home-interviews-inner scroller-inner">
+            @foreach ($articles as $article)
+              @include('article.card')
+            @endforeach
+          </div>
+        </div>
+      </div>
+    </section>
+  @endif
+
   <section class="section--home-themes">
     <div class="container">
       <h2 class="section-title">Themes</h2>
@@ -122,6 +141,18 @@
             </li>
           @endforeach
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--home-quote">
+    <div class="container">
+      <div class="home-quote--text">
+        <div class="quote-body">We believe the public want the opportunity to have their say in House of Commons debates; this will provide a useful resource for MPs and help to enhance those debates.</div>
+        <div class="quote-attribute">Speaker’s Digital Democracy Commission, 2015</div>
+      </div>
+      <div class="home-quote--clock">
+        <img src="images/westminster.svg" alt="Clock tower at Palace of Westminster">
       </div>
     </div>
   </section>
@@ -167,15 +198,5 @@
 
 
 
-  <section class="section--home-quote">
-    <div class="container">
-      <div class="home-quote--text">
-        <div class="quote-body">We believe the public want the opportunity to have their say in House of Commons debates; this will provide a useful resource for MPs and help to enhance those debates.</div>
-        <div class="quote-attribute">Speaker’s Digital Democracy Commission, 2015</div>
-      </div>
-      <div class="home-quote--clock">
-        <img src="images/westminster.svg" alt="Clock tower at Palace of Westminster">
-      </div>
-    </div>
-  </section>
+
 @stop

@@ -30,8 +30,8 @@ Route::get('/migrate', function(){
 })->middleware('auth');
 
 
-Route::get('/blog/{slug}', 'ArticleController@show');
-Route::get('/blog', 'ArticleController@index');
+Route::get('/articles/{slug}', 'ArticleController@show');
+Route::get('/articles', 'ArticleController@index');
 
 Route::get('/themes/{slug}', 'ThemeController@show');
 Route::get('/themes', 'ThemeController@index');

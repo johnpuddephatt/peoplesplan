@@ -31,8 +31,9 @@
           @include('inc.logo')
           <span>The People’s Plan</span></a>
         <nav class="site-navigation site-navigation--primary">
-          <a href="/ideas/">the ideas</a>
+          <a href="/ideas/">ideas</a>
           <a href="/interviews/">viewpoints</a>
+          <a href="/articles/">articles</a>
         </nav>
         <nav class="site-navigation right">
 
