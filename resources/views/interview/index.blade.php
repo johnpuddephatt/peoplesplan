@@ -11,6 +11,13 @@
       @include('interview.card')
     @endforeach
     </div>
+
+    @if($interviews->count())
+      <div class="alert">
+        No interviews to show you currently
+      </div>
+    @endif
+
   </div>
 
 @stop
