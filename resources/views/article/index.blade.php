@@ -8,7 +8,7 @@
         @include('article.card')
       @endforeach
     </div>
-    @if($articles->count())
+    @if(!$articles->count())
       <div class="alert">
         No articles to show you currently
       </div>

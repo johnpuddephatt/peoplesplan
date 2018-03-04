@@ -12,7 +12,7 @@
     @endforeach
     </div>
 
-    @if($interviews->count())
+    @if(!$interviews->count())
       <div class="alert">
         No interviews to show you currently
       </div>

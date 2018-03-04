@@ -68,8 +68,6 @@
     <div class="container">
       <h2 class="section-title">Viewpoints</h2>
       <p class="section-subtitle">How does the UK become the world’s most advanced digital society?</p>
-
-
       <div class="home-interviews-scroller scroller-outer">
         <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
         <div class="home-interviews-inner scroller-inner">
@@ -212,9 +210,4 @@
       </div>
     </div>
   </section>
-
-
-
-
-
 @stop
