@@ -69,7 +69,6 @@
     @include clearfix
     position: relative
 
-
 .home-quote
   &--text
     padding: 3 * $base-spacing 0
@@ -211,14 +210,13 @@
   .home-theme-item
     counter-increment: theme
     float: left
-    width: 20%
-    flex: 0 0 100%
     position: relative
     padding: $small-spacing $small-spacing
     border-left: 1px dashed $light-gray
     margin-top: 2 * $base-spacing
     margin-bottom: 2 * $base-spacing
-
+    width: 20%
+    flex: 0 0 100%
     @media screen and (min-width: $medium-screen)
       flex: 0 0 50%
     @media screen and (min-width: $large-screen)
@@ -289,15 +287,6 @@
   .container
     padding-top: 2 * $base-spacing
     padding-bottom: 2 * $base-spacing
-    & > *
-      flex: 1 1 50%
-      height: auto
-      margin-bottom: $base-spacing
-      @media screen and (min-width: $medium-screen)
-        margin-right: $base-spacing
-        margin-bottom: 0
-      &:last-child
-        margin-right: 0
   .featured-theme-icon
     height: auto
     width: 3 * $base-spacing
@@ -342,20 +331,20 @@
   margin-top: 1.5 * $base-spacing
   @media screen and (min-width: $large-screen)
     margin-left: $base-spacing
-    border: 1px solid $light-gray
-    border-radius: $base-border-radius
-    background-color: white
-    display: flex
-    overflow: hidden
-    flex-direction: column
-    flex: 0 0 100%
-    @media screen and (min-width: $medium-screen)
-      flex: 0 0 50%
-      flex: 0 0 calc(50% - #{$base-spacing})
-    @media screen and (min-width: $large-screen)
-      flex: 0 0 33.3%
-      flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
-    @media screen and (max-width: $medium-screen)
-      &:first-child
-        margin-left: 0
+  border: 1px solid $light-gray
+  border-radius: $base-border-radius
+  background-color: white
+  display: flex
+  overflow: hidden
+  flex-direction: column
+  flex: 0 0 100%
+  @media screen and (min-width: $medium-screen)
+    flex: 0 0 50%
+    flex: 0 0 calc(50% - #{$base-spacing})
+  @media screen and (min-width: $large-screen)
+    flex: 0 0 33.3%
+    flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+  @media screen and (max-width: $medium-screen)
+    &:first-child
+      margin-left: 0
 
