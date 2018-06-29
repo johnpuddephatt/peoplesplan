@@ -1,24 +1,13 @@
 // Card
 
 .interview-card
-	margin-left: $small-spacing
 	border: 1px solid $light-gray
 	border-radius: $base-border-radius
 	background-color: white
 	display: flex
 	overflow: hidden
 	flex-direction: column
-	flex: 0 0 100%
-	@media screen and (min-width: $medium-screen)
-		flex: 0 0 50%
-		flex: 0 0 calc(50% - #{$base-spacing})
-	@media screen and (min-width: $large-screen)
-		flex: 0 0 33.3%
-		flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
-		margin-left: $base-spacing
-	@media screen and (max-width: $medium-screen)
-		&:first-child
-			margin-left: 0
+
 	&:hover
 		.home-interviews-image img
 			transform: scale(1.05)
@@ -62,29 +51,30 @@
 	line-height: inherit
 
 .interview-card-commentcount
-	font-size: modular-scale(-1)
-	color: $light-green
+  font-size: modular-scale(-1)
+  color: $light-green
+
 .interview-card-quote
-	margin: 1.5 * $small-spacing 1.5 * $base-spacing
-	font-size: modular-scale(1)
-	font-weight: 700
-	color: $green
-	line-height: $heading-line-height
-	position: relative
-	transition: color 2 * $base-duration $base-timing
-	&::before, &::after
-		color: $light-green
-		position: absolute
-		font-size: modular-scale(4)
-		line-height: .85
-		display: inline-block
-	&::before
-		content: '“'
-		right: 100%
-		margin-right: $small-spacing/2
-	&::after
-		content: '”'
-		margin-left: $small-spacing/2
+  margin: 1.5 * $base-spacing 2.5 * $base-spacing $base-spacing
+  font-size: modular-scale(2)
+  font-weight: 700
+  color: $green
+  line-height: $heading-line-height
+  position: relative
+  transition: color 2 * $base-duration $base-timing
+  &::before, &::after
+    color: $light-green
+    position: absolute
+    font-size: modular-scale(4)
+    line-height: .85
+    display: inline-block
+  &::before
+    content: '“'
+    right: 100%
+    margin-right: $small-spacing/2
+  &::after
+    content: '”'
+    margin-left: $small-spacing/2
 
 
 // Index viewBox
@@ -105,6 +95,20 @@
 		margin-right: $base-spacing
 		@media screen and (min-width: $large-screen)
 			margin-right: 1.333 * $base-spacing
+		flex: 0 0 100%
+		@media screen and (min-width: $medium-screen)
+			flex: 0 0 50%
+			flex: 0 0 calc(50% - #{$base-spacing})
+		@media screen and (min-width: $large-screen)
+			flex: 0 0 33.3%
+			flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
+			margin-left: $base-spacing
+			&:first-child
+				margin-left: 0
+
+		@media screen and (max-width: $medium-screen)
+			&:first-child
+				margin-left: 0
 
 // Single page
 

@@ -1,7 +1,7 @@
 .section--home-header
-  background-image: linear-gradient(-32deg, $peach 39%, $off-white 39%)
-  .container
-    height: calc(100vh - #{2 * $base-spacing})
+  background-image: linear-gradient(-32deg, lighten($peach,5%) 52%, $off-white 52%)
+  .container--home-header
+    height: calc(80vh - #{2 * $base-spacing})
     display: flex
     flex-direction: column
     justify-content: center
@@ -23,7 +23,7 @@
     @media screen and (min-width: $medium-screen)
       margin: auto
       flex: 0 0 50%
-      padding-left: $small-spacing
+      padding-left: 2 * $base-spacing
     svg
       display: block
       margin: auto
@@ -31,7 +31,7 @@
       width: 90%
       @media screen and (min-width: $medium-screen)
         height: auto
-        width: 120%
+        width: 100%
         max-width: 47vw
   .button
     margin-top: $small-spacing
@@ -196,7 +196,6 @@
 
 
 .section--home-themes
-  background-color: #fff
   padding-top: 4 * $base-spacing
   padding-bottom: 4 * $base-spacing
   .container
@@ -260,6 +259,11 @@
     //     background-image: url(/images/theme-jobs.svg)
     // &--government::before
     //     background-image: url(/images/theme-government.svg)
+  .home-themes-scroller::before
+    background: linear-gradient(to left,rgba(255,255,255,0), $off-white)
+  .home-themes-scroller::after
+    background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
+
 
 .section--home-interviews
   .container
@@ -272,55 +276,75 @@
   .home-interviews-scroller::after
     background: linear-gradient(to right,rgba(255,255,255,0), $off-white)
 
+.section--home-popular
+  background-color: white
+  padding-top: 4 * $base-spacing
+  padding-bottom: 4 * $base-spacing
 
-.section--home-featured
-  background-color: #333
-  .home-featured-scroller
-    display: flex
-    flex-direction: row
-  .home-featured-scroller::before
-    background: linear-gradient(to left,rgba(255,255,255,0), $dark-gray)
-  .home-featured-scroller::after
-    background: linear-gradient(to right,rgba(255,255,255,0), $dark-gray)
-  .section-subtitle
-    color: $light-gray
-  .container
-    padding-top: 2 * $base-spacing
-    padding-bottom: 2 * $base-spacing
-  .featured-theme-icon
+
+.container--home-featured
+  display: flex
+  flex-direction: row
+  padding-bottom: 2 * $base-spacing
+  .featured-heading
+    margin-bottom: 0
+    font-size: modular-scale(2)
+    color: $medium-gray
+  > div
+    flex: 0 1 50%
     height: auto
-    width: 3 * $base-spacing
-  .featured-theme-date
-    color: $light-gray
-    margin-bottom: $small-spacing
-    font-size: modular-scale(1)
-  .button
-    margin-top: $small-spacing
-  .button + .button
-    margin-left: $small-spacing/2
-  .card
-    margin-top: 0
     display: flex
     flex-direction: column
-  .interview-card
-    margin-left: 0
-  .card--idea
-    box-shadow: none
-    border: 1px solid $light-gray
-    .card-avatar
-      height: auto
-      padding: $small-spacing $small-spacing $small-spacing $base-spacing
-    .card-body
-      padding: $small-spacing $base-spacing $base-spacing
-      border-bottom: none
-    .card-footer
-      margin-top: auto
-      border-top: 1px dashed $light-gray
-      line-height: $base-spacing
-    .card-comments,.like-container
-      width: 50%
-      font-size: modular-scale(-1)
-      padding: $small-spacing/2 $base-spacing
+    .card
+      flex: 1 0 auto
+    &:not(:first-child)
+      margin-left: $base-spacing
+  // .home-featured-scroller
+  //   display: flex
+  //   flex-direction: row
+  // .home-featured-scroller::before
+  //   background: linear-gradient(to left,rgba(255,255,255,0), $dark-gray)
+  // .home-featured-scroller::after
+  //   background: linear-gradient(to right,rgba(255,255,255,0), $dark-gray)
+  // .section-subtitle
+  //   color: $light-gray
+  // .container
+  //   padding-top: 2 * $base-spacing
+  //   padding-bottom: 2 * $base-spacing
+  // .featured-theme-icon
+  //   height: auto
+  //   width: 3 * $base-spacing
+  // .featured-theme-date
+  //   color: $light-gray
+  //   margin-bottom: $small-spacing
+  //   font-size: modular-scale(1)
+  // .button
+  //   margin-top: $small-spacing
+  // .button + .button
+  //   margin-left: $small-spacing/2
+  // .card
+  //   margin-top: 0
+  //   display: flex
+  //   flex-direction: column
+  // .interview-card
+  //   margin-left: 0
+  // .card--idea
+  //   box-shadow: none
+  //   border: 1px solid $light-gray
+  //   .card-avatar
+  //     height: auto
+  //     padding: $small-spacing $small-spacing $small-spacing $base-spacing
+  //   .card-body
+  //     padding: $small-spacing $base-spacing $base-spacing
+  //     border-bottom: none
+  //   .card-footer
+  //     margin-top: auto
+  //     border-top: 1px dashed $light-gray
+  //     line-height: $base-spacing
+  //   .card-comments,.like-container
+  //     width: 50%
+  //     font-size: modular-scale(-1)
+  //     padding: $small-spacing/2 $base-spacing
 
 
 

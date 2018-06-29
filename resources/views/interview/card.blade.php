@@ -1,4 +1,4 @@
-  <a href="/interviews/{{ $interview->slug }}" class="interview-card">
+  <a href="/interviews/{{ $interview->slug }}" class="card interview-card">
     <div class="interview-card-image">
       <img  src="{{ $interview->thumb }}" alt="Video thumbnail showing {{$interview->name}}">
       @include("inc.playbutton")

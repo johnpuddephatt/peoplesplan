@@ -2,50 +2,38 @@
 
 @section('content')
   <section class="section--home-header">
-    <div class="container">
+    <div class="container container--home-header">
       <div class="header-introduction">
         <h1 class="page-title page-title--home">Let’s design the most advanced digital society in the world &ndash; together</h1>
         <p>Our country is debating how to become the world’s digital leader. So we’ve created a place where you can share and shape the ideas you want Parliament to listen to.</p>
         <a class="button" href="/ideas/">See all ideas</a><a class="button primary" href="/ideas/add/">Add your idea</a>
-
       </div>
       <div class="header-image">
         @include('inc.homepage-header')
       </div>
     </div>
+    @if($latestinterview && $latestarticle)
+
+        <div class="container container--home-featured">
+          <div>
+            <h2 class="featured-heading">Latest interview</h2>
+            @include('interview.card',['interview'=> $latestinterview])
+          </div>
+          <div>
+            <h2 class="featured-heading">Latest article</h2>
+            @include('article.card',['article'=> $latestarticle])
+          </div>
+        </div>
+
+    @endif
   </section>
 
-{{--
-  <section class="section--home-introduction">
-    <div class="container">
 
-    </div>
-  </section> --}}
 
-{{-- @if($featuredtheme)
-  <section class="section--home-featured">
-    <div class="container">
-      <div class="featured-intro">
-        <div class="featured-theme-date">This month:</div>
-        <img src="{{$featuredtheme->icon}}" class="featured-theme-icon" alt="">
-        <h2 class="section-title featured-title">{{$featuredtheme->title}}</h2>
-        <div class="featured-description">{{$featuredtheme->description}}</div>
-        <a class="button" href="/themes/{{$featuredtheme->slug}}">View ideas</a>
-        @if($featuredtheme->whitepaper_title)
-          <a class="button primary" href="/themes/{{$featuredtheme->slug}}/whitepaper">Read plan</a>
-        @endif
-      </div>
-      @if($featuredidea)
-        @include('idea.card',['idea' => $featuredidea])
-      @endif
-      @if ($featuredinterview)
-        @include('interview.card',['interview'=> $featuredinterview])
-      @endif
-    </div>
-  </section>
-@endif --}}
 
-@if ($popularideas->count())
+
+
+{{-- @if ($popularideas->count())
   <section class="section--home-featured">
     <div class="container">
       <h2 class="section-title">Popular ideas</h2>
@@ -60,25 +48,65 @@
       </div>
     </div>
   </section>
-@endif
+@endif --}}
 
-
-@if ($interviews->count())
-  <section class="section--home-interviews">
+@if ($popularideas->count())
+  <section class="section--home-popular">
     <div class="container">
-      <h2 class="section-title">Viewpoints</h2>
-      <p class="section-subtitle">How does the UK become the world’s most advanced digital society?</p>
-      <div class="home-interviews-scroller scroller-outer">
-        <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
-        <div class="home-interviews-inner scroller-inner">
-          @foreach ($interviews as $interview)
-            @include('interview.card')
-          @endforeach
-        </div>
+      <h2 class="section-title">Popular ideas</h2>
+      <p class="section-subtitle">See the ideas currently generating discussion</p>
+      <div class="card-list">
+        @foreach ($popularideas as $idea)
+          @include('idea.card')
+        @endforeach
       </div>
     </div>
   </section>
 @endif
+
+<section class="section--home-themes">
+  <div class="container">
+    <h2 class="section-title">Themes</h2>
+    <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
+    <div class="home-themes-scroller scroller-outer">
+      <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
+      <ul class="home-themes-inner scroller-inner">
+        @foreach ($themes as $theme)
+          <li class="home-theme-item home-theme-item--{{ str_slug($theme->title) }}">
+            <h3 class="home-theme-title">
+              {{ $theme->title }}
+            </h3>
+            <img src="{{$theme->icon}}" class="home-theme-icon" alt="">
+            {{--<div class="home-theme-date">
+              {{$theme->getMonth()}}
+            </div>--}}
+            <p>{{ $theme->description }}</p>
+            <a href="/themes/{{str_slug($theme->title)}}" class="button">Join the debate</a>
+          </li>
+        @endforeach
+      </ul>
+    </div>
+  </div>
+</section>
+
+  {{--
+      @if ($interviews->count())
+        <section class="section--home-interviews">
+          <div class="container">
+            <h2 class="section-title">Viewpoints</h2>
+            <p class="section-subtitle">How does the UK become the world’s most advanced digital society?</p>
+            <div class="home-interviews-scroller scroller-outer">
+              <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
+              <div class="home-interviews-inner scroller-inner">
+                @foreach ($interviews as $interview)
+                  @include('interview.card')
+                @endforeach
+              </div>
+            </div>
+          </div>
+        </section>
+      @endif
+  --}}
 
   <section class="section--home-quote">
     <div class="container">
@@ -93,24 +121,26 @@
   </section>
 
 
-  @if($articles->count())
-    <section class="section--home-articles">
-      <div class="container">
-        <h2 class="section-title">Articles</h2>
-        <p class="section-subtitle">Stay updated and follow our progress</p>
-        <div class="home-articles-scroller scroller-outer">
-          @if ($articles->count() > 3)
-            <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
-          @endif
-          <div class="home-interviews-inner scroller-inner">
-            @foreach ($articles as $article)
-              @include('article.card')
-            @endforeach
+  {{--
+    @if($articles->count())
+      <section class="section--home-articles">
+        <div class="container">
+          <h2 class="section-title">Articles</h2>
+          <p class="section-subtitle">Stay updated and follow our progress</p>
+          <div class="home-articles-scroller scroller-outer">
+            @if ($articles->count() > 3)
+              <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
+            @endif
+            <div class="home-interviews-inner scroller-inner">
+              @foreach ($articles as $article)
+                @include('article.card')
+              @endforeach
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  @endif
+      </section>
+    @endif
+  --}}
 
   <section class="section--home-stages">
     <div class="container">
@@ -136,30 +166,7 @@
     </div>
   </section>
 
-  <section class="section--home-themes">
-    <div class="container">
-      <h2 class="section-title">Themes</h2>
-      <p class="section-subtitle">The online debate will focus on a different topic each month.</p>
-      <div class="home-themes-scroller scroller-outer">
-        <div class="scroller-navigation"><button class="scroller-previous" tabindex="-1">Previous</button><button class="scroller-next">Next</button></div>
-        <ul class="home-themes-inner scroller-inner">
-          @foreach ($themes as $theme)
-            <li class="home-theme-item home-theme-item--{{ str_slug($theme->title) }}">
-              <h3 class="home-theme-title">
-                {{ $theme->title }}
-              </h3>
-              <img src="{{$theme->icon}}" class="home-theme-icon" alt="">
-              <div class="home-theme-date">
-                {{$theme->getMonth()}}
-              </div>
-              <p>{{ $theme->description }}</p>
-              <a href="/themes/{{str_slug($theme->title)}}" class="button">Join the debate</a>
-            </li>
-          @endforeach
-        </ul>
-      </div>
-    </div>
-  </section>
+
 
   <section class="section--home-quote">
     <div class="container">

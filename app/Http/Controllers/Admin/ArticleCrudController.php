@@ -50,9 +50,19 @@ class ArticleCrudController extends CrudController
           'type' => 'date'
         ];
 
+        $imageArray = [ // image
+          'label' => "Image",
+          'name' => "image",
+          'type' => 'image',
+          'upload' => true,
+          'aspect_ratio' => 1.7778, // ommit or set to 0 to allow any aspect ratio
+          'crop' => true, // set to true to allow cropping, false to disable
+          // 'prefix' => 'uploads/images/profile_pictures/' // in case you only store the filename in the database, this text will be prepended to the database value
+          'tab' => 'Overview'
+        ];
 
 
-        $this->crud->addFields([$titleArray,$bodyArray], 'both');
+        $this->crud->addFields([$titleArray,$bodyArray,$imageArray], 'both');
 
         $this->crud->addColumns([$titleArray, $dateArray]);
 

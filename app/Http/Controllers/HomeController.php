@@ -25,15 +25,18 @@ class HomeController extends Controller
   public function index()
   {
       $themes = Theme::all();
-      $articles = Article::withCount(['comments','likes'])->get();
+      // $articles = Article::withCount(['comments','likes'])->get();
       // $featuredtheme = Theme::whereMonth('date',date("m"))->first();
       // if($featuredtheme) {
       //   $featuredidea = Idea::where('theme_id',$featuredtheme->id)->withCount(['comments','likes'])->get()->sortByDesc('likes_count')->first();
       // }
       $popularideas = Idea::withCount(['comments','likes'])->orderBy('likes_count', 'desc')->paginate(5);
       // $featuredinterview = Interview::where('featured',true)->withCount('comments')->first();
-      $interviews = Interview::withCount('comments')->get()->sortByDesc('id');
-      return view('home', compact('themes','articles','interviews','popularideas'));
+      $latestinterview = Interview::withCount('comments')->orderBy('id', 'desc')->first();
+      
+      $latestarticle = Article::withCount('comments')->orderBy('id', 'desc')->first();
+      // $interviews = Interview::withCount('comments')->get()->sortByDesc('id');
+      return view('home', compact('themes','popularideas','latestinterview','latestarticle'));
   }
 
   public function static() {

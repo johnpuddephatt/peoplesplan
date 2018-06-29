@@ -14,18 +14,20 @@
 	background-color: #fff
 	box-shadow: 0 15px 50px -15px rgba(50, 50, 50, 0.25)
 	overflow: hidden
+	border: 1px solid $off-white
 
 .card-avatar
 	height: 100%
 	width: auto
+	flex: 1 0 auto
 	position: relative
-	padding: $base-spacing $base-spacing 0
+	padding: $small-spacing/2 $base-spacing
 	img
 		border-radius: 50%
 		border: 1px solid $off-white
 		background-color: white
-		width: 2 * $base-spacing
-		width: 2 * $base-spacing
+		width: 1.5 * $base-spacing
+		width: 1.5 * $base-spacing
 		float: left
 		margin-right: $small-spacing
 
@@ -34,32 +36,38 @@
 .card-avatar-name
 	font-weight: 700
 	color: $medium-gray
+	line-height: 1.5 * $base-spacing
 
 .card-meta
 	font-size: modular-scale(-1)
-	color: $medium-gray
+	color: $light-medium-gray
+	font-weight: 400
+	display: inline-block
+	margin-left: $small-spacing/2
 
 .card-body
 	clear: both
 	display: block
-	padding: $small-spacing $base-spacing $base-spacing
-	border-bottom: 1px dashed $light-gray
+	padding: $base-spacing $base-spacing
+	border-bottom: 1px dotted $light-gray
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: space-between
 	.laravel-like
 		margin-bottom: $small-spacing/2
-
-.card-footer
 	.like-container
-		float: right
-		width: 40%
 		display: flex
 		flex-direction: row
 		justify-content: flex-end
-		padding: $small-spacing $base-spacing
+		padding: 0 0 0 $base-spacing
 		.like-total
 			display: inline-block
 			line-height: $base-spacing
+			font-weight: 300
+			font-size: modular-scale(4)
 			height: $base-spacing
-			margin-right: $small-spacing
+			margin-right: $small-spacing/2
 			color: $light-gray
 		.icon.like-icon
 			padding-top: 0
@@ -73,20 +81,21 @@
 				line-height: 1.2 * $base-spacing
 				height: $base-spacing
 
+.card-footer
+	display: flex
+	flex-direction: row
+	background-color: #fcfcfc
+
+
 .card-comments
+	margin-left: auto
 	padding: $small-spacing $base-spacing
-	float: left
-	width: 40%
 
 
 
 .card-title
 	font-size: modular-scale(2)
 	margin-bottom: 0
-
-
-
-
 
 
 .container--add
@@ -99,14 +108,11 @@
 	background: linear-gradient(-45deg, #{$peach} 30%, white 30%)
 	padding: $small-spacing
 	margin-bottom: $base-spacing
-
 	@media screen and (min-width: $medium-screen)
 		display: flex
 		padding: $base-spacing
 		align-items: center
 		flex-direction: row
-
-
 	form
 		flex: 0 0 60%
 
@@ -210,9 +216,9 @@
 			line-height: 2.5 * $base-spacing
 			height: 2 * $base-spacing
 			color: $light-gray
-			font-weight: 400
+			font-weight: 300
 			vertical-align: top
-			font-size: modular-scale(3)
+			font-size: modular-scale(5)
 			display: block
 			float: left
 			margin-right: $small-spacing
