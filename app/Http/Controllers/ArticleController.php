@@ -12,13 +12,13 @@ class ArticleController extends Controller
 {
   public function show($slug)
   {
-    $article = Article::where('slug',$slug)->with(['comments.user','comments','likes'])->firstOrFail();    
+    $article = Article::where('slug',$slug)->with(['comments.user','comments','likes'])->firstOrFail();
     return view('article.single', compact('article'));
   }
 
   public function index()
   {
-    $articles = Article::all();
+    $articles = Article::withCount('comments')->orderBy('id', 'desc')->get();
     return view('article.index', compact('articles'));
   }
 

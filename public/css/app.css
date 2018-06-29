@@ -2804,7 +2804,7 @@ main {
   -webkit-box-shadow: 0 15px 50px -15px rgba(50, 50, 50, 0.25);
           box-shadow: 0 15px 50px -15px rgba(50, 50, 50, 0.25);
   overflow: hidden;
-  border: 1px solid #F2F4F4;
+  border: 1px solid #E2E2E1;
 }
 
 .card-avatar {
@@ -2883,7 +2883,7 @@ main {
   display: inline-block;
   line-height: 1.6rem;
   font-weight: 300;
-  font-size: 2.44140625em;
+  font-size: 1.953125em;
   height: 1.6rem;
   margin-right: 0.4rem;
   color: #E2E2E1;
@@ -3257,7 +3257,7 @@ main {
 }
 
 .interview-card-quote {
-  margin: 2.4rem 4rem 1.6rem;
+  margin: 2.4rem 2.4rem 1.6rem;
   font-size: 1.5625em;
   font-weight: 700;
   color: #47C5CC;
@@ -3270,8 +3270,9 @@ main {
 .interview-card-quote::before,
 .interview-card-quote::after {
   color: #79CDC8;
+  opacity: .5;
   position: absolute;
-  font-size: 2.44140625em;
+  font-size: 1.953125em;
   line-height: .85;
   display: inline-block;
 }
@@ -3339,17 +3340,6 @@ main {
             flex: 0 0 33.3%;
     -ms-flex: 0 0 calc(33.3% - 2.1328rem);
         flex: 0 0 calc(33.3% - 2.1328rem);
-    margin-left: 1.6rem;
-  }
-
-  .interview-card-list .interview-card:first-child {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .interview-card-list .interview-card:first-child {
-    margin-left: 0;
   }
 }
 

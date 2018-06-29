@@ -1,5 +1,7 @@
 <a href="/articles/{{ $article->slug }}" class="card article-card--item">
-  <img class="article-card--image" src="{{ $article->image }}" alt="Article thumbnail for {{$article->title}}">
+  @if (isset($withImage) && $withImage)
+    <img class="article-card--image" src="{{ $article->image }}" alt="Article thumbnail for {{$article->title}}">
+  @endif
 
   <div class="article-card--body">
     <div class="article-card--title">{{$article->title}}</div>

@@ -21,7 +21,7 @@
           </div>
           <div>
             <h2 class="featured-heading">Latest article</h2>
-            @include('article.card',['article'=> $latestarticle])
+            @include('article.card',['article'=> $latestarticle,'withImage'=>true])
           </div>
         </div>
 

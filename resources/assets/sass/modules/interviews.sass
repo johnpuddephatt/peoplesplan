@@ -55,7 +55,7 @@
   color: $light-green
 
 .interview-card-quote
-  margin: 1.5 * $base-spacing 2.5 * $base-spacing $base-spacing
+  margin: 1.5 * $base-spacing 1.5 * $base-spacing $base-spacing
   font-size: modular-scale(2)
   font-weight: 700
   color: $green
@@ -64,8 +64,9 @@
   transition: color 2 * $base-duration $base-timing
   &::before, &::after
     color: $light-green
+    opacity: .5
     position: absolute
-    font-size: modular-scale(4)
+    font-size: modular-scale(3)
     line-height: .85
     display: inline-block
   &::before
@@ -102,13 +103,6 @@
 		@media screen and (min-width: $large-screen)
 			flex: 0 0 33.3%
 			flex: 0 0 calc(33.3% - #{1.333 * $base-spacing})
-			margin-left: $base-spacing
-			&:first-child
-				margin-left: 0
-
-		@media screen and (max-width: $medium-screen)
-			&:first-child
-				margin-left: 0
 
 // Single page
 
