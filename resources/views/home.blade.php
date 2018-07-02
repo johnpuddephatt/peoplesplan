@@ -16,7 +16,7 @@
 
         <div class="container container--home-featured">
           <div>
-            <h2 class="featured-heading">Latest interview</h2>
+            <h2 class="featured-heading">Latest viewpoint</h2>
             @include('interview.card',['interview'=> $latestinterview])
           </div>
           <div>

@@ -1073,7 +1073,6 @@ main {
 }
 
 .section--home-header .container--home-header {
-  height: calc(80vh - 3.2rem);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1084,10 +1083,12 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 100vh;
 }
 
 @media screen and (min-width: 700px) {
   .section--home-header .container--home-header {
+    height: calc(80vh - 3.2rem);
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -1402,7 +1403,7 @@ main {
 
 .section--home-themes {
   padding-top: 6.4rem;
-  padding-bottom: 6.4rem;
+  padding-bottom: 0;
 }
 
 .section--home-themes .home-theme-title {
@@ -1551,7 +1552,13 @@ main {
 }
 
 .container--home-featured > div:not(:first-child) {
-  margin-left: 1.6rem;
+  margin-left: 0.8rem;
+}
+
+@media screen and (min-width: 700px) {
+  .container--home-featured > div:not(:first-child) {
+    margin-left: 1.6rem;
+  }
 }
 
 .section--home-featured .card--idea {
@@ -2271,13 +2278,19 @@ main {
 }
 
 .article-card--body {
-  padding: 2.4rem 1.6rem 1.6rem;
+  padding: 2.4rem 0.8rem 1.6rem;
   line-height: 1.25;
+}
+
+@media screen and (min-width: 700px) {
+  .article-card--body {
+    padding: 2.4rem 1.6rem 1.6rem;
+  }
 }
 
 .article-card--footer {
   margin-top: auto;
-  padding: 0 1.6rem;
+  padding: 0 0.8rem;
   line-height: 2.4rem;
   border-top: 1px dashed #E2E2E1;
   margin-bottom: 0;
@@ -2293,6 +2306,12 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media screen and (min-width: 700px) {
+  .article-card--footer {
+    padding: 0 1.6rem;
+  }
 }
 
 .article-card--title {
@@ -3226,7 +3245,7 @@ main {
 
 .interview-card-footer {
   margin-top: auto;
-  padding: 0 2.4rem;
+  padding: 0 0.8rem;
   line-height: 2.4rem;
   border-top: 1px dashed #E2E2E1;
   margin-bottom: 0;
@@ -3242,6 +3261,12 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media screen and (min-width: 700px) {
+  .interview-card-footer {
+    padding: 0 2.4rem;
+  }
 }
 
 .interview-card-title {

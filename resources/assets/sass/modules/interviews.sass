@@ -35,7 +35,9 @@
 
 .interview-card-footer
 	margin-top: auto
-	padding: 0 1.5 * $base-spacing
+	padding: 0 $small-spacing
+	@media screen and (min-width: $medium-screen)
+		padding: 0 1.5 * $base-spacing
 	line-height: 1.5 * $base-spacing
 	border-top: 1px dashed $light-gray
 	margin-bottom: 0

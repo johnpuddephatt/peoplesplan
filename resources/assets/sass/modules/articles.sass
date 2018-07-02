@@ -43,12 +43,16 @@
   height: auto
 
 .article-card--body
-  padding: 1.5 * $base-spacing $base-spacing $base-spacing
+  padding: 1.5 * $base-spacing $small-spacing $base-spacing
+  @media screen and (min-width: $medium-screen)
+    padding: 1.5 * $base-spacing $base-spacing $base-spacing
   line-height: $heading-line-height
 
 .article-card--footer
   margin-top: auto
-  padding: 0 $base-spacing
+  padding: 0 $small-spacing
+  @media screen and (min-width: $medium-screen)
+    padding: 0 $base-spacing
   line-height: 1.5 * $base-spacing
   border-top: 1px dashed $light-gray
   margin-bottom: 0

@@ -1,11 +1,12 @@
 .section--home-header
   background-image: linear-gradient(-32deg, lighten($peach,5%) 52%, $off-white 52%)
   .container--home-header
-    height: calc(80vh - #{2 * $base-spacing})
     display: flex
     flex-direction: column
     justify-content: center
+    height: 100vh
     @media screen and (min-width: $medium-screen)
+      height: calc(80vh - #{2 * $base-spacing})
       flex-direction: row
 
 
@@ -197,7 +198,7 @@
 
 .section--home-themes
   padding-top: 4 * $base-spacing
-  padding-bottom: 4 * $base-spacing
+  padding-bottom: 0
   .container
   .home-theme-title
     margin-bottom: 1.5 * $base-spacing
@@ -298,7 +299,9 @@
     .card
       flex: 1 0 auto
     &:not(:first-child)
-      margin-left: $base-spacing
+      margin-left: $small-spacing
+      @media screen and (min-width: $medium-screen)
+        margin-left: $base-spacing
   // .home-featured-scroller
   //   display: flex
   //   flex-direction: row
