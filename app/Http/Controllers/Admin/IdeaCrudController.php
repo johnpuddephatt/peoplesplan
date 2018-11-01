@@ -28,7 +28,7 @@ class IdeaCrudController extends CrudController
     $this->crud->setModel('App\Models\Idea');
     $this->crud->setRoute(config('backpack.base.route_prefix') . '/ideas');
     $this->crud->setEntityNameStrings('idea', 'ideas');
-
+    $this->crud->enableExportButtons();
     /*
     |--------------------------------------------------------------------------
     | BASIC CRUD INFORMATION
