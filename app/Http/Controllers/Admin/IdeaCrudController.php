@@ -29,6 +29,9 @@ class IdeaCrudController extends CrudController
     $this->crud->setRoute(config('backpack.base.route_prefix') . '/ideas');
     $this->crud->setEntityNameStrings('idea', 'ideas');
     $this->crud->enableExportButtons();
+    $this->crud->enableResponsiveTable();
+
+
     /*
     |--------------------------------------------------------------------------
     | BASIC CRUD INFORMATION
@@ -61,12 +64,14 @@ class IdeaCrudController extends CrudController
     $whyArray = [
       'name' => 'description_why',
       'label' => 'Why you think this should happen',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'priority' => 2,
     ];
     $whatArray = [
       'name' => 'description_what',
       'label' => 'What you think should happen',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'priority' => 2,
     ];
 
     $approvedField = [
