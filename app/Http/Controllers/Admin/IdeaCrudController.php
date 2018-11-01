@@ -100,7 +100,7 @@ class IdeaCrudController extends CrudController
     // ];
 
     $this->crud->addFields([$approvedField,$titleArray,$userArray,$themeArray,$whatArray,$whyArray,], 'both');
-    $this->crud->addColumns([$titleArray,$userArray,$themeArray,$approvedCol,$dateCol]);
+    $this->crud->addColumns([$userArray,$themeArray,$titleArray,$whyArray,$whatArray,$approvedCol,$dateCol]);
 
   }
 
